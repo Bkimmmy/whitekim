@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Email Systems That Actually Book Meetings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Who We Are Section */
+        .who-we-are {
+            padding: 100px 0;
+            background: var(--gray-900);
+        }
+
+        .who-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .who-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .polarizing-statement {
+            background: var(--primary-black);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .polarizing-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4444, #ff6666);
+        }
+
+        .bold-statement {
+            font-size: 1.2rem;
+            color: var(--primary-white);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .bold-statement strong {
+            color: #ff4444;
+        }
+
+        .pain-point {
+            font-size: 1.1rem;
+            color: var(--gray-300);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .solution-intro {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .solution-intro em {
+            font-style: italic;
+            color: var(--primary-white);
+        }
+
+        .authority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .authority-card {
+            background: var(--primary-black);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .authority-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+        }
+
+        .authority-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gray-600);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .authority-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .authority-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-white);
+            margin-bottom: 15px;
+        }
+
+        .authority-description {
+            color: var(--gray-300);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .authority-metric {
+            padding: 15px;
+            background: var(--gray-900);
+            border-radius: 8px;
+            border: 1px solid var(--gray-800);
+        }
+
+        .metric-highlight {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-right: 5px;
+        }
+
+        .credibility-block {
+            background: var(--primary-black);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .credibility-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-white);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .comparison-column {
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-800);
+        }
+
+        .comparison-header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .comparison-header.bad {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+
+        .comparison-header.good {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--gray-300);
+            line-height: 1.5;
+        }
+
+        .comparison-column:first-child .comparison-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .comparison-column:last-child .comparison-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .final-statement {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary-black);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .final-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+        }
+
+        .closing-statement {
+            font-size: 1.2rem;
+            color: var(--primary-white);
+            font-weight: 500;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Responsive for who we are section */
+        @media (max-width: 768px) {
+            .authority-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .polarizing-statement,
+            .credibility-block,
+            .final-statement {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Light mode styles for who we are section */
+        body.light-mode .who-we-are {
+            background: #f8f9fa;
+        }
+
+        body.light-mode .polarizing-statement,
+        body.light-mode .authority-card,
+        body.light-mode .credibility-block,
+        body.light-mode .final-statement {
+            background: var(--primary-white);
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .authority-title,
+        body.light-mode .credibility-title,
+        body.light-mode .closing-statement,
+        body.light-mode .bold-statement {
+            color: var(--primary-black);
+        }
+
+        body.light-mode .bold-statement strong {
+            color: #dc3545;
+        }
+
+        body.light-mode .pain-point,
+        body.light-mode .authority-description,
+        body.light-mode .comparison-list li {
+            color: var(--gray-600);
+        }
+
+        body.light-mode .authority-metric {
+            background: #f8f9fa;
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .comparison-column {
+            border-color: #e9ecef;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 100px 0;
+            background: var(--primary-black);
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .case-study-card {
+            background: var(--gray-900);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+        }
+
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .client-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-white);
+            margin-bottom: 5px;
+        }
+
+        .client-industry {
+            color: var(--gray-400);
+            font-size: 1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .metric {
+            padding: 20px;
+            background: var(--primary-black);
+            border-radius: 8px;
+            border: 1px solid var(--gray-800);
+        }
+
+        .metric-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+        }
+
+        .case-study-description {
+            color: var(--gray-300);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            text-align: center;
+            color: var(--primary-white);
+            font-weight: 600;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gray-800);
+            color: var(--primary-white);
+            border: none;
+            font-size: 2rem;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav-arrow:hover {
+            background: var(--gray-700);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow.prev {
+            left: -60px;
+        }
+
+        .nav-arrow.next {
+            right: -60px;
+        }
+
+        .slide-indicators {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--gray-600);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent-green);
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: var(--gray-400);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive for case studies */
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-arrow.prev {
+                left: -10px;
+            }
+            
+            .nav-arrow.next {
+                right: -10px;
+            }
+            
+            .nav-arrow {
+                font-size: 1.5rem;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Light mode styles for case studies */
+        body.light-mode .case-studies {
+            background: var(--primary-white);
+        }
+
+        body.light-mode .case-study-card {
+            background: var(--primary-white);
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .metric {
+            background: #f8f9fa;
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .client-name,
+        body.light-mode .testimonial-author {
+            color: var(--primary-black);
+        }
+
+        body.light-mode .case-study-description {
+            color: var(--gray-600);
+        }
+
+        body.light-mode .nav-arrow {
+            background: #f8f9fa;
+            color: var(--primary-black);
+            border: 1px solid #e9ecef;
+        }
+
+        body.light-mode .nav-arrow:hover {
+            background: #e9ecef;
+        }
+
+        body.light-mode .indicator {
+            background: #dee2e6;
+        }
+
+        body.light-mode .indicator.active {
+            background: var(--accent-green);
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --gray-900: #111111;
+            --gray-800: #1a1a1a;
+            --gray-700: #2a2a2a;
+            --gray-600: #3a3a3a;
+            --gray-400: #666666;
+            --gray-300: #888888;
+            --gray-200: #cccccc;
+            --accent-green: #00ff88;
+            --accent-blue: #0066ff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--primary-black);
+            color: var(--primary-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--gray-800);
+            border: 1px solid var(--gray-600);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gray-700);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--gray-900) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-white) 0%, var(--gray-300) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-300);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-white);
+            color: var(--primary-black);
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Proof Strip */
+        .proof-strip {
+            background: var(--gray-900);
+            padding: 40px 0;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .proof-content {
+            text-align: center;
+        }
+
+        .proof-title {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+        }
+
+        /* Offers Section */
+        .offers {
+            padding: 100px 0;
+            background: var(--primary-black);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary-white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray-300);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .offer-card {
+            background: var(--gray-900);
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gray-600);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-white);
+        }
+
+        .offer-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .offer-description {
+            color: var(--gray-300);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .offer-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .offer-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--gray-300);
+        }
+
+        .offer-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: var(--gray-900);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary-black);
+            border-radius: 12px;
+            border: 1px solid var(--gray-800);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: var(--gray-600);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-white);
+        }
+
+        .step-description {
+            color: var(--gray-300);
+            line-height: 1.6;
+        }
+
+        /* Lead Capture */
+        .lead-capture {
+            padding: 100px 0;
+            background: var(--primary-black);
+            text-align: center;
+        }
+
+        .capture-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--gray-900);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-800);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gray-300);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            background: var(--gray-800);
+            border: 1px solid var(--gray-600);
+            border-radius: 6px;
+            color: var(--primary-white);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent-green);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Light mode */
+        body.light-mode {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.light-mode .hero {
+            background: linear-gradient(135deg, var(--primary-white) 0%, #f8f9fa 100%);
+        }
+
+        body.light-mode .hero h1 {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--gray-600) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .hero-subtitle {
+            color: var(--gray-600);
+        }
+
+        body.light-mode .cta-button {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            border-color: var(--primary-black);
+        }
+
+        body.light-mode .cta-button:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.light-mode .proof-strip {
+            background: #f8f9fa;
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .offers {
+            background: var(--primary-white);
+        }
+
+        body.light-mode .process {
+            background: #f8f9fa;
+        }
+
+        body.light-mode .offer-card,
+        body.light-mode .step,
+        body.light-mode .capture-form {
+            background: var(--primary-white);
+            border-color: #e9ecef;
+        }
+
+        body.light-mode .section-title,
+        body.light-mode .offer-title,
+        body.light-mode .step-title {
+            color: var(--primary-black);
+        }
+
+        body.light-mode .brand-section h2 {
+            color: var(--accent-green);
+        }
+
+        body.light-mode .brand-section p {
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌙</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="brand-section" style="margin-bottom: 2rem;">
+                    <h2 style="font-size: 1.5rem; font-weight: 600; color: var(--accent-green); margin-bottom: 0.5rem; letter-spacing: 1px;">WHITE KIM AGENCY</h2>
+                    <p style="font-size: 1rem; color: var(--gray-300); font-weight: 400; margin-bottom: 1.5rem;">Your tagline goes here</p>
+                </div>
+                <h1>Cold Email Systems That Actually Book Meetings</h1>
+                <p class="hero-subtitle">Get real sales conversations in 30 days with a complete cold email engine — built, launched, and managed for you.</p>
+                <a href="#offers" class="cta-button">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Strip -->
+    <section class="proof-strip">
+        <div class="container">
+            <div class="proof-content">
+                <p class="proof-title">Trusted by Growth-Focused Companies</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">30</div>
+                        <div class="stat-label">Days to First Meeting</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10-14</div>
+                        <div class="stat-label">Days to Go Live</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Done-For-You Setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Who We Are Section V2 -->
+<section class="who-we-are-v2">
+    <div class="container">
+        <div class="who-content-v2">
+            <div class="who-header-v2">
+                <h2 class="section-title-v2">Who We Are</h2>
+            </div>
+
+            <div class="intro-statement-v2">
+                <p class="main-value-prop-v2">
+                    <strong>White Kim Agency helps B2B companies build high-performing cold email systems that generate qualified sales calls—without wasting time, money, or internal resources.</strong>
+                </p>
+                <p class="problem-statement-v2">
+                    Most outbound campaigns fail. They get ignored, land in spam, or sound like every other email in your prospect's inbox. The result? No replies. No meetings. No pipeline.
+                </p>
+                <p class="solution-statement-v2">
+                    We fix that—<em>end to end.</em>
+                </p>
+            </div>
+
+            <div class="services-grid-v2">
+                <div class="service-card-v2">
+                    <div class="service-icon-v2">🎯</div>
+                    <h3 class="service-title-v2">Complete Email Systems</h3>
+                    <p class="service-desc-v2">
+                        Our team designs and runs cold email systems that consistently get results. From lead sourcing to copywriting to deliverability—we handle everything.
+                    </p>
+                    <div class="service-metric-v2">
+                        <span class="metric-number-v2">200+</span>managed inboxes
+                    </div>
+                </div>
+                
+                <div class="service-card-v2">
+                    <div class="service-icon-v2">📊</div>
+                    <h3 class="service-title-v2">Proven Performance</h3>
+                    <p class="service-desc-v2">
+                        You stay focused on closing deals. We keep your calendar full with qualified prospects who actually want to talk.
+                    </p>
+                    <div class="service-metric-v2">
+                        <span class="metric-number-v2">1,000+</span>subject lines tested
+                    </div>
+                </div>
+                
+                <div class="service-card-v2">
+                    <div class="service-icon-v2">⚡</div>
+                    <h3 class="service-title-v2">Industry Expertise</h3>
+                    <p class="service-desc-v2">
+                        We've executed campaigns across 20+ industries with scalable infrastructure—SPF/DKIM setup, inbox rotation, analytics, and full automation.
+                    </p>
+                    <div class="service-metric-v2">
+                        <span class="metric-number-v2">$100k+</span>pipeline in 45 days
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section-v2">
+                <h3 class="results-title-v2">What You Get</h3>
+                <div class="results-grid-v2">
+                    <div class="results-column-v2">
+                        <div class="results-header-v2">Results That Matter</div>
+                        <ul class="results-list-v2">
+                            <li><strong>38%+ open rates</strong>, even in saturated markets</li>
+                            <li><strong>11.2% reply rate</strong> across SaaS, marketing, and B2B services</li>
+                            <li><strong>3.7x more booked meetings</strong> compared to previous campaigns</li>
+                            <li><strong>0% spam issues</strong> across 200+ managed inboxes</li>
+                            <li><strong>$100k+ in sales pipeline</strong> generated in less than 45 days</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="results-column-v2">
+                        <div class="results-header-v2">The Outcome</div>
+                        <ul class="results-list-v2">
+                            <li>More qualified sales calls</li>
+                            <li>More revenue opportunities</li>
+                            <li>A consistent pipeline without cold calling or ads</li>
+                            <li>No technical headaches</li>
+                            <li>No guessing what to send, when, or to whom</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-studies-section-v2">
+                <h3 class="case-studies-title-v2">Who We've Helped</h3>
+                <div class="case-studies-grid-v2">
+                    <div class="case-study-card-v2">
+                        <div class="case-icon-v2">🚀</div>
+                        <h4 class="case-title-v2">SaaS Startup</h4>
+                        <p class="case-desc-v2">
+                            Grew from 0 to 28 booked demos/month using a multi-inbox cold email system
+                        </p>
+                    </div>
+                    
+                    <div class="case-study-card-v2">
+                        <div class="case-icon-v2">📈</div>
+                        <h4 class="case-title-v2">Marketing Agency</h4>
+                        <p class="case-desc-v2">
+                            Filled their calendar with 45+ qualified calls in 60 days using niche targeting + direct-response copy
+                        </p>
+                    </div>
+                    
+                    <div class="case-study-card-v2">
+                        <div class="case-icon-v2">💰</div>
+                        <h4 class="case-title-v2">B2B Data Platform</h4>
+                        <p class="case-desc-v2">
+                            Generated $270k in pipeline with just 2 campaigns
+                        </p>
+                    </div>
+                    
+                    <div class="case-study-card-v2">
+                        <div class="case-icon-v2">🏢</div>
+                        <h4 class="case-title-v2">Consulting Firm</h4>
+                        <p class="case-desc-v2">
+                            Broke into enterprise accounts using cold personalization + multi-step follow-up sequences
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="positioning-statement-v2">
+                <p class="positioning-text-v2">
+                    We don't just run cold emails—we engineer reliable outbound machines for serious businesses.
+                    <br><br>
+                    <strong>We don't outsource to random VAs. We don't run recycled templates.</strong>
+                    <br><br>
+                    We bring performance marketing, direct response, and inbox deliverability expertise to every campaign we build.
+                    <br><br>
+                    <strong>We are not a marketing agency. We are cold email operators.</strong>
+                    <br><br>
+                    This is what we do—and we're the best at it.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Offers Section V2 -->
+<section class="offers-v2" id="offers">
+    <div class="container">
+        <h2 class="section-title-v2">Choose Your Path</h2>
+        <p class="section-subtitle-v2">Two proven approaches to get your cold email system up and running</p>
+        
+        <div class="offers-grid-v2">
+            <!-- Offer 1 -->
+            <div class="offer-card-v2">
+                <h3 class="offer-title-v2">Setup & Launch</h3>
+                <div class="offer-price-v2">$1,295</div>
+                <p class="offer-description-v2">We build and launch your entire cold email engine — so you get real sales conversations in 30 days.</p>
+                
+                <ul class="offer-features-v2">
+                    <li>Complete strategy and targeting</li>
+                    <li>Professional messaging and copywriting</li>
+                    <li>Full tech stack setup and integration</li>
+                    <li>30 domains + email addresses setup</li>
+                    <li>DNS records configuration (DKIM, DMARC, SPF)</li>
+                    <li>Instantly.ai setup and email warming</li>
+                    <li>Verified prospect list building</li>
+                    <li>5 cold email script variations</li>
+                    <li>Slack notification integration</li>
+                    <li>30 days of campaign management</li>
+                    <li>Complete training documentation</li>
+                </ul>
+                
+                <div class="monthly-costs-v2">
+                    <strong>Monthly Third-Party Costs:</strong><br>
+                    Instantly: $97/month | Pre-warmed inboxes: $260/month | Domain emails: $300/month
+                </div>
+                
+                <a href="#contact" class="cta-button-v2">Start Setup</a>
+            </div>
+
+            <!-- Offer 2 -->
+            <div class="offer-card-v2">
+                <h3 class="offer-title-v2">Pay-for-Performance</h3>
+                <div class="offer-price-v2">$0 Setup</div>
+                <p class="offer-description-v2">No setup fee. No long-term risk. Just results. You only pay when we deliver booked meetings.</p>
+                
+                <ul class="offer-features-v2">
+                    <li>Complete campaign creation</li>
+                    <li>Professional cold email copywriting</li>
+                    <li>Ongoing optimization and testing</li>
+                    <li>Lead sourcing and qualification</li>
+                    <li>Performance-based pricing only</li>
+                    <li>You manage your own tools</li>
+                    <li>Full transparency reporting</li>
+                    <li>No long-term contracts</li>
+                </ul>
+                
+                <div class="performance-pricing-v2">
+                    <strong>$300 per booked appointment</strong><br>
+                    <span class="pricing-note-v2">+ % of closed revenue</span>
+                </div>
+                
+                <div class="monthly-costs-v2">
+                    You handle: Instantly ($97/month) + Pre-warmed inboxes (~$260/month)
+                </div>
+                
+                <a href="#contact" class="cta-button-v2">Start Performance</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Who We Are Section V2 */
+.who-we-are-v2 {
+    padding: 100px 0;
+    background: var(--gray-900);
+}
+
+.who-content-v2 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.who-header-v2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title-v2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-white);
+    margin-bottom: 20px;
+}
+
+.intro-statement-v2 {
+    background: var(--primary-black);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    padding: 50px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-statement-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.main-value-prop-v2 {
+    font-size: 1.3rem;
+    color: var(--primary-white);
+    margin-bottom: 25px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.main-value-prop-v2 strong {
+    color: var(--accent-green);
+}
+
+.problem-statement-v2 {
+    font-size: 1.1rem;
+    color: var(--gray-300);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.solution-statement-v2 {
+    font-size: 1.3rem;
+    color: var(--accent-green);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.solution-statement-v2 em {
+    font-style: italic;
+    color: var(--primary-white);
+}
+
+.services-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.service-card-v2 {
+    background: var(--primary-black);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.service-card-v2:hover {
+    transform: translateY(-8px);
+    border-color: var(--gray-600);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.service-icon-v2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.service-title-v2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-white);
+    margin-bottom: 20px;
+}
+
+.service-desc-v2 {
+    color: var(--gray-300);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+.service-metric-v2 {
+    padding: 20px;
+    background: var(--gray-900);
+    border-radius: 12px;
+    border: 1px solid var(--gray-800);
+    font-size: 1rem;
+    color: var(--gray-300);
+}
+
+.metric-number-v2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    margin-right: 8px;
+}
+
+.results-section-v2 {
+    background: var(--primary-black);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    padding: 50px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.results-section-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.results-title-v2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-white);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.results-grid-v2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.results-column-v2 {
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-800);
+    background: var(--gray-900);
+}
+
+.results-header-v2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+}
+
+.results-list-v2 {
+    list-style: none;
+    padding: 0;
+}
+
+.results-list-v2 li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    color: var(--gray-300);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.results-list-v2 li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.case-studies-section-v2 {
+    background: var(--primary-black);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    padding: 50px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.case-studies-section-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.case-studies-title-v2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-white);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.case-studies-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.case-study-card-v2 {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.case-study-card-v2:hover {
+    transform: translateY(-5px);
+    border-color: var(--gray-600);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.case-icon-v2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.case-title-v2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-white);
+    margin-bottom: 15px;
+}
+
+.case-desc-v2 {
+    color: var(--gray-300);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.positioning-statement-v2 {
+    text-align: center;
+    padding: 50px;
+    background: var(--primary-black);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.positioning-statement-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.positioning-text-v2 {
+    font-size: 1.3rem;
+    color: var(--primary-white);
+    font-weight: 500;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Offers Section V2 */
+.offers-v2 {
+    padding: 100px 0;
+    background: var(--primary-black);
+}
+
+.section-subtitle-v2 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gray-300);
+    margin-bottom: 80px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.offers-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 50px;
+    margin-top: 80px;
+}
+
+.offer-card-v2 {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 16px;
+    padding: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+}
+
+.offer-card-v2:hover {
+    transform: translateY(-8px);
+    border-color: var(--gray-600);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.offer-title-v2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-white);
+}
+
+.offer-price-v2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    margin-bottom: 25px;
+}
+
+.offer-description-v2 {
+    color: var(--gray-300);
+    margin-bottom: 35px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.offer-features-v2 {
+    list-style: none;
+    margin-bottom: 35px;
+    padding: 0;
+}
+
+.offer-features-v2 li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: var(--gray-300);
+    line-height: 1.6;
+}
+
+.offer-features-v2 li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.monthly-costs-v2 {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: var(--primary-black);
+    border-radius: 8px;
+    border: 1px solid var(--gray-800);
+    line-height: 1.5;
+}
+
+.performance-pricing-v2 {
+    color: var(--accent-green);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: var(--primary-black);
+    border-radius: 8px;
+    border: 1px solid var(--gray-800);
+    text-align: center;
+}
+
+.pricing-note-v2 {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    display: block;
+    margin-top: 5px;
+}
+
+.cta-button-v2 {
+    display: inline-block;
+    background: var(--accent-green);
+    color: var(--primary-black);
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-green);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.cta-button-v2:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .services-grid-v2 {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .results-grid-v2 {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .offers-grid-v2 {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .intro-statement-v2,
+    .results-section-v2,
+    .case-studies-section-v2,
+    .positioning-statement-v2,
+    .offer-card-v2 {
+        padding: 30px 20px;
+    }
+    
+    .section-title-v2 {
+        font-size: 2rem;
+    }
+}
+
+/* Light mode styles */
+body.light-mode .who-we-are-v2 {
+    background: #f8f9fa;
+}
+
+body.light-mode .offers-v2 {
+    background: var(--primary-white);
+}
+
+body.light-mode .intro-statement-v2,
+body.light-mode .service-card-v2,
+body.light-mode .results-section-v2,
+body.light-mode .case-studies-section-v2,
+body.light-mode .positioning-statement-v2,
+body.light-mode .offer-card-v2 {
+    background: var(--primary-white);
+    border-color: #e9ecef;
+}
+
+body.light-mode .results-column-v2,
+body.light-mode .case-study-card-v2 {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+body.light-mode .service-metric-v2,
+body.light-mode .monthly-costs-v2,
+body.light-mode .performance-pricing-v2 {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+body.light-mode .section-title-v2,
+body.light-mode .service-title-v2,
+body.light-mode .results-title-v2,
+body.light-mode .case-studies-title-v2,
+body.light-mode .case-title-v2,
+body.light-mode .offer-title-v2,
+body.light-mode .positioning-text-v2 {
+    color: var(--primary-black);
+}
+
+body.light-mode .main-value-prop-v2 strong {
+    color: var(--accent-green);
+}
+
+body.light-mode .problem-statement-v2,
+body.light-mode .service-desc-v2,
+body.light-mode .results-list-v2 li,
+body.light-mode .case-desc-v2,
+body.light-mode .section-subtitle-v2,
+body.light-mode .offer-description-v2,
+body.light-mode .offer-features-v2 li {
+    color: var(--gray-600);
+}
+
+body.light-mode .service-metric-v2,
+body.light-mode .monthly-costs-v2 {
+    color: var(--gray-600);
+}
+
+:root {
+    --primary-black: #000000;
+    --primary-white: #ffffff;
+    --gray-900: #111111;
+    --gray-800: #1a1a1a;
+    --gray-700: #2a2a2a;
+    --gray-600: #3a3a3a;
+    --gray-400: #666666;
+    --gray-300: #888888;
+    --gray-200: #cccccc;
+    --accent-green: #00ff88;
+    --accent-blue: #0066ff;
+}
+</style>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-subtitle">Built to book real meetings — fast</p>
+            
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Discovery & Strategy</h3>
+                    <p class="step-description">We dig deep on your offer, goals, and dream clients — so every email speaks directly to buyers who are ready to book.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">System Build</h3>
+                    <p class="step-description">We handle everything: tech stack, copy, targeting, domain setup, inboxes, and integrations.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Review & Sign-Off</h3>
+                    <p class="step-description">Weekly Loom videos walking you through performance, tweaks, and next steps. You approve before anything goes live.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Go Live</h3>
+                    <p class="step-description">Campaign launches. Every reply goes to Slack or your inbox. Your calendar fills with real leads who want to talk.</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Weekly Reporting</h3>
+                    <p class="step-description">Transparent updates showing what's working and what we're improving. Clear, consistent, and data-backed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="section-title">Real Results from Real Clients</h2>
+            <p class="section-subtitle">See how we've helped companies like yours book more qualified meetings</p>
+            
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="client-name">TechStart Solutions</h3>
+                            <p class="client-industry">B2B SaaS • Series A</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-number">47%</div>
+                                    <div class="metric-label">Reply Rate</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">23</div>
+                                    <div class="metric-label">Meetings Booked</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">$180K</div>
+                                    <div class="metric-label">Pipeline Generated</div>
+                                </div>
+                            </div>
+                            <p class="case-study-description">
+                                "White Kim Agency transformed our outbound completely. Within 30 days, we went from zero cold email response to booking 5-6 qualified meetings per week. The system they built is now our primary lead generation engine."
+                            </p>
+                            <div class="testimonial-author">
+                                <strong>Sarah Chen</strong> • VP of Sales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="client-name">Growth Marketing Co</h3>
+                            <p class="client-industry">Marketing Agency • $2M ARR</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-number">52%</div>
+                                    <div class="metric-label">Reply Rate</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">31</div>
+                                    <div class="metric-label">Meetings Booked</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">$320K</div>
+                                    <div class="metric-label">Pipeline Generated</div>
+                                </div>
+                            </div>
+                            <p class="case-study-description">
+                                "We were skeptical about cold email, but White Kim Agency proved us wrong. Their systematic approach and personalized messaging helped us book 31 meetings in the first 60 days. ROI was immediate."
+                            </p>
+                            <div class="testimonial-author">
+                                <strong>Mike Rodriguez</strong> • Founder
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="client-name">CloudTech Industries</h3>
+                            <p class="client-industry">Enterprise Software • Series B</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-number">41%</div>
+                                    <div class="metric-label">Reply Rate</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">19</div>
+                                    <div class="metric-label">Meetings Booked</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-number">$450K</div>
+                                    <div class="metric-label">Pipeline Generated</div>
+                                </div>
+                            </div>
+                            <p class="case-study-description">
+                                "The team at White Kim Agency understood our complex enterprise sales cycle. They crafted messages that resonated with C-level executives and consistently delivered high-quality meetings month after month."
+                            </p>
+                            <div class="testimonial-author">
+                                <strong>Jennifer Walsh</strong> • Head of Business Development
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation arrows -->
+                <button class="nav-arrow prev" onclick="changeSlide(-1)">‹</button>
+                <button class="nav-arrow next" onclick="changeSlide(1)">›</button>
+            </div>
+
+            <!-- Slide indicators -->
+            <div class="slide-indicators">
+                <span class="indicator active" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture -->
+    <section class="lead-capture" id="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Book More Meetings?</h2>
+            <p class="section-subtitle">Get started with a free strategy call to discuss your specific needs</p>
+            
+            <div class="capture-form">
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" name="website" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Book Strategy Call</button>
+                </form>
+                
+                <p style="color: var(--gray-400); font-size: 0.9rem; margin-top: 15px;">
+                    No spam — only campaign strategies and results
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.textContent = '☀️';
+            } else {
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Thank you! We\'ll be in touch within 24 hours to schedule your strategy call.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Slideshow functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-advance slideshow
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
