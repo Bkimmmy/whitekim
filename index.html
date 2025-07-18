@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cold Email Systems That Actually Book Meetings</title>
     <style>
+        .hero-content {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-content.fade-in {
+          animation: fadeInUp 1s ease-out forwards;
+        }
         * {
             margin: 0;
             padding: 0;
