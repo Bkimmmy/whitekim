@@ -5,27 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cold Email Systems That Actually Book Meetings</title>
     <style>
-        .hero-content {
+         .hero-content {
           opacity: 0;
           max-width: 800px;
-          /* start 100px to the right and 30px below */
-          transform: translate(100px, 30px);
+          transform: translateY(30px);
         }
         
-        @keyframes fadeInUpRight {
-          from {
-            opacity: 0;
-            transform: translate(100px, 30px);
-          }
-          to {
-            opacity: 1;
-            transform: translate(0, 0);
-          }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         
-        /* apply it – forwards so it “sticks” at 100% */
-        .hero-content.fade-in {
-          animation: fadeInUpRight 0.8s ease-out forwards;
+        .fade-in {
+          /* ensure it overrides the .hero-content defaults */
+          opacity: 1;
+          transform: translateY(0);
+          /* play the keyframes and stick on the last frame */
+          animation: fadeInUp 0.8s ease-out forwards;
         }
 
 
