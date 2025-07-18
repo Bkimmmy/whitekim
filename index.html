@@ -8,21 +8,26 @@
         .hero-content {
           opacity: 0;
           max-width: 800px;
-          transform: translateY(30px);
+          /* start 100px to the right and 30px below */
+          transform: translate(100px, 30px);
         }
         
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to   { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUpRight {
+          from {
+            opacity: 0;
+            transform: translate(100px, 30px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
         }
         
-        .fade-in {
-          /* ensure it overrides the .hero-content defaults */
-          opacity: 1;
-          transform: translateY(0);
-          /* play the keyframes and stick on the last frame */
-          animation: fadeInUp 0.8s ease-out forwards;
+        /* apply it – forwards so it “sticks” at 100% */
+        .hero-content.fade-in {
+          animation: fadeInUpRight 0.8s ease-out forwards;
         }
+
 
         * {
             margin: 0;
