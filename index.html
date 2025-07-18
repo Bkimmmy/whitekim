@@ -9,13 +9,17 @@
           opacity: 0;
           transform: translateY(30px);
         }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-content.fade-in {
-          animation: fadeInUp 1s ease-out forwards;
-        }
+                    /* Animations */
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(30px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+            
+            /* make sure it stays at opacity:1 & transform:0 when done */
+            .fade-in {
+              animation: fadeInUp 0.8s ease-out forwards;
+            }
+
         * {
             margin: 0;
             padding: 0;
@@ -470,10 +474,6 @@
             background: var(--gray-400);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
 
         /* Responsive for case studies */
         @media (max-width: 768px) {
@@ -904,21 +904,7 @@
             transform: translateY(-2px);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
 
         /* Responsive */
         @media (max-width: 768px) {
