@@ -1,0 +1,469 @@
+import React from 'react';
+
+export default function ROICalculatorSection() {
+  const [selectedPlan, setSelectedPlan] = React.useState('done-for-you');
+  
+  // Business Metrics
+  const [avgDealSize, setAvgDealSize] = React.useState(15000);
+  const [closeRate, setCloseRate] = React.useState(25);
+  const [replyRate, setReplyRate] = React.useState(18);
+  const [positiveReplyRate, setPositiveReplyRate] = React.useState(50);
+  const [replyToMeeting, setReplyToMeeting] = React.useState(35);
+  
+  // Time period
+  const [daysTracked, setDaysTracked] = React.useState(90);
+  
+  // Performance model
+  const [performanceModel, setPerformanceModel] = React.useState('you-handle');
+  
+  // Infrastructure
+  const [numDomains, setNumDomains] = React.useState(20);
+  const [numEmailAccounts, setNumEmailAccounts] = React.useState(50);
+
+  // Cost calculations
+  const baseCost = selectedPlan === 'done-for-you' ? 2800 : 
+                   selectedPlan === 'setup-launch' ? 1595 : 
+                   0; // Performance-based has no base cost
+  
+  const domainCost = numDomains * 12; // $12 per domain
+  const emailAccountCost = numEmailAccounts * 5; // $5 per email account
+  const instantlyCost = 97; // Instantly.ai subscription
+  
+  const totalMonthlyCost = baseCost + domainCost + emailAccountCost + instantlyCost;
+
+  // Email & Meeting calculations
+  const emailsPerDay = numEmailAccounts * 20; // 20 emails per account per day
+  const emailsPerMonth = emailsPerDay * 22; // 22 business days
+  const totalReplies = Math.round((emailsPerMonth * replyRate) / 100);
+  const positiveReplies = Math.round((totalReplies * positiveReplyRate) / 100);
+  const meetingsBooked = Math.round((positiveReplies * replyToMeeting) / 100);
+  
+  // Revenue calculations - all based on the days tracked
+  const monthsTracked = daysTracked / 30; // Convert days to months
+  const totalEmailsForPeriod = Math.round(emailsPerMonth * monthsTracked);
+  const totalRepliesForPeriod = Math.round(totalReplies * monthsTracked);
+  const totalPositiveRepliesForPeriod = Math.round(positiveReplies * monthsTracked);
+  const totalMeetingsForPeriod = Math.round(meetingsBooked * monthsTracked);
+  const closedDealsPerMonth = Math.round((meetingsBooked * closeRate) / 100);
+  const totalClosedDealsForPeriod = Math.round(closedDealsPerMonth * monthsTracked);
+  
+  // Calculate revenue and costs
+  const totalRevenue = totalClosedDealsForPeriod * avgDealSize;
+  let totalCost, netProfit;
+  
+  if (selectedPlan === 'performance') {
+    // Performance-based: infrastructure costs only
+    totalCost = Math.round((domainCost + emailAccountCost + instantlyCost) * monthsTracked);
+    const grossProfit = totalRevenue - totalCost;
+    
+    // Deduct commission that goes to White Kim
+    const commissionRate = performanceModel === 'you-handle' ? 0.15 : 0.30;
+    const commissionToWhiteKim = Math.round(totalRevenue * commissionRate);
+    netProfit = grossProfit - commissionToWhiteKim;
+  } else {
+    // Regular pricing (Done-For-You or Setup & Launch)
+    totalCost = Math.round(totalMonthlyCost * monthsTracked);
+    netProfit = totalRevenue - totalCost;
+  }
+  
+  const roi = totalCost > 0 ? ((netProfit / totalCost) * 100).toFixed(0) : 0;
+
+  const plans = [
+    { id: 'done-for-you', name: 'Done-For-You', basePrice: '$2,800/mo' },
+    { id: 'setup-launch', name: 'Setup & Launch', basePrice: '$1,595 one-time' },
+    { id: 'performance', name: 'Performance-Based', basePrice: '$0 base' }
+  ];
+
+  return (
+    <div className="py-20" style={{ backgroundColor: '#ffffff' }}>
+      <div className="container mx-auto px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>
+            See For Yourself: ROI Calculator
+          </h2>
+          <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>
+            Calculate your potential return with custom infrastructure
+          </p>
+        </div>
+
+        {/* Plan Selection Tabs */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="flex gap-4 justify-center">
+            {plans.map((plan) => (
+              <button
+                key={plan.id}
+                onClick={() => setSelectedPlan(plan.id)}
+                className="px-8 py-4 rounded-full font-semibold transition-all"
+                style={{
+                  backgroundColor: selectedPlan === plan.id ? '#dc692f' : '#fff5f0',
+                  color: selectedPlan === plan.id ? '#ffffff' : '#7d472a',
+                  border: selectedPlan === plan.id ? 'none' : '2px solid #dc692f20',
+                  transform: selectedPlan === plan.id ? 'scale(1.05)' : 'scale(1)'
+                }}
+              >
+                <div className="text-base font-bold">{plan.name}</div>
+                <div className="text-xs mt-1" style={{ opacity: 0.8 }}>{plan.basePrice}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ROI Calculator */}
+        <div className="bg-gradient-to-br from-orange-50 to-white p-10 rounded-3xl shadow-2xl border-2 max-w-7xl mx-auto" style={{ borderColor: '#dc692f' }}>
+          <div className="grid grid-cols-2 gap-12">
+            {/* Left - Input Controls */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold mb-6" style={{ color: '#7d472a' }}>Your Configuration</h3>
+              
+              {/* Infrastructure Section */}
+              <div className="bg-white p-6 rounded-xl border-2" style={{ borderColor: '#dc692f' }}>
+                <h4 className="font-bold text-lg mb-4" style={{ color: '#7d472a' }}>Infrastructure Setup</h4>
+                
+                {/* Domains */}
+                <div className="mb-4">
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Domains</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{numDomains} (${domainCost}/mo)</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={numDomains}
+                    onChange={(e) => setNumDomains(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${(numDomains / 100) * 100}%, #e5e7eb ${(numDomains / 100) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>0</span>
+                    <span>$12/domain/mo</span>
+                    <span>100</span>
+                  </div>
+                </div>
+
+                {/* Email Accounts */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Email Accounts</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{numEmailAccounts} (${emailAccountCost}/mo)</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="500"
+                    step="1"
+                    value={numEmailAccounts}
+                    onChange={(e) => setNumEmailAccounts(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${((numEmailAccounts - 1) / 499) * 100}%, #e5e7eb ${((numEmailAccounts - 1) / 499) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>1</span>
+                    <span>$5/account/mo</span>
+                    <span>500</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Business Metrics Section */}
+              <div className="space-y-4">
+                <h4 className="font-bold text-lg" style={{ color: '#7d472a' }}>Your Business Metrics</h4>
+                
+                {/* Average Deal Size */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Average Deal Size</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>${avgDealSize.toLocaleString()}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1000"
+                    max="100000"
+                    step="500"
+                    value={avgDealSize}
+                    onChange={(e) => setAvgDealSize(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${((avgDealSize - 1000) / 99000) * 100}%, #e5e7eb ${((avgDealSize - 1000) / 99000) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>$1K</span>
+                    <span>$100K</span>
+                  </div>
+                </div>
+
+                {/* Close Rate */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Close Rate (Meeting → Deal)</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{closeRate}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="5"
+                    max="100"
+                    step="1"
+                    value={closeRate}
+                    onChange={(e) => setCloseRate(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${((closeRate - 5) / 95) * 100}%, #e5e7eb ${((closeRate - 5) / 95) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>5%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
+
+                {/* Reply Rate */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Expected Reply Rate</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{replyRate}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0.5"
+                    max="20"
+                    step="0.25"
+                    value={replyRate}
+                    onChange={(e) => setReplyRate(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${((replyRate - 0.5) / 19.5) * 100}%, #e5e7eb ${((replyRate - 0.5) / 19.5) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>0.5%</span>
+                    <span>Our avg: 18%</span>
+                    <span>20%</span>
+                  </div>
+                </div>
+
+                {/* Positive Reply Rate */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Positive Reply Rate</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{positiveReplyRate}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    step="1"
+                    value={positiveReplyRate}
+                    onChange={(e) => setPositiveReplyRate(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${((positiveReplyRate - 1) / 99) * 100}%, #e5e7eb ${((positiveReplyRate - 1) / 99) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>1%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
+
+                {/* Reply to Meeting Conversion */}
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Positive Reply → Meeting Rate</label>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>{replyToMeeting}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="50"
+                    step="1"
+                    value={replyToMeeting}
+                    onChange={(e) => setReplyToMeeting(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                    style={{ background: `linear-gradient(to right, #dc692f ${(replyToMeeting / 50) * 100}%, #e5e7eb ${(replyToMeeting / 50) * 100}%)` }}
+                  />
+                  <div className="flex justify-between text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>
+                    <span>0%</span>
+                    <span>50%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cost Breakdown */}
+              <div className="bg-white p-4 rounded-xl border" style={{ borderColor: '#dc692f20' }}>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#7d472a' }}>Monthly Cost Breakdown:</p>
+                <div className="space-y-1 text-sm" style={{ color: '#7d472a', opacity: 0.8 }}>
+                  <div className="flex justify-between">
+                    <span>Base Service:</span>
+                    <span className="font-semibold">${baseCost.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Domains ({numDomains} × $12):</span>
+                    <span className="font-semibold">${domainCost}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Email Accounts ({numEmailAccounts} × $5):</span>
+                    <span className="font-semibold">${emailAccountCost}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Instantly.ai:</span>
+                    <span className="font-semibold">$97</span>
+                  </div>
+                  <div className="flex justify-between pt-2 border-t" style={{ borderColor: '#dc692f20' }}>
+                    <span className="font-bold">Total/Month:</span>
+                    <span className="font-bold" style={{ color: '#dc692f' }}>${totalMonthlyCost.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Results & Projections */}
+            <div className="space-y-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold" style={{ color: '#7d472a' }}>Your {daysTracked}-Day Projection</h3>
+                <div className="flex items-center gap-3">
+                  <label className="font-semibold text-sm" style={{ color: '#7d472a' }}>Days:</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="365"
+                    value={daysTracked}
+                    onChange={(e) => setDaysTracked(Number(e.target.value))}
+                    className="w-20 px-3 py-2 border-2 rounded-lg font-bold text-center"
+                    style={{ borderColor: '#dc692f', color: '#dc692f' }}
+                  />
+                </div>
+              </div>
+              
+              {/* Email Volume Stats */}
+              <div className="bg-white p-6 rounded-xl shadow border" style={{ borderColor: '#dc692f20' }}>
+                <h4 className="font-bold mb-4" style={{ color: '#7d472a' }}>Email Volume ({daysTracked} days)</h4>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>{totalEmailsForPeriod.toLocaleString()}</div>
+                    <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Total Emails</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>{totalRepliesForPeriod}</div>
+                    <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Total Replies</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>{totalPositiveRepliesForPeriod}</div>
+                    <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Positive Replies</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Meeting & Deal Stats */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-xl text-center shadow">
+                  <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>{totalMeetingsForPeriod}</div>
+                  <div className="text-sm" style={{ color: '#7d472a' }}>Total Meetings</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl text-center shadow">
+                  <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>{totalClosedDealsForPeriod}</div>
+                  <div className="text-sm" style={{ color: '#7d472a' }}>Total Closed Deals</div>
+                </div>
+              </div>
+
+              {/* Revenue Breakdown */}
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h4 className="font-bold mb-4" style={{ color: '#7d472a' }}>Financial Projection</h4>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-semibold text-sm" style={{ color: '#7d472a' }}>Closed Deals</span>
+                      <span className="font-bold text-xl" style={{ color: '#dc692f' }}>{totalClosedDealsForPeriod}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-semibold text-sm" style={{ color: '#7d472a' }}>Total Revenue</span>
+                      <span className="font-bold text-xl" style={{ color: '#dc692f' }}>${totalRevenue.toLocaleString()}</span>
+                    </div>
+                    <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full rounded-full transition-all duration-300" 
+                        style={{ 
+                          width: totalRevenue > 0 ? '100%' : '0%', 
+                          backgroundColor: '#dc692f' 
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-semibold text-sm" style={{ color: '#7d472a' }}>Total Investment</span>
+                      <span className="font-bold text-xl" style={{ color: '#7d472a' }}>${totalCost.toLocaleString()}</span>
+                    </div>
+                    <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gray-400 rounded-full transition-all duration-300" 
+                        style={{ 
+                          width: totalRevenue > 0 ? `${Math.min((totalCost / totalRevenue) * 100, 100)}%` : '0%' 
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {/* Performance Model Selection - Only show for Performance-Based plan */}
+                  {selectedPlan === 'performance' && (
+                    <div className="p-4 bg-orange-50 rounded-xl border" style={{ borderColor: '#dc692f40' }}>
+                      <h5 className="font-bold mb-3 text-center text-sm" style={{ color: '#7d472a' }}>Performance Model</h5>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          onClick={() => setPerformanceModel('you-handle')}
+                          className="p-3 rounded-lg font-semibold transition-all border-2 text-xs"
+                          style={{
+                            backgroundColor: performanceModel === 'you-handle' ? '#dc692f' : '#ffffff',
+                            color: performanceModel === 'you-handle' ? '#ffffff' : '#7d472a',
+                            borderColor: performanceModel === 'you-handle' ? '#dc692f' : '#dc692f40'
+                          }}
+                        >
+                          <div className="text-xs mb-1">You Handle</div>
+                          <div className="text-xs opacity-80">Positive Replies</div>
+                          <div className="text-base font-bold mt-1">15%</div>
+                        </button>
+                        <button
+                          onClick={() => setPerformanceModel('white-kim')}
+                          className="p-3 rounded-lg font-semibold transition-all border-2 text-xs"
+                          style={{
+                            backgroundColor: performanceModel === 'white-kim' ? '#dc692f' : '#ffffff',
+                            color: performanceModel === 'white-kim' ? '#ffffff' : '#7d472a',
+                            borderColor: performanceModel === 'white-kim' ? '#dc692f' : '#dc692f40'
+                          }}
+                        >
+                          <div className="text-xs mb-1">White Kim Handles</div>
+                          <div className="text-xs opacity-80">Positive Replies</div>
+                          <div className="text-base font-bold mt-1">30%</div>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="pt-4 border-t-2" style={{ borderColor: '#dc692f20' }}>
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-lg" style={{ color: '#7d472a' }}>Net Profit</span>
+                      <span className="font-bold text-3xl" style={{ color: '#dc692f' }}>${netProfit.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ROI Result */}
+              <div className="bg-gradient-to-r from-orange-100 to-orange-50 p-6 rounded-xl text-center border-2" style={{ borderColor: '#dc692f' }}>
+                <div className="text-sm font-semibold mb-2" style={{ color: '#7d472a' }}>Your ROI</div>
+                <div className="text-5xl font-bold" style={{ color: '#dc692f' }}>{roi}%</div>
+                <p className="text-sm mt-2" style={{ color: '#7d472a', opacity: 0.7 }}>
+                  For every $1 spent, you make ${totalCost > 0 ? (totalRevenue / totalCost).toFixed(2) : '0'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-10 pt-8 border-t" style={{ borderColor: '#dc692f20' }}>
+            <button className="px-10 py-4 rounded-full font-semibold text-lg shadow-lg hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
+              Book a Call to Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
