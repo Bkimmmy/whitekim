@@ -766,28 +766,35 @@ function HeroSection() {
           </div>
 
          {/* Right Side - Video */}
+
 <div className="relative">
-  <div className="rounded-2xl overflow-hidden shadow-2xl border-4" style={{ borderColor: '#dc692f' }}>
+  <div
+    className="rounded-2xl overflow-hidden shadow-2xl border-4"
+    style={{ borderColor: '#dc692f' }}
+  >
     <div className="aspect-video bg-gray-800 flex items-center justify-center">
-      <video
-        className="w-full h-full object-cover"
-        controls
-        controlsList="nodownload"
-        preload="metadata"
-        style={{ borderRadius: '1rem' }}
-      >
-        <source src="https://drive.google.com/uc?export=download&id=1C3n5d_f35KGOAYfQk_mHlJfPPMk1xx2U" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <iframe
+        src="https://player.vimeo.com/video/1131957554"
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+        title="Client Video"
+      ></iframe>
     </div>
   </div>
-  <p className="text-center mt-6 text-xl font-semibold" style={{ color: '#7d472a' }}>
+  <p
+    className="text-center mt-6 text-xl font-semibold"
+    style={{ color: '#7d472a' }}
+  >
     "Hear it from them first"
   </p>
 </div>
 
 </div>
 </div>
+
 
 
 
