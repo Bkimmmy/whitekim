@@ -11,7 +11,7 @@ export default function MainServiceProductPage() {
   const [numEmailAccounts, setNumEmailAccounts] = React.useState(50);
   const [openFaq, setOpenFaq] = React.useState(null);
 
-  const baseCost = 2800;
+  const baseCost = 2200;
   const domainCost = numDomains * 12;
   const emailAccountCost = numEmailAccounts * 5;
   const instantlyCost = 97;
@@ -669,7 +669,7 @@ function WhiteKimMethodSection() {
     const [numEmailAccounts, setNumEmailAccounts] = React.useState(50);
   
     // Cost calculations
-    const baseCost = selectedPlan === 'done-for-you' ? 2800 : 
+    const baseCost = selectedPlan === 'done-for-you' ? 2200 : 
                      selectedPlan === 'setup-launch' ? 1595 : 
                      0; // Performance-based has no base cost
     

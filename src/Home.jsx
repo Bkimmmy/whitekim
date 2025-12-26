@@ -27,7 +27,7 @@ import Founder2 from "./assets/1659489877820.jpeg";
   const [numEmailAccounts, setNumEmailAccounts] = React.useState(50);
 
   // Cost calculations
-  const baseCost = selectedPlan === 'done-for-you' ? 2800 : 
+  const baseCost = selectedPlan === 'done-for-you' ? 2200 : 
                    selectedPlan === 'setup-launch' ? 1595 : 
                    0; // Performance-based has no base cost
   
