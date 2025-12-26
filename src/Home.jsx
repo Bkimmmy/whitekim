@@ -78,7 +78,7 @@ import Founder2 from "./assets/1659489877820.jpeg";
   const roi = totalCost > 0 ? ((netProfit / totalCost) * 100).toFixed(0) : 0;
 
   const plans = [
-    { id: 'done-for-you', name: 'Done-For-You', basePrice: '$2,800/mo' },
+    { id: 'done-for-you', name: 'Done-For-You', basePrice: '$2,200/mo' },
     { id: 'setup-launch', name: 'Setup & Launch', basePrice: '$1,595 one-time' },
     { id: 'performance', name: 'Performance-Based', basePrice: '$0 base' }
   ];
@@ -921,7 +921,7 @@ function HeroSection() {
                 <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>
                   Fully managed cold email system
                 </p>
-                <div className="text-4xl font-bold" style={{ color: '#dc692f' }}>$2,800<span className="text-xl">/mo</span></div>
+                <div className="text-4xl font-bold" style={{ color: '#dc692f' }}>$2,200<span className="text-xl">/mo</span></div>
                 <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>+ email infrastructure (~$657/mo)</p>
               </div>
 

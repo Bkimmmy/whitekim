@@ -108,7 +108,7 @@ export default function MainServiceProductPage() {
               </p>
               
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '32px' }}>
-                <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#dc692f' }}>$2,800</div>
+                <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#dc692f' }}>$2,200</div>
                 <div style={{ fontSize: '20px', color: '#7d472a', opacity: 0.6 }}>/month</div>
               </div>
               
@@ -720,7 +720,7 @@ function WhiteKimMethodSection() {
     const roi = totalCost > 0 ? ((netProfit / totalCost) * 100).toFixed(0) : 0;
   
     const plans = [
-      { id: 'done-for-you', name: 'Done-For-You', basePrice: '$2,800/mo' },
+      { id: 'done-for-you', name: 'Done-For-You', basePrice: '$2,200/mo' },
       { id: 'setup-launch', name: 'Setup & Launch', basePrice: '$1,595 one-time' },
       { id: 'performance', name: 'Performance-Based', basePrice: '$0 base' }
     ];
