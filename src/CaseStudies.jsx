@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
     {
       company: "TechFlow Solutions",
       industry: "B2B SaaS • 45 employees",
-      preview: "Went from zero cold email infrastructure to 52 qualified meetings per month in just 60 days. Reply rates hit 21% (3x industry average), generating $340K in sales-ready pipeline.",
+      preview: "Went from zero outbound infrastructure to consistent qualified meetings through structured message-market fit testing. Reply rates hit 21% across tested variants — generating $340K in pipeline.",
       fullStory: "TechFlow had tried cold email before but struggled with deliverability and targeting. Within 30 days of launching with White Kim, they booked their first 12 meetings. By day 60, they hit 52 meetings/month. The key was nailing their ICP and building sequences that resonated with VP-level buyers.",
       metrics: {
         meetings: 52,
@@ -50,7 +50,7 @@ export default function CaseStudiesPage() {
     {
       company: "Apex Consulting",
       industry: "Professional Services • 120 employees",
-      preview: "Built a predictable meeting machine generating 38 qualified conversations monthly with a 19% reply rate. Created $280K in pipeline within 45 days.",
+      preview: "Built a repeatable outbound system generating 38 qualified conversations monthly. Achieved 19% reply rates through multi-domain infrastructure and message iteration.",
       fullStory: "Apex needed to scale their outbound without burning their domain. We implemented a multi-domain strategy with 30 warmed inboxes, allowing them to send 500+ emails daily while maintaining 96% inbox placement.",
       metrics: {
         meetings: 38,
@@ -70,7 +70,7 @@ export default function CaseStudiesPage() {
     {
       company: "DataSync Industries",
       industry: "Manufacturing Tech • 200+ employees",
-      preview: "Achieved 45 meetings per month with an exceptional 23% reply rate targeting enterprise accounts. Generated $520K in qualified pipeline over 90 days.",
+      preview: "Reached enterprise accounts with a 23% reply rate using educational messaging designed for long sales cycles. Generated $520K in qualified pipeline over 90 days.",
       fullStory: "DataSync sells to enterprise manufacturers—a notoriously hard-to-reach audience. We built sequences specifically designed for long sales cycles, with content that educated rather than pitched.",
       metrics: {
         meetings: 45,
@@ -117,10 +117,10 @@ export default function CaseStudiesPage() {
       {/* Hero Section */}
       <div style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)', padding: '100px 32px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '56px', fontWeight: 'bold', color: '#7d472a', marginBottom: '16px' }}>
-          See How Businesses Win with White Kim
+          What Clients Have Achieved With WhiteKim
         </h1>
         <p style={{ fontSize: '20px', color: '#7d472a', opacity: 0.8, marginBottom: '32px' }}>
-          Real companies, measurable outcomes, and the systems behind them.
+          These are the results our clients have seen. Outbound isn't magic — but the right message, the right market, and the right system changes what's possible.
         </p>
         <a href="/book-a-call" style={{ textDecoration: 'none' }}>
           <button style={{ backgroundColor: '#dc692f', color: 'white', fontWeight: '600', border: 'none', padding: '16px 48px', borderRadius: '9999px', fontSize: '18px', cursor: 'pointer' }}>
@@ -159,10 +159,10 @@ export default function CaseStudiesPage() {
               PROVEN RESULTS
             </div>
             <h2 style={{ fontSize: '48px', fontWeight: 'bold', color: '#7d472a', marginBottom: '16px' }}>
-              Real Companies. Real Results.
+              Real Campaigns. Real Data.
             </h2>
             <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7 }}>
-              Click any case study below to see detailed metrics and charts.
+              Click any case study to see what was built, what was tested, and what moved the needle.
             </p>
           </div>
 
@@ -233,14 +233,14 @@ export default function CaseStudiesPage() {
       <div style={{ backgroundColor: '#ffffff', padding: '100px 32px' }}>
         <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '42px', fontWeight: 'bold', color: '#7d472a', marginBottom: '16px' }}>
-            Ready to Get Similar Results?
+            Ready to Find Out What Your Market Responds To?
           </h2>
           <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.8, marginBottom: '32px' }}>
-            Book a 15-minute strategy call to see if the White Kim Method is right for your business.
+            Book a strategy call. We'll look at your offer, your market, and your current outbound — then tell you honestly what's missing.
           </p>
           <div 
             className="calendly-inline-widget"
-            data-url="https://calendly.com/joshbrendonai"
+            data-url="https://calendly.com/brendon-whitekim/15min"
             style={{ minWidth: '320px', height: '700px', borderRadius: '24px', overflow: 'hidden' }}
           ></div>
         </div>

@@ -30,7 +30,7 @@ export default function BookingPage() {
         </svg>
       ),
       title: "Fast & Focused",
-      description: "15 minutes to discuss your goals and challenges"
+      description: "20 minutes to diagnose your outbound and offer positioning"
     },
     {
       icon: (
@@ -38,17 +38,17 @@ export default function BookingPage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
         </svg>
       ),
-      title: "Custom Roadmap",
-      description: "Walk away with a plan, whether you work with us or not"
+      title: "Clear Next Step",
+      description: "Walk away knowing exactly what's blocking your pipeline — whether you work with us or not"
     }
   ];
 
   const whatToExpect = [
-    "Review your current outbound approach (if any)",
-    "Define your ideal customer profile and targeting strategy",
-    "Identify gaps in your cold email infrastructure",
-    "Get a custom 30-day roadmap to 40+ meetings/month",
-    "See if the White Kim Method is right for your business"
+    "Review your current outbound approach and what's not working",
+    "Define your ideal customer and how they should be targeted",
+    "Identify if the issue is your message, your market, or your infrastructure",
+    "Determine which WhiteKim offer fits your stage and goals",
+    "Get a clear answer on whether we can help — and what that looks like"
   ];
 
   return (
@@ -79,13 +79,13 @@ export default function BookingPage() {
         <div className="container mx-auto px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
-              FREE 15-MINUTE STRATEGY CALL
+              FREE STRATEGY CALL
             </div>
             <h1 className="text-6xl font-bold mb-6" style={{ color: '#7d472a' }}>
-              See If Cold Email Can Fill Your Pipeline
+              Find Out If Your Outbound Message Is the Problem
             </h1>
             <p className="text-2xl leading-relaxed mb-8" style={{ color: '#7d472a', opacity: 0.8 }}>
-              Book a quick call to discuss your outbound strategy. No pressure, no pitch—just an honest conversation about whether the White Kim Method is right for your business.
+              A focused 20-minute call to look at your current outbound approach, your offer, and your market. We'll tell you honestly whether there's a message-market fit problem — and what to do about it.
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export default function BookingPage() {
                   What to Expect on the Call
                 </h2>
                 <p className="text-lg mb-8" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  This isn't a sales call. It's a diagnostic session to see if cold email is the right channel for your business.
+                  This isn't a sales call. It's a diagnostic session to find what's actually blocking your outbound pipeline.
                 </p>
 
                 <div className="space-y-4 mb-10">
@@ -156,7 +156,7 @@ export default function BookingPage() {
                       ))}
                     </div>
                     <div>
-                      <div className="font-bold text-lg" style={{ color: '#7d472a' }}>100+ Companies</div>
+                      <div className="font-bold text-lg" style={{ color: '#7d472a' }}>Growing Client Base</div>
                       <div className="text-sm" style={{ color: '#7d472a', opacity: 0.7 }}>have booked this call</div>
                     </div>
                   </div>
@@ -173,16 +173,16 @@ export default function BookingPage() {
                 <div className="mt-8 pt-8 border-t" style={{ borderColor: '#dc692f20' }}>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>18%</div>
-                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Avg Reply Rate</div>
+                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>4 weeks</div>
+                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Sprint timeline</div>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>42</div>
-                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Meetings/Month</div>
+                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>$3k+</div>
+                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Minimum offer size we work with</div>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>30</div>
-                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Days to Launch</div>
+                      <div className="text-3xl font-bold mb-1" style={{ color: '#dc692f' }}>B2B</div>
+                      <div className="text-xs" style={{ color: '#7d472a', opacity: 0.7 }}>Service companies only</div>
                     </div>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default function BookingPage() {
                 <div className="p-8 pt-6">
                   <div 
                     className="calendly-inline-widget" 
-                    data-url="https://calendly.com/joshbrendonai" 
+                    data-url="https://calendly.com/brendon-whitekim/15min" 
                     style={{ minWidth: '320px', height: '700px' }}
                   ></div>
                 </div>
@@ -226,14 +226,14 @@ export default function BookingPage() {
               <div className="bg-white rounded-2xl p-6 shadow">
                 <h3 className="font-bold text-lg mb-2" style={{ color: '#7d472a' }}>Who is this call for?</h3>
                 <p className="text-base" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  B2B companies with deal sizes over $5K who want to fill their pipeline with qualified meetings. If you sell to other businesses and need predictable outbound, this call is for you.
+                  B2B service companies with deal sizes over $3k/month or $10k+ per project who want a predictable outbound pipeline. If you're selling a high-ticket B2B service and outbound isn't working, this call is for you.
                 </p>
               </div>
 
               <div className="bg-white rounded-2xl p-6 shadow">
-                <h3 className="font-bold text-lg mb-2" style={{ color: '#7d472a' }}>What if I've tried cold email before and it didn't work?</h3>
+                <h3 className="font-bold text-lg mb-2" style={{ color: '#7d472a' }}>What if I've tried outbound before and it didn't work?</h3>
                 <p className="text-base" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  Perfect. We'll diagnose what went wrong and show you how to fix it. Most failures come from deliverability issues, wrong targeting, or generic copy—all fixable problems.
+                  Good — that's actually the most common situation we see. Most failures come from a message-market fit problem, not a volume or deliverability issue. We'll diagnose which one it is.
                 </p>
               </div>
 

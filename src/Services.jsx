@@ -3,105 +3,70 @@ import React from 'react';
 export default function ServicesPage() {
   const mainServices = [
     {
-      title: "Main Recruiting Service",
-      price: "$2,800/month",
-      subPrice: "+ email infrastructure (~$657/mo)",
-      description: "Full end-to-end cold email recruiting operation—from infrastructure to meeting conversion.",
+      title: "Outbound Message-Market Fit Sprint",
+      price: "$5,000",
+      subPrice: "one-time",
+      badge: "BEST PLACE TO START",
+      badgeColor: "#7d472a",
+      description: "Designed to test your outbound messaging with real prospects before you commit to a full system.",
       features: [
-        "Strategy & ICP Targeting",
-        "Complete System Setup (DNS, CRM, Analytics)",
-        "Messaging & A/B Testing",
-        "30-Day Campaign Management",
-        "Weekly Reporting & Optimization",
-        "Full Training & Documentation"
+        "ICP diagnosis — who you should actually be targeting",
+        "5 message variants built and tested",
+        "500–1,000 prospect outreach to validate messaging",
+        "Split-test reporting to see what's working",
+        "Weekly check-in throughout the Sprint",
+        "Deliverability setup so messages land in inbox",
+        "Reply handling guidance for your team",
+        "Performance dashboard",
+        "Message scorecard with takeaways",
+        "Sprint summary report with next-step recommendation"
       ],
-      highlight: "Most Popular"
+      cta: "Start With the Sprint",
+      requirements: null
     },
     {
-      title: "System Setup & Launch",
-      price: "$1,595",
-      subPrice: "one-time + infrastructure",
-      description: "We build and launch your entire cold email engine in 30 days + 7 days coaching.",
+      title: "Managed Outbound Pipeline System",
+      price: "From $4,000/mo",
+      subPrice: "ongoing",
+      badge: "MOST POPULAR",
+      badgeColor: "#dc692f",
+      description: "Full-service outbound pipeline management — we run the system so you focus on closing.",
       features: [
-        "ICP Strategy & Targeting",
-        "Tech Stack Setup (Instantly, DNS, Domains)",
-        "5 Email Script Variations",
-        "List Building & Verification",
-        "Slack Notifications Setup",
-        "Full Training Videos & Documentation"
+        "Everything in the Sprint",
+        "Ongoing campaign management month to month",
+        "Monthly message testing to improve results",
+        "ICP expansion as you learn what converts",
+        "Weekly reporting with clear pipeline metrics",
+        "Custom CRM integration",
+        "AI workflow setup for lead research and sequencing",
+        "Slack alerts for hot replies",
+        "Dedicated pipeline manager as your point of contact"
       ],
-      highlight: "Best for DIY Teams"
+      cta: "Book a Strategy Call",
+      requirements: null
     },
     {
-      title: "Pay-for-Performance",
+      title: "Performance Partnership",
       price: "Custom",
-      subPrice: "per meeting or closed deal",
-      description: "Pay only when we deliver results—qualified leads, booked meetings, or closed deals.",
-      features: [
-        "Per Qualified Lead Pricing",
-        "Per Booked Meeting Pricing",
-        "Per Closed Deal Pricing",
-        "Complete System Management",
-        "Transparent Tracking Dashboards",
-        "Two Options: You Handle Replies OR We Book Meetings"
+      subPrice: "skin-in-the-game pricing",
+      badge: "FOR QUALIFIED CLIENTS",
+      badgeColor: "#9ca3af",
+      description: "For businesses ready to scale with a pricing model tied to results.",
+      features: null,
+      pricingOptions: [
+        { label: "Option 1:", detail: "Retainer + per qualified meeting booked" },
+        { label: "Option 2:", detail: "Retainer + per meeting that showed" },
+        { label: "Option 3:", detail: "Custom structure for the right fit" }
       ],
       requirements: {
-        title: "Requirements (must meet one):",
-        options: [
-          {
-            label: "Option 1:",
-            items: ["$4,000+ minimum deal value", "Capacity for 5+ new clients monthly"]
-          },
-          {
-            label: "Option 2:",
-            items: ["Capacity for $20,000+ additional monthly revenue"]
-          }
+        title: "To qualify, you should have:",
+        items: [
+          "$3k+/mo offer or $10k+ average deal value",
+          "Proven results with your current clients",
+          "Real capacity to close new business"
         ]
       },
-      highlight: "Zero Risk"
-    }
-  ];
-
-  const subServices = [
-    {
-      title: "Audit & Strategy Only",
-      price: "$495",
-      description: "Expert cold email audit with actionable roadmap and 30-min consultation."
-    },
-    {
-      title: "Copy & Messaging Pack",
-      price: "$750",
-      description: "5 custom email variations with positioning workshop and reply templates."
-    },
-    {
-      title: "Deliverability & Domain Setup",
-      price: "$995",
-      description: "Fix inbox issues with DNS setup, domain warming, and spam prevention."
-    },
-    {
-      title: "Lead Sourcing Service",
-      price: "$1,000/month",
-      description: "2,000-3,000 verified leads delivered monthly with custom targeting."
-    },
-    {
-      title: "Inbox Management & Reply Handling",
-      price: "$1,500/month",
-      description: "Human response handling, qualification, and calendar booking."
-    },
-    {
-      title: "Consultation Calls",
-      price: "$200/hour",
-      description: "1-hour strategy session to determine if cold email is right for you."
-    },
-    {
-      title: "Email Warming Service",
-      price: "$350/month",
-      description: "Dedicated email warming and reputation management."
-    },
-    {
-      title: "Advanced Analytics Package",
-      price: "$495/month",
-      description: "Custom dashboards and deep-dive performance reporting."
+      cta: "Apply for Partnership"
     }
   ];
 
@@ -110,22 +75,22 @@ export default function ServicesPage() {
       {/* Navigation */}
       <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <div onClick={() => (window.location.href = '/')}
-            style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-          <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
-        </div>
-
+          <div
+            onClick={() => (window.location.href = '/')}
+            style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          >
+            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
+          </div>
           <span style={{ fontWeight: '600', fontSize: '20px', color: '#7d472a' }}>White Kim</span>
         </div>
-        
+
         <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
           <a href="/" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Home</a>
           <a href="/services" style={{ color: '#dc692f', fontWeight: '600', borderBottom: '2px solid #dc692f', textDecoration: 'none' }}>Services and Solutions</a>
           <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Free Resources</a>
           <a href="/case-studies" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Case Studies</a>
         </div>
-        
+
         <a href="/book-a-call" style={{ textDecoration: 'none' }}>
           <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '12px 28px', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
             BOOK A CALL
@@ -138,62 +103,72 @@ export default function ServicesPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Services & Solutions</h1>
           <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto', color: '#7d472a', opacity: 0.7 }}>
-            Choose the cold email system that fits your goals—from full-service management to DIY setup.
+            Three ways to work with WhiteKim — from testing your first message to running a full outbound pipeline.
           </p>
         </div>
       </div>
 
       {/* Main Services Section - 3 Column Grid */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 32px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>Main Services</h2>
-          <p style={{ color: '#7d472a', opacity: 0.7 }}>Complete cold email solutions that book qualified meetings</p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', alignItems: 'start' }}>
           {mainServices.map((service, index) => (
-            <div key={index} style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px', border: '2px solid rgba(220, 105, 47, 0.1)', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', transition: 'box-shadow 0.3s' }}>
-              {service.highlight && (
-                <div style={{ position: 'absolute', top: '-16px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#dc692f', color: 'white', padding: '4px 16px', borderRadius: '9999px', fontSize: '14px', fontWeight: '600' }}>
-                  {service.highlight}
+            <div
+              key={index}
+              style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px', border: '2px solid rgba(220, 105, 47, 0.1)', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', transition: 'box-shadow 0.3s' }}
+            >
+              {/* Badge */}
+              <div style={{ position: 'absolute', top: '-16px', left: '50%', transform: 'translateX(-50%)', backgroundColor: service.badgeColor, color: 'white', padding: '4px 16px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', whiteSpace: 'nowrap', letterSpacing: '0.05em' }}>
+                {service.badge}
+              </div>
+
+              {/* Title and Price */}
+              <div style={{ textAlign: 'center', marginBottom: '24px', marginTop: '8px' }}>
+                <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{service.title}</h3>
+                <p style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px', color: '#dc692f' }}>{service.price}</p>
+                <p style={{ fontSize: '12px', marginBottom: '12px', color: '#7d472a', opacity: 0.6 }}>{service.subPrice}</p>
+                <p style={{ fontSize: '14px', color: '#7d472a', opacity: 0.75, lineHeight: '1.5' }}>{service.description}</p>
+              </div>
+
+              {/* Feature list */}
+              {service.features && (
+                <div style={{ marginBottom: '24px' }}>
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '12px' }}>
+                      <span style={{ fontSize: '16px', color: '#dc692f', flexShrink: 0, marginTop: '1px' }}>✓</span>
+                      <span style={{ fontSize: '14px', color: '#7d472a' }}>{feature}</span>
+                    </div>
+                  ))}
                 </div>
               )}
-              
-              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '8px', color: '#7d472a' }}>{service.title}</h3>
-                <p style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px', color: '#dc692f' }}>{service.price}</p>
-                <p style={{ fontSize: '12px', marginBottom: '12px', color: '#7d472a', opacity: 0.6 }}>{service.subPrice}</p>
-                <p style={{ fontSize: '14px', color: '#7d472a', opacity: 0.7 }}>{service.description}</p>
-              </div>
 
-              <div style={{ marginBottom: service.requirements ? '24px' : '32px' }}>
-                {service.features.map((feature, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: '14px', color: '#7d472a' }}>{feature}</span>
-                  </div>
-                ))}
-              </div>
+              {/* Pricing options (Performance Partnership) */}
+              {service.pricingOptions && (
+                <div style={{ marginBottom: '20px' }}>
+                  {service.pricingOptions.map((opt, idx) => (
+                    <div key={idx} style={{ display: 'flex', gap: '8px', marginBottom: '12px', alignItems: 'flex-start' }}>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#dc692f', flexShrink: 0 }}>{opt.label}</span>
+                      <span style={{ fontSize: '14px', color: '#7d472a' }}>{opt.detail}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
+              {/* Requirements box */}
               {service.requirements && (
-                <div style={{ marginBottom: '24px', padding: '12px', borderRadius: '8px', backgroundColor: '#fff5f0' }}>
-                  <p style={{ fontSize: '12px', fontWeight: '600', marginBottom: '8px', color: '#7d472a' }}>{service.requirements.title}</p>
-                  <div style={{ fontSize: '12px', color: '#7d472a', opacity: 0.8 }}>
-                    {service.requirements.options.map((option, optIdx) => (
-                      <div key={optIdx} style={{ marginBottom: optIdx < service.requirements.options.length - 1 ? '8px' : '0' }}>
-                        <p style={{ fontWeight: '600', marginBottom: '4px' }}>{option.label}</p>
-                        {option.items.map((item, itemIdx) => (
-                          <p key={itemIdx} style={{ marginLeft: '8px', marginBottom: '2px' }}>• {item}</p>
-                        ))}
-                      </div>
+                <div style={{ marginBottom: '24px', padding: '14px 16px', borderRadius: '8px', backgroundColor: '#fff5f0' }}>
+                  <p style={{ fontSize: '12px', fontWeight: '700', marginBottom: '8px', color: '#7d472a' }}>{service.requirements.title}</p>
+                  <div style={{ fontSize: '12px', color: '#7d472a', opacity: 0.85 }}>
+                    {service.requirements.items.map((item, itemIdx) => (
+                      <p key={itemIdx} style={{ marginBottom: '4px' }}>• {item}</p>
                     ))}
                   </div>
                 </div>
               )}
 
+              {/* CTA Button */}
               <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-                <button style={{ width: '100%', padding: '12px', borderRadius: '9999px', fontWeight: '600', backgroundColor: '#dc692f', color: 'white', border: 'none', cursor: 'pointer', transition: 'opacity 0.3s' }}>
-                  Learn More
+                <button style={{ width: '100%', padding: '12px', borderRadius: '9999px', fontWeight: '600', backgroundColor: '#dc692f', color: 'white', border: 'none', cursor: 'pointer', transition: 'opacity 0.3s', fontSize: '14px' }}>
+                  {service.cta}
                 </button>
               </a>
             </div>
@@ -201,39 +176,11 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* Sub Services Section - 4 Column Grid */}
-      <div style={{ padding: '80px 32px', backgroundColor: '#f9fafb' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>Sub Services</h2>
-            <p style={{ color: '#7d472a', opacity: 0.7 }}>Specialized solutions for specific needs</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
-            {subServices.map((service, index) => (
-              <div key={index} style={{ backgroundColor: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: '16px', right: '16px', backgroundColor: '#9ca3af', color: 'white', fontSize: '10px', padding: '4px 12px', borderRadius: '9999px', fontWeight: '600' }}>
-                  COMING SOON
-                </div>
-                
-                <h3 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '8px', color: '#7d472a', marginTop: '24px' }}>{service.title}</h3>
-                <p style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '12px', color: '#dc692f' }}>{service.price}</p>
-                <p style={{ fontSize: '13px', marginBottom: '24px', color: '#7d472a', lineHeight: '1.5' }}>{service.description}</p>
-                
-                <button style={{ width: '100%', backgroundColor: '#d1d5db', color: '#6b7280', padding: '8px', borderRadius: '9999px', fontWeight: '600', cursor: 'not-allowed', fontSize: '13px', border: 'none' }} disabled>
-                  Coming Soon
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* CTA Section */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 32px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Ready to Fill Your Calendar?</h2>
-        <p style={{ fontSize: '18px', marginBottom: '32px', maxWidth: '672px', margin: '0 auto 32px auto', color: '#7d472a', opacity: 0.7 }}>
-          Book a strategy call to discuss which service fits your goals and get started in 48 hours.
+        <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Not Sure Which Is Right for You?</h2>
+        <p style={{ fontSize: '18px', marginBottom: '32px', maxWidth: '600px', margin: '0 auto 32px auto', color: '#7d472a', opacity: 0.7 }}>
+          Book a quick strategy call. We'll look at your offer, your market, and your goals — then tell you honestly which path fits best.
         </p>
         <a href="/book-a-call" style={{ textDecoration: 'none' }}>
           <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '16px 48px', borderRadius: '9999px', fontWeight: '600', fontSize: '18px', boxShadow: '0 10px 15px rgba(0,0,0,0.1)', border: 'none', cursor: 'pointer', transition: 'opacity 0.3s' }}>
