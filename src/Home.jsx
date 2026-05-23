@@ -440,6 +440,47 @@ function HeroSection() {
           </div>
         </div>
 
+        {/* Right side — Quick Qualifier card */}
+        <div className="rounded-2xl p-8 border-2 shadow-xl" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(220,105,47,0.15)' }}>
+          <div className="mb-6">
+            <div className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3" style={{ backgroundColor: '#dc692f', color: 'white' }}>
+              QUICK QUALIFIER
+            </div>
+            <h3 className="text-xl font-bold mb-1" style={{ color: '#7d472a' }}>Is WhiteKim the right fit?</h3>
+            <p className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>Check every box before booking a call.</p>
+          </div>
+
+          <div className="space-y-4 mb-8">
+            {[
+              { label: 'Revenue', value: '$2M+ annual revenue (prefer $5M+)' },
+              { label: 'Deal size', value: '$10k+ deal value or $3k+/mo retainer' },
+              { label: 'Offer', value: 'Proven offer with real client results' },
+              { label: 'Sales', value: 'You or your team can close sales calls' },
+              { label: 'Process', value: 'CRM, pipeline stages, and follow-up in place' },
+              { label: 'Capacity', value: 'Room to take on new clients right now' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style={{ backgroundColor: '#dc692f' }}>
+                  <span className="text-white font-bold" style={{ fontSize: '10px' }}>✓</span>
+                </div>
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#dc692f' }}>{item.label} </span>
+                  <span className="text-sm" style={{ color: '#7d472a' }}>{item.value}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-6 border-t" style={{ borderColor: 'rgba(220,105,47,0.15)' }}>
+            <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>If you checked all six, let's talk about whether outbound can move the needle for you.</p>
+            <Link to="/book-a-call">
+              <button className="w-full py-3 rounded-full font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: '#dc692f' }}>
+                Book a Strategy Call
+              </button>
+            </Link>
+          </div>
+        </div>
+
       </div>
 
       {/* Logo Slider */}
