@@ -204,7 +204,7 @@ export default function BookingPage() {
                 <div className="p-8 pt-6">
                   <div 
                     className="calendly-inline-widget" 
-                    data-url="https://calendly.com/joshbrendonai" 
+                    data-url="https://calendly.com/brendon-whitekim/15min" 
                     style={{ minWidth: '320px', height: '700px' }}
                   ></div>
                 </div>

@@ -635,7 +635,7 @@ function HeroSection() {
                 <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Outbound Message-Market Fit Sprint</h3>
                 <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>Test your market before committing to full outbound.</p>
                 <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>Starting at $5,000</div>
-                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>one-time</p>
+                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>one-time + infrastructure</p>
               </div>
               <ul className="space-y-3 mb-8">
                 {['ICP audit', 'Offer audit', 'Lead list test (500-1,000 contacts)', '2-4 outbound campaign angles', 'Cold email copy', 'Deliverability and infrastructure check', 'Positive reply tracking', 'Booked-call process', 'Final performance report', 'Scaling recommendation for managed outbound'].map((item, i) => (
@@ -661,7 +661,7 @@ function HeroSection() {
                 <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Managed Outbound Pipeline System</h3>
                 <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>We run the system monthly once the message works.</p>
                 <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>Starting at $4,000<span className="text-xl">/mo</span></div>
-                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>custom based on volume and scope</p>
+                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>+ infrastructure</p>
               </div>
               <ul className="space-y-3 mb-8">
                 {['Lead sourcing', 'Cold email infrastructure', 'Copywriting', 'Campaign management', 'Reply handling', 'CRM updates', 'Weekly reporting', 'Meeting booking process', 'Ongoing optimization'].map((item, i) => (
@@ -728,23 +728,18 @@ function HeroSection() {
 }
 
 function WhoWeWorkWith() {
-  const criteria = [
-    '$500k+ annual revenue preferred',
-    '$3k+/month or $10k+ offer value',
-    'Proven client results and case studies',
-    'Can take sales calls weekly',
-    'Has capacity for new clients',
-    'Uses or will use a CRM'
-  ];
-  const industries = [
-    'B2B agencies',
-    'MSPs and IT service providers',
-    'Recruiting and staffing firms',
-    'Software development agencies',
-    'Paid ads, SEO, and web agencies',
-    'Fractional CFO and accounting advisory firms',
-    'Consulting firms',
-    'Commercial service companies with high contract values'
+  const rows = [
+    { category: 'Revenue', requirement: '$5M+/year preferred' },
+    { category: 'Minimum revenue', requirement: '$2M+/year minimum — only if sales process is proven' },
+    { category: 'Business type', requirement: 'B2B agency or high-ticket B2B service company' },
+    { category: 'Offer', requirement: 'Proven offer with real client results' },
+    { category: 'Deal size', requirement: '$10k+ average deal value or $3k+/mo retainer' },
+    { category: 'Sales ability', requirement: 'Can already close sales calls' },
+    { category: 'Sales process', requirement: 'Has CRM, pipeline stages, follow-up process, and close-rate tracking' },
+    { category: 'Capacity', requirement: 'Can take on new clients without fulfillment breaking' },
+    { category: 'Follow-up speed', requirement: 'Can respond to positive replies within 24 hours' },
+    { category: 'Financial stability', requirement: 'Can pay base retainer and commit for 90+ days' },
+    { category: 'Best-fit industries', requirement: 'Agencies, MSPs, recruiting/staffing, software dev, consulting, fractional CFO/accounting, high-ticket service firms' },
   ];
 
   return (
@@ -753,36 +748,26 @@ function WhoWeWorkWith() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Who WhiteKim Works With</h2>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: '#7d472a', opacity: 0.7 }}>
-            WhiteKim is built for B2B service companies with a proven offer, clear client results, and the ability to close new sales conversations.
+            We work best with established B2B service companies that have a proven offer, a working sales process, and the capacity to close new business.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="rounded-2xl p-8 border-2" style={{ backgroundColor: '#fff5f0', borderColor: '#dc692f20' }}>
-            <h3 className="text-xl font-bold mb-6" style={{ color: '#7d472a' }}>Client Criteria</h3>
-            <ul className="space-y-4">
-              {criteria.map((item, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5" style={{ backgroundColor: '#dc692f' }}>
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-base" style={{ color: '#7d472a' }}>{item}</span>
-                </li>
+        <div style={{ maxWidth: '900px', margin: '0 auto', borderRadius: '16px', overflow: 'hidden', border: '2px solid rgba(220,105,47,0.15)', boxShadow: '0 4px 16px rgba(0,0,0,0.06)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#dc692f' }}>
+                <th style={{ padding: '14px 24px', textAlign: 'left', color: 'white', fontWeight: '600', fontSize: '14px', width: '30%' }}>Category</th>
+                <th style={{ padding: '14px 24px', textAlign: 'left', color: 'white', fontWeight: '600', fontSize: '14px' }}>Requirement</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#fff5f0', borderBottom: '1px solid rgba(220,105,47,0.08)' }}>
+                  <td style={{ padding: '14px 24px', fontSize: '14px', fontWeight: '600', color: '#7d472a', verticalAlign: 'top' }}>{row.category}</td>
+                  <td style={{ padding: '14px 24px', fontSize: '14px', color: '#7d472a', lineHeight: '1.5' }}>{row.requirement}</td>
+                </tr>
               ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl p-8 border-2" style={{ backgroundColor: '#fff5f0', borderColor: '#dc692f20' }}>
-            <h3 className="text-xl font-bold mb-6" style={{ color: '#7d472a' }}>Industries We Serve</h3>
-            <ul className="space-y-4">
-              {industries.map((item, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5" style={{ backgroundColor: '#dc692f20' }}>
-                    <span style={{ color: '#dc692f', fontSize: '12px' }}>+</span>
-                  </div>
-                  <span className="text-base" style={{ color: '#7d472a' }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -790,15 +775,18 @@ function WhoWeWorkWith() {
 }
 
 function WhoWeDoNotWorkWith() {
-  const disqualifiers = [
-    'No proven offer or case studies',
-    'No real sales process',
-    'No CRM or pipeline tracking',
-    'Low-ticket services (under $3k/month or $10k deal value)',
-    'Already at full capacity',
-    'Cannot follow up with leads within 24 hours',
-    'Brand-new businesses with no client results',
-    'Want commission-only with no base retainer or tracking visibility'
+  const rows = [
+    { category: 'Revenue', reason: 'Under $1M/year' },
+    { category: 'Business stage', reason: 'Brand-new business or early agency' },
+    { category: 'Offer', reason: 'No proven offer or case studies' },
+    { category: 'Sales ability', reason: 'Cannot close leads' },
+    { category: 'Sales process', reason: 'No CRM, no pipeline, no follow-up system' },
+    { category: 'Tracking', reason: 'No close-rate tracking or sales data' },
+    { category: 'Capacity', reason: 'Already at full capacity' },
+    { category: 'Cash flow', reason: 'Volatile cash flow / needs leads to survive this month' },
+    { category: 'Payment preference', reason: 'Wants commission-only with no base retainer' },
+    { category: 'Fulfillment', reason: 'Cannot onboard new clients within 30-60 days' },
+    { category: 'Lead handling', reason: 'Cannot follow up with positive replies fast' },
   ];
 
   return (
@@ -807,22 +795,26 @@ function WhoWeDoNotWorkWith() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 text-white">Who WhiteKim Is Not For</h2>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
-            We are not a fit for brand-new businesses, low-ticket offers, companies with no sales process, or teams that cannot handle new sales conversations.
+            Small, volatile businesses become our volatility. If the structure below isn't in place, outbound won't fix it.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(220,105,47,0.3)' }}>
-            <ul className="space-y-4">
-              {disqualifiers.map((item, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5" style={{ backgroundColor: 'rgba(220,105,47,0.2)' }}>
-                    <span style={{ color: '#dc692f', fontSize: '12px', fontWeight: 'bold' }}>X</span>
-                  </div>
-                  <span className="text-base" style={{ color: 'rgba(255,255,255,0.8)' }}>{item}</span>
-                </li>
+        <div style={{ maxWidth: '900px', margin: '0 auto', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(220,105,47,0.3)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ backgroundColor: 'rgba(220,105,47,0.25)' }}>
+                <th style={{ padding: '14px 24px', textAlign: 'left', color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: '14px', width: '30%' }}>Category</th>
+                <th style={{ padding: '14px 24px', textAlign: 'left', color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: '14px' }}>Not a Fit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr key={i} style={{ backgroundColor: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                  <td style={{ padding: '14px 24px', fontSize: '14px', fontWeight: '600', color: '#dc692f', verticalAlign: 'top' }}>{row.category}</td>
+                  <td style={{ padding: '14px 24px', fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.5' }}>{row.reason}</td>
+                </tr>
               ))}
-            </ul>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1170,7 +1162,7 @@ function TestimonialsSection() {
               </p>
             </div>
             <div className="px-12 pb-12">
-              <div className="calendly-inline-widget rounded-2xl overflow-hidden shadow-inner" data-url="https://calendly.com/joshbrendonai" style={{ minWidth: '320px', height: '700px' }}></div>
+              <div className="calendly-inline-widget rounded-2xl overflow-hidden shadow-inner" data-url="https://calendly.com/brendon-whitekim/15min" style={{ minWidth: '320px', height: '700px' }}></div>
             </div>
           </div>
         </div>
