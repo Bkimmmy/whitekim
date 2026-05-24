@@ -125,7 +125,7 @@ export default function BookingPage() {
                   What to Expect on the Call
                 </h2>
                 <p className="text-lg mb-8" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  This isn't a sales call. It's a diagnostic session to find what's actually blocking your outbound pipeline.
+                  This isn't a sales call. It's a diagnostic session to find what's actually blocking your outbound lead generation.
                 </p>
 
                 <div className="space-y-4 mb-10">
@@ -226,7 +226,7 @@ export default function BookingPage() {
               <div className="bg-white rounded-2xl p-6 shadow">
                 <h3 className="font-bold text-lg mb-2" style={{ color: '#7d472a' }}>Who is this call for?</h3>
                 <p className="text-base" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  B2B service companies with deal sizes over $3k/month or $10k+ per project who want a predictable outbound pipeline. If you're selling a high-ticket B2B service and outbound isn't working, this call is for you.
+                  High-ticket B2B agencies with deal sizes over $3k/month or $10k+ per project who want consistent lead generation from outbound. If you run a high-ticket B2B agency and outbound isn't producing consistent leads, this call is for you.
                 </p>
               </div>
 

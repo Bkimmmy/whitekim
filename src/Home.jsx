@@ -24,9 +24,9 @@ function ROICalculator() {
   const instantlyCost = 97;
   const emailVerificationCost = 120;
   const leadsPerMonthCost = 70;
-  const deliverabilityCheckerCost = 47;
+  const apolloPhoneVerifierCost = 60;
 
-  const totalMonthlyCost = baseCost + domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost;
+  const totalMonthlyCost = baseCost + domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost;
 
   const emailsPerDay = numEmailAccounts * 20;
   const emailsPerMonth = emailsPerDay * 22;
@@ -46,12 +46,12 @@ function ROICalculator() {
   let totalCost, netProfit;
 
   if (selectedPlan === 'sprint') {
-    const infraCost = Math.round((domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost) * monthsTracked + emailVerificationCost);
+    const infraCost = Math.round((domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost) * monthsTracked + emailVerificationCost);
     totalCost = 5000 + infraCost;
     netProfit = totalRevenue - totalCost;
   } else if (selectedPlan === 'performance') {
     const baseRetainer = 2500 * monthsTracked;
-    const infraCost = Math.round((domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost) * monthsTracked + emailVerificationCost);
+    const infraCost = Math.round((domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost) * monthsTracked + emailVerificationCost);
     totalCost = Math.round(baseRetainer + infraCost);
     const grossProfit = totalRevenue - totalCost;
     const performanceFee = performanceModel === 'you-handle' ? totalMeetingsForPeriod * 750 :
@@ -230,43 +230,6 @@ function ROICalculator() {
                 </div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border" style={{ borderColor: '#dc692f20' }}>
-                <p className="text-sm font-semibold mb-2" style={{ color: '#7d472a' }}>Monthly Cost Breakdown:</p>
-                <div className="space-y-1 text-sm" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  <div className="flex justify-between">
-                    <span>{selectedPlan === 'sprint' ? 'Sprint (one-time):' : selectedPlan === 'managed' ? 'Base Service (monthly):' : 'Base Retainer (monthly):'}</span>
-                    <span className="font-semibold">{selectedPlan === 'sprint' ? '$5,000' : selectedPlan === 'managed' ? '$4,000' : '$2,500'}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Domains ({numDomains} x $12/year):</span>
-                    <span className="font-semibold">${domainCost.toFixed(0)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Email Accounts ({numEmailAccounts} x $5):</span>
-                    <span className="font-semibold">${emailAccountCost}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Instantly.ai:</span>
-                    <span className="font-semibold">$97</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Deliverability Checker:</span>
-                    <span className="font-semibold">$47</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Leads:</span>
-                    <span className="font-semibold">$70</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Email Verification (one-time):</span>
-                    <span className="font-semibold">$120</span>
-                  </div>
-                  <div className="flex justify-between pt-2 mt-2 border-t" style={{ borderColor: '#dc692f20' }}>
-                    <span className="font-bold">Total/Month:</span>
-                    <span className="font-bold" style={{ color: '#dc692f' }}>${totalMonthlyCost.toLocaleString()}</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="space-y-6">
@@ -331,6 +294,55 @@ function ROICalculator() {
                     </div>
                     <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
                       <div className="h-full bg-gray-400 rounded-full transition-all duration-300" style={{ width: totalRevenue > 0 ? `${Math.min((totalCost / totalRevenue) * 100, 100)}%` : '0%' }}></div>
+                    </div>
+                    {/* Cost breakdown under Total Investment */}
+                    <div className="mt-3 space-y-1 text-xs" style={{ color: '#7d472a', opacity: 0.75 }}>
+                      {selectedPlan === 'sprint' && (
+                        <div className="flex justify-between">
+                          <span>Sprint (one-time)</span>
+                          <span className="font-semibold">$5,000</span>
+                        </div>
+                      )}
+                      {selectedPlan === 'managed' && (
+                        <div className="flex justify-between">
+                          <span>Managed Pipeline (monthly)</span>
+                          <span className="font-semibold">$4,000/mo</span>
+                        </div>
+                      )}
+                      {selectedPlan === 'performance' && (
+                        <div className="flex justify-between">
+                          <span>Base Retainer (monthly)</span>
+                          <span className="font-semibold">$2,500/mo</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between">
+                        <span>Domains ({numDomains} x $12/yr)</span>
+                        <span className="font-semibold">${domainCost.toFixed(0)}/mo</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Email Accounts ({numEmailAccounts} x $5)</span>
+                        <span className="font-semibold">${emailAccountCost}/mo</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Instantly.ai</span>
+                        <span className="font-semibold">$97/mo</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Leads</span>
+                        <span className="font-semibold">$70/mo</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Email Verification (one-time)</span>
+                        <span className="font-semibold">$120</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Apollo Phone Verifier</span>
+                        <span className="font-semibold">$60/mo</span>
+                      </div>
+                      <div className="flex justify-between pt-1 mt-1 border-t font-semibold" style={{ borderColor: 'rgba(220,105,47,0.2)', opacity: 1 }}>
+                        <span style={{ color: '#7d472a' }}>Monthly Infra</span>
+                        <span style={{ color: '#dc692f' }}>${(domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost).toFixed(0)}/mo</span>
+                      </div>
                     </div>
                   </div>
 
@@ -418,13 +430,13 @@ function HeroSection() {
       <div className="container mx-auto px-8 py-24 grid grid-cols-2 gap-20 items-center">
         <div className="space-y-6">
           <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: '#fff5f0', color: '#dc692f' }}>
-            Outbound Pipeline Agency for High-Ticket B2B Service Companies
+            Outbound Lead Generation Agency for High-Ticket B2B Agencies
           </div>
           <h1 className="text-5xl font-bold leading-tight" style={{ color: '#7d472a' }}>
             Find the outbound message that gets qualified prospects to reply.
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: '#7d472a' }}>
-            WhiteKim helps high-ticket B2B service companies test their market, validate outbound messaging, and build a repeatable system for booked sales calls.
+            WhiteKim is an outbound lead generation agency that helps high-ticket B2B agencies set up, test, manage, and scale their outbound efforts for consistent lead generation.
           </p>
           <div className="flex gap-4 pt-6">
             <Link to="/book-a-call">
@@ -772,7 +784,7 @@ function WhoWeWorkWith() {
   const rows = [
     { category: 'Revenue', requirement: '$5M+/year preferred' },
     { category: 'Minimum revenue', requirement: '$2M+/year minimum — only if sales process is proven' },
-    { category: 'Business type', requirement: 'B2B agency or high-ticket B2B service company' },
+    { category: 'Business type', requirement: 'High-ticket B2B agency' },
     { category: 'Offer', requirement: 'Proven offer with real client results' },
     { category: 'Deal size', requirement: '$10k+ average deal value or $3k+/mo retainer' },
     { category: 'Sales ability', requirement: 'Can already close sales calls' },
@@ -789,7 +801,7 @@ function WhoWeWorkWith() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Who WhiteKim Works With</h2>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: '#7d472a', opacity: 0.7 }}>
-            We work best with established B2B service companies that have a proven offer, a working sales process, and the capacity to close new business.
+            We work best with established high-ticket B2B agencies that have a proven offer, a working sales process, and the capacity to close new business.
           </p>
         </div>
         <div style={{ maxWidth: '900px', margin: '0 auto', borderRadius: '16px', overflow: 'hidden', border: '2px solid rgba(220,105,47,0.15)', boxShadow: '0 4px 16px rgba(0,0,0,0.06)' }}>
@@ -820,6 +832,7 @@ function WhoWeDoNotWorkWith() {
     { category: 'Revenue', reason: 'Under $1M/year' },
     { category: 'Business stage', reason: 'Brand-new business or early agency' },
     { category: 'Offer', reason: 'No proven offer or case studies' },
+    { category: 'Deal size', reason: 'Average deal value under $10k or monthly retainer under $3k/mo' },
     { category: 'Sales ability', reason: 'Cannot close leads' },
     { category: 'Sales process', reason: 'No CRM, no pipeline, no follow-up system' },
     { category: 'Tracking', reason: 'No close-rate tracking or sales data' },

@@ -103,7 +103,7 @@ export default function ServicesPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Services & Solutions</h1>
           <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto', color: '#7d472a', opacity: 0.7 }}>
-            Three ways to work with WhiteKim — from testing your first message to running a full outbound pipeline.
+            Three ways to work with WhiteKim — from setting up your first outbound system to scaling consistent lead generation.
           </p>
         </div>
       </div>

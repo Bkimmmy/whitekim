@@ -82,7 +82,7 @@ export default function MainServiceProductPage() {
                 Managed Outbound Pipeline System
               </h1>
               <p style={{ fontSize: '20px', marginBottom: '32px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>
-                We build, run, and optimize your outbound pipeline. You focus on closing. We handle everything from ICP targeting to qualified meetings landing on your calendar.
+                We set up, test, manage, and scale your outbound efforts so you get consistent lead generation. You focus on closing. We handle everything from ICP targeting to qualified meetings landing on your calendar.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '32px' }}>
@@ -172,7 +172,7 @@ export default function MainServiceProductPage() {
               Everything You Need to Fill Your Calendar
             </h2>
             <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7, maxWidth: '600px', margin: '0 auto' }}>
-              A complete outbound pipeline system designed to consistently book qualified meetings
+              A complete outbound lead generation system designed to consistently generate qualified leads and book meetings
             </p>
           </div>
 
@@ -188,55 +188,46 @@ export default function MainServiceProductPage() {
         </div>
       </div>
 
-      {/* Process Section - 4-Step */}
-      <div style={{ padding: '80px 32px', backgroundColor: '#f9fafb' }}>
+      {/* Data & Reporting Section */}
+      <div style={{ padding: '80px 32px', backgroundColor: '#1c0a02' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>
-              How the Managed Pipeline Works
+            <div style={{ display: 'inline-block', backgroundColor: 'rgba(220,105,47,0.2)', color: '#dc692f', padding: '6px 20px', borderRadius: '9999px', fontSize: '13px', fontWeight: '700', marginBottom: '20px', letterSpacing: '0.05em' }}>
+              WEEKLY REPORTING
+            </div>
+            <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: 'white' }}>
+              You Will Always Know What Is Happening
             </h2>
-            <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7 }}>
-              A 4-phase system designed to find your winning message, then scale it.
+            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)', maxWidth: '640px', margin: '0 auto' }}>
+              Every client gets full visibility into their pipeline. No black boxes. No vanity metrics. Clear data every week so you can make real decisions.
             </p>
           </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             {[
-              {
-                step: '01',
-                title: 'Diagnose',
-                timeline: 'Week 1',
-                description: 'ICP diagnosis, offer positioning, and domain setup. We learn your business and build the targeting strategy before anything goes out.'
-              },
-              {
-                step: '02',
-                title: 'Test',
-                timeline: 'Weeks 2-3',
-                description: '5 message variants sent to real prospects. We run multiple angles simultaneously to find what actually resonates with your ICP.'
-              },
-              {
-                step: '03',
-                title: 'Validate',
-                timeline: 'Week 4',
-                description: 'Analyze results, identify the winning angle. We look at reply data and signal quality to determine which message to scale.'
-              },
-              {
-                step: '04',
-                title: 'Scale',
-                timeline: 'Ongoing',
-                description: 'Full pipeline management and continuous optimization. We run the system month over month, testing new angles and expanding your ICP as data comes in.'
-              }
-            ].map((card, idx) => (
-              <div key={idx} style={{ backgroundColor: '#fff5f0', borderRadius: '16px', padding: '32px', border: '1px solid rgba(220,105,47,0.15)' }}>
-                <div style={{ fontSize: '40px', fontWeight: 'bold', color: '#dc692f', marginBottom: '8px', lineHeight: '1' }}>{card.step}</div>
-                <div style={{ display: 'inline-block', backgroundColor: '#dc692f', color: 'white', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '600', marginBottom: '16px' }}>{card.timeline}</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#7d472a', marginBottom: '12px' }}>{card.title}</h3>
-                <p style={{ fontSize: '14px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>{card.description}</p>
+              { icon: '👥', metric: 'Leads Added', detail: 'New verified contacts added to your pipeline each week, broken down by segment.' },
+              { icon: '📧', metric: 'Emails Sent', detail: 'Total outreach volume by campaign and angle so you know exactly what is active.' },
+              { icon: '↩', metric: 'Replies', detail: 'Total replies received, categorized by positive, neutral, negative, and out-of-office.' },
+              { icon: '✅', metric: 'Positive Replies', detail: 'Prospects that showed genuine interest — the number that actually matters.' },
+              { icon: '📅', metric: 'Calls Booked', detail: 'Meetings that made it onto your calendar and which campaign drove them.' },
+              { icon: '🎯', metric: 'Calls Shown', detail: 'Prospects who actually showed up so you track no-show rates and show quality.' },
+              { icon: '💰', metric: 'Pipeline Created', detail: 'Dollar value of new pipeline created from outbound activity each month.' },
+              { icon: '🧪', metric: 'Campaign Tests Running', detail: 'Active A/B tests so you always know what is being optimized and why.' },
+              { icon: '→', metric: 'Next Actions', detail: 'Clear priorities for the coming week based on what the data is showing.' },
+            ].map((item, i) => (
+              <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '24px', border: '1px solid rgba(220,105,47,0.2)', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                <div style={{ fontSize: '28px', flexShrink: 0 }}>{item.icon}</div>
+                <div>
+                  <p style={{ fontSize: '15px', fontWeight: '700', color: 'white', marginBottom: '6px' }}>{item.metric}</p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item.detail}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Process Section - Expandable Timeline */}
+      <ManagedProcessTimeline />
 
       {/* Testimonials Section */}
       <div style={{ padding: '80px 32px', backgroundColor: '#ffffff' }}>
@@ -343,6 +334,132 @@ export default function MainServiceProductPage() {
   );
 }
 
+function ManagedProcessTimeline() {
+  const [expandedStep, setExpandedStep] = React.useState(null);
+
+  const steps = [
+    {
+      icon: '🔍',
+      title: 'Diagnose',
+      subtitle: 'ICP Review\nOffer Audit\nTargeting',
+      timeline: 'Week 1',
+      description: 'We start by understanding your business, your best clients, and what makes your offer resonate before a single email goes out.',
+      deliverables: [
+        'Review your ideal customer profile and refine target segments',
+        'Audit your offer positioning and identify the strongest angles',
+        'Assess any past outbound data or campaign history',
+        'Map decision-maker titles and buying signals for your market',
+        'Define 2-4 distinct campaign angles to test'
+      ]
+    },
+    {
+      icon: '🚀',
+      title: 'Test',
+      subtitle: 'Infrastructure\nLead Lists\nCampaigns Live',
+      timeline: 'Weeks 2-3',
+      description: 'We set up the full infrastructure, build verified lead lists, write copy, and get campaigns live to real prospects.',
+      deliverables: [
+        'Configure domains, email accounts, DNS, and deliverability setup',
+        'Build and verify lead lists matching your ICP',
+        'Write cold email copy for 2-4 different campaign angles',
+        'Set up reply tracking and Slack alerts for positive replies',
+        'Launch all campaigns for split-test data from day one'
+      ]
+    },
+    {
+      icon: '📊',
+      title: 'Validate',
+      subtitle: 'Reply Tracking\nWinning Angle\nOptimization',
+      timeline: 'Week 4+',
+      description: 'We track every reply, identify what is working, and optimize targeting and copy based on real market signal.',
+      deliverables: [
+        'Categorize every reply: positive, neutral, negative, out-of-office',
+        'Measure booked-call rate from positive replies',
+        'Identify the top-performing angle, segment, and message framing',
+        'Optimize targeting and copy based on response data',
+        'Weekly reporting call to review performance and next steps'
+      ]
+    },
+    {
+      icon: '📈',
+      title: 'Scale',
+      subtitle: 'Monthly System\nWeekly Reports\nExpansion',
+      timeline: 'Ongoing',
+      description: 'Once the message works, we run the system month over month — expanding volume, testing new segments, and continuously improving results.',
+      deliverables: [
+        'Full monthly campaign management and execution',
+        'Weekly reporting: leads, emails, replies, calls booked, and pipeline',
+        'Monthly strategy review and ICP expansion based on what converts',
+        'Continuous A/B testing on copy and targeting',
+        'CRM updates, Slack alerts, and dedicated pipeline manager as your point of contact'
+      ]
+    }
+  ];
+
+  return (
+    <div style={{ padding: '80px 32px', background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div style={{ display: 'inline-block', backgroundColor: '#dc692f', color: 'white', padding: '6px 20px', borderRadius: '9999px', fontSize: '13px', fontWeight: '700', marginBottom: '20px', letterSpacing: '0.05em' }}>
+            HOW THE MANAGED PIPELINE WORKS
+          </div>
+          <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>
+            From Setup to Consistent Lead Generation
+          </h2>
+          <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7, maxWidth: '640px', margin: '0 auto' }}>
+            A four-phase system to find your winning message, then scale outbound lead generation month over month.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
+          {steps.map((step, index) => (
+            <button
+              key={index}
+              onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+              style={{
+                padding: '28px 20px',
+                borderRadius: '16px',
+                border: '2px solid',
+                borderColor: expandedStep === index ? '#dc692f' : 'rgba(220,105,47,0.18)',
+                backgroundColor: expandedStep === index ? '#dc692f' : '#ffffff',
+                color: expandedStep === index ? '#ffffff' : '#7d472a',
+                cursor: 'pointer',
+                textAlign: 'center',
+                transition: 'all 0.2s'
+              }}
+            >
+              <div style={{ fontSize: '36px', marginBottom: '12px' }}>{step.icon}</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>{step.title}</h3>
+              <p style={{ fontSize: '12px', opacity: 0.75, whiteSpace: 'pre-line', marginBottom: '12px', lineHeight: '1.5' }}>{step.subtitle}</p>
+              <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', backgroundColor: expandedStep === index ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
+                {step.timeline}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {expandedStep !== null && (
+          <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '40px', border: '2px solid #dc692f', boxShadow: '0 8px 32px rgba(220,105,47,0.1)' }}>
+            <h4 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{steps[expandedStep].title}</h4>
+            <p style={{ fontSize: '17px', color: '#7d472a', opacity: 0.85, marginBottom: '28px', lineHeight: '1.6' }}>{steps[expandedStep].description}</p>
+            <div style={{ backgroundColor: '#fff5f0', borderRadius: '12px', padding: '28px' }}>
+              <h5 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '16px', color: '#7d472a' }}>What happens in this step:</h5>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {steps[expandedStep].deliverables.map((item, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#dc692f', flexShrink: 0, marginTop: '2px' }}>•</span>
+                    <span style={{ fontSize: '15px', color: '#7d472a', opacity: 0.85, lineHeight: '1.6' }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function ROICalculator() {
   const [selectedPlan, setSelectedPlan] = React.useState('managed');
 
@@ -373,9 +490,9 @@ function ROICalculator() {
   const instantlyCost = 97;
   const emailVerificationCost = 120;
   const leadsPerMonthCost = 70;
-  const deliverabilityCheckerCost = 47;
+  const apolloPhoneVerifierCost = 60;
 
-  const totalMonthlyCost = baseCost + domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost;
+  const totalMonthlyCost = baseCost + domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost;
 
   // Email & Meeting calculations
   const emailsPerDay = numEmailAccounts * 20;
@@ -396,14 +513,13 @@ function ROICalculator() {
   let totalCost, netProfit;
 
   if (selectedPlan === 'performance') {
-    totalCost = Math.round((domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost + baseCost) * monthsTracked + emailVerificationCost);
+    totalCost = Math.round((domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost + baseCost) * monthsTracked + emailVerificationCost);
     const grossProfit = totalRevenue - totalCost;
     const commissionRate = performanceModel === 'you-handle' ? 0.15 : 0.30;
     const commissionToWhiteKim = Math.round(totalRevenue * commissionRate);
     netProfit = grossProfit - commissionToWhiteKim;
   } else if (selectedPlan === 'sprint') {
-    // Sprint is one-time $2,500 - show infrastructure only for ongoing projection
-    totalCost = Math.round((domainCost + emailAccountCost + instantlyCost + deliverabilityCheckerCost + leadsPerMonthCost) * monthsTracked + emailVerificationCost);
+    totalCost = Math.round((domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost) * monthsTracked + emailVerificationCost);
     netProfit = totalRevenue - totalCost;
   } else {
     totalCost = Math.round(totalMonthlyCost * monthsTracked + emailVerificationCost);
@@ -638,10 +754,6 @@ function ROICalculator() {
                     <span style={{ fontWeight: '600' }}>$97</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span>Deliverability Checker:</span>
-                    <span style={{ fontWeight: '600' }}>$47</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Leads:</span>
                     <span style={{ fontWeight: '600' }}>$70</span>
                   </div>
@@ -651,7 +763,11 @@ function ROICalculator() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '8px', marginTop: '8px', borderTop: '1px solid rgba(220,105,47,0.15)' }}>
                     <span style={{ fontWeight: 'bold' }}>Total/Month:</span>
-                    <span style={{ fontWeight: 'bold', color: '#dc692f' }}>${totalMonthlyCost.toLocaleString()}</span>
+                    <span style={{ fontWeight: 'bold', color: '#dc692f' }}>${(domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost).toFixed(0)}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '8px', marginTop: '8px', borderTop: '1px solid rgba(220,105,47,0.15)' }}>
+                    <span style={{ fontWeight: 'bold' }}>Total Investment ({daysTracked} days):</span>
+                    <span style={{ fontWeight: 'bold', color: '#dc692f' }}>${totalCost.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -723,6 +839,55 @@ function ROICalculator() {
                     </div>
                     <div style={{ width: '100%', height: '16px', backgroundColor: '#e5e7eb', borderRadius: '9999px', overflow: 'hidden' }}>
                       <div style={{ height: '100%', borderRadius: '9999px', backgroundColor: '#9ca3af', width: totalRevenue > 0 ? `${Math.min((totalCost / totalRevenue) * 100, 100)}%` : '0%', transition: 'width 0.3s' }} />
+                    </div>
+                    {/* Cost breakdown under Total Investment */}
+                    <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '12px', color: '#7d472a', opacity: 0.75 }}>
+                      {selectedPlan === 'sprint' && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span>Sprint (one-time)</span>
+                          <span style={{ fontWeight: '600' }}>$5,000</span>
+                        </div>
+                      )}
+                      {selectedPlan === 'managed' && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span>Managed Pipeline (monthly)</span>
+                          <span style={{ fontWeight: '600' }}>$4,000/mo</span>
+                        </div>
+                      )}
+                      {selectedPlan === 'performance' && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span>Base Retainer (monthly)</span>
+                          <span style={{ fontWeight: '600' }}>$2,500/mo</span>
+                        </div>
+                      )}
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Domains ({numDomains} x $12/yr)</span>
+                        <span style={{ fontWeight: '600' }}>${domainCost.toFixed(0)}/mo</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Email Accounts ({numEmailAccounts} x $5)</span>
+                        <span style={{ fontWeight: '600' }}>${emailAccountCost}/mo</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Instantly.ai</span>
+                        <span style={{ fontWeight: '600' }}>$97/mo</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Leads</span>
+                        <span style={{ fontWeight: '600' }}>$70/mo</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Email Verification (one-time)</span>
+                        <span style={{ fontWeight: '600' }}>$120</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>Apollo Phone Verifier</span>
+                        <span style={{ fontWeight: '600' }}>$60/mo</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '4px', marginTop: '4px', borderTop: '1px solid rgba(220,105,47,0.2)', fontWeight: 'bold', opacity: 1 }}>
+                        <span style={{ color: '#7d472a' }}>Monthly Infra</span>
+                        <span style={{ color: '#dc692f' }}>${(domainCost + emailAccountCost + instantlyCost + leadsPerMonthCost + apolloPhoneVerifierCost).toFixed(0)}/mo</span>
+                      </div>
                     </div>
                   </div>
 

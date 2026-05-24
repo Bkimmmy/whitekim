@@ -23,7 +23,7 @@ export default function FreeResourcesPage() {
   const resources = [
     {
       title: "Outbound Message Templates",
-      description: "Frameworks for initial outreach, follow-ups, and re-engagement -- built for high-ticket B2B.",
+      description: "Frameworks for initial outreach, follow-ups, and re-engagement -- built for high-ticket B2B agencies.",
       status: "Coming Soon"
     },
     {
@@ -43,7 +43,7 @@ export default function FreeResourcesPage() {
     },
     {
       title: "Outbound Pipeline Masterclass (Video Series)",
-      description: "Full breakdown of how to build, test, and scale an outbound pipeline for B2B service companies.",
+      description: "Full breakdown of how to set up, test, manage, and scale outbound lead generation for high-ticket B2B agencies.",
       status: "Coming Soon"
     }
   ];
@@ -80,7 +80,7 @@ export default function FreeResourcesPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Free Resources</h1>
           <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto', color: '#7d472a', opacity: 0.7 }}>
-            Tools and resources for B2B teams building outbound pipelines. Most are in progress -- check back as we add more.
+            Tools and resources for high-ticket B2B agencies building consistent outbound lead generation. Most are in progress -- check back as we add more.
           </p>
         </div>
       </div>
