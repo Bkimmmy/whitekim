@@ -452,7 +452,7 @@ function HeroSection() {
             Book qualified B2B meetings through email, SMS, LinkedIn/DM, and phone — without hiring SDRs.
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: '#7d472a' }}>
-            WhiteKim builds and runs your end to end outbound engine across cold email, SMS, LinkedIn/DM, and phone in parallel to maximize outreach to your TAM.
+            WhiteKim builds and runs your end to end outbound engine from the ground up across cold email, SMS, LinkedIn/DM, and phone in parallel to maximize outreach to your TAM.
             <br /><br />
             We handle targeting, lead lists, messaging, inboxes, outreach, calls, follow-up, testing, reporting, and weekly pipeline intelligence.
             <br /><br />
