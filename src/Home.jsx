@@ -449,7 +449,7 @@ function HeroSection() {
             Fully Managed Outbound for $2M+ High-Ticket B2B Companies
           </div>
           <h1 className="text-5xl font-bold leading-tight" style={{ color: '#7d472a' }}>
-            We book your qualified sales meetings. You just take the calls.
+            Book qualified B2B sales meetings through email, DM, and calls — without hiring SDRs or managing outbound yourself.
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: '#7d472a' }}>
             WhiteKim helps $2M+ high-ticket B2B companies book qualified sales meetings through a fully managed outbound system across cold email, LinkedIn/DM, and phone. We handle targeting, lead lists, messaging, inbox setup, cold email, LinkedIn/DM outreach, calling, follow-up, testing, reporting, and weekly pipeline intelligence. You only take qualified sales calls.
