@@ -589,14 +589,18 @@ function HeroSection() {
               Most B2B companies don't have a lead problem. They have a message-market fit problem.
             </h2>
             <p className="text-lg" style={{ color: '#7d472a', opacity: 0.8 }}>
-              They don't know which market, list, pain point, or offer angle actually gets qualified prospects to respond. WhiteKim tests this first before scaling volume.
+              Most teams do not know which market segment, buyer title, pain point, offer angle, or outreach channel actually converts.
+            </p>
+            <p className="text-lg mt-3" style={{ color: '#7d472a', opacity: 0.8 }}>
+              WhiteKim tests this first across email, LinkedIn/DM, SMS, and phone before scaling volume and gives you the full data profile for you to make the best decisions.
             </p>
             <div className="space-y-4">
               {[
-                { title: 'Wrong Market', body: "You're targeting companies that will never buy, no matter how sharp your message is." },
-                { title: 'Untested Message', body: "You don't know which offer angle, pain point, or framing actually gets replies. You're guessing." },
-                { title: 'Scaling Before Validating', body: "You're sending volume before finding what works, burning budget and domain reputation." },
-                { title: 'No Reply-to-Call System', body: "Positive replies fall through the cracks because there is no clear process to turn them into booked sales calls." }
+                { title: 'Wrong Accounts', body: "You are targeting companies that were never likely to buy, no matter how sharp the message is." },
+                { title: 'Untested Pain + Offer Angle', body: "You do not know which pain point, promise, or framing gets the right buyers to respond." },
+                { title: 'Scaling Before Proof', body: "You are increasing volume before finding what works, which burns budget, domains, and reputation." },
+                { title: 'No Pipeline Conversion System', body: "Positive replies, warm DMs, and call interest fall through the cracks because there is no clear system to turn interest into booked sales calls." },
+                { title: 'No Pipeline Intelligence', body: "You do not know which segment, title, pain point, message, or channel is working — so every decision is still a guess." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
