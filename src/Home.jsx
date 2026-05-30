@@ -828,9 +828,6 @@ function ProblemSolutionSection() {
     <div className="py-24" style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(220,105,47,0.1)', borderBottom: '1px solid rgba(220,105,47,0.1)' }}>
       <div className="container mx-auto px-8">
         <div className="text-center mb-16">
-          <div className="inline-block px-5 py-2 rounded-full text-xs font-bold mb-5 uppercase tracking-widest" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.25)' }}>
-            What WhiteKim Solves
-          </div>
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Every problem flows through one engine.</h2>
           <p className="text-lg max-w-xl mx-auto" style={{ color: '#7d472a', opacity: 0.6 }}>
             Click any problem to see exactly how WhiteKim handles it.
