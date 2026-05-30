@@ -7,6 +7,9 @@ export default function ServicesPage() {
     {
       title: "90-Day Pipeline Sprint",
       price: "$5,000",
+      originalPrice: "$12,000",
+      discount: "58% OFF",
+      spotsLeft: "Only 3 spots left — closes June 15",
       subPrice: "one-time + infrastructure",
       badge: "BEST PLACE TO START",
       badgeColor: "#7d472a",
@@ -30,6 +33,9 @@ export default function ServicesPage() {
     {
       title: "Monthly Outbound Engine",
       price: "$4,000/mo",
+      originalPrice: "$7,500/mo",
+      discount: "47% OFF",
+      spotsLeft: "Only 2 spots left at this rate",
       subPrice: "ongoing + infrastructure",
       badge: "MOST POPULAR",
       badgeColor: "#dc692f",
@@ -52,6 +58,9 @@ export default function ServicesPage() {
     {
       title: "Performance Partnership",
       price: "Custom",
+      originalPrice: null,
+      discount: null,
+      spotsLeft: null,
       subPrice: "skin-in-the-game pricing",
       badge: "FOR QUALIFIED CLIENTS",
       badgeColor: "#9ca3af",
@@ -83,8 +92,11 @@ export default function ServicesPage() {
       <div style={{ padding: '64px 32px', background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Services & Solutions</h1>
-          <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto', color: '#7d472a', opacity: 0.7 }}>
+          <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto 16px auto', color: '#7d472a', opacity: 0.7 }}>
             A fully managed outbound system across cold email, LinkedIn/DM, and phone — built to book qualified sales meetings for $2M+ high-ticket B2B companies.
+          </p>
+          <p style={{ display: 'inline-block', fontSize: '14px', fontWeight: '600', padding: '8px 20px', borderRadius: '9999px', backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.3)' }}>
+            Our AI-qualified system lets us cut costs and pass the savings directly to you.
           </p>
         </div>
       </div>
@@ -95,8 +107,15 @@ export default function ServicesPage() {
           {mainServices.map((service, index) => (
             <div
               key={index}
-              style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px', border: '2px solid rgba(220, 105, 47, 0.1)', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', transition: 'box-shadow 0.3s' }}
+              style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px', border: '2px solid rgba(220, 105, 47, 0.1)', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', transition: 'box-shadow 0.3s', overflow: 'hidden' }}
             >
+              {/* Discount ribbon top right */}
+              {service.discount && (
+                <div style={{ position: 'absolute', top: '16px', right: '-30px', backgroundColor: '#dc692f', color: 'white', fontWeight: '800', fontSize: '11px', padding: '4px 40px', transform: 'rotate(45deg)', letterSpacing: '0.05em' }}>
+                  {service.discount}
+                </div>
+              )}
+
               {/* Badge */}
               <div style={{ position: 'absolute', top: '-16px', left: '50%', transform: 'translateX(-50%)', backgroundColor: service.badgeColor, color: 'white', padding: '4px 16px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', whiteSpace: 'nowrap', letterSpacing: '0.05em' }}>
                 {service.badge}
@@ -105,8 +124,16 @@ export default function ServicesPage() {
               {/* Title and Price */}
               <div style={{ textAlign: 'center', marginBottom: '24px', marginTop: '8px' }}>
                 <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{service.title}</h3>
+                {service.originalPrice && (
+                  <p style={{ fontSize: '16px', textDecoration: 'line-through', color: '#9ca3af', marginBottom: '2px' }}>{service.originalPrice}</p>
+                )}
                 <p style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px', color: '#dc692f' }}>{service.price}</p>
-                <p style={{ fontSize: '12px', marginBottom: '12px', color: '#7d472a', opacity: 0.6 }}>{service.subPrice}</p>
+                <p style={{ fontSize: '12px', marginBottom: '8px', color: '#7d472a', opacity: 0.6 }}>{service.subPrice}</p>
+                {service.spotsLeft && (
+                  <div style={{ display: 'inline-block', backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.3)', borderRadius: '8px', padding: '6px 12px', fontSize: '12px', fontWeight: '700', marginBottom: '12px' }}>
+                    {service.spotsLeft}
+                  </div>
+                )}
                 <p style={{ fontSize: '14px', color: '#7d472a', opacity: 0.75, lineHeight: '1.5' }}>{service.description}</p>
               </div>
 

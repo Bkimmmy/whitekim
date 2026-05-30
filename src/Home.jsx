@@ -706,22 +706,33 @@ function HeroSection() {
         <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Your 90-Day Pipeline Sprint</h2>
-            <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>
+            <p className="text-xl mb-3" style={{ color: '#7d472a', opacity: 0.7 }}>
               Get the full outbound engine running in 90 days. Then scale.
+            </p>
+            <p className="text-sm font-semibold inline-block px-4 py-2 rounded-full" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.3)' }}>
+              Our AI-qualified system lets us cut costs and pass the savings directly to you.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mx-auto">
 
             {/* Sprint */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 hover:shadow-2xl transition" style={{ borderColor: '#dc692f' }}>
+            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 hover:shadow-2xl transition" style={{ borderColor: '#dc692f', position: 'relative', overflow: 'hidden' }}>
+              {/* 58% OFF badge top right */}
+              <div style={{ position: 'absolute', top: '16px', right: '-28px', backgroundColor: '#dc692f', color: 'white', fontWeight: '800', fontSize: '12px', padding: '4px 36px', transform: 'rotate(45deg)', letterSpacing: '0.05em' }}>
+                58% OFF
+              </div>
               <div className="text-center mb-6">
                 <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4" style={{ backgroundColor: '#dc692f20', color: '#dc692f' }}>
                   BEST PLACE TO START
                 </div>
                 <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>90-Day Pipeline Sprint</h3>
                 <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>Full outbound engine with market intelligence attached.</p>
+                <div className="text-base line-through mb-1" style={{ color: '#9ca3af' }}>$12,000</div>
                 <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>$5,000</div>
                 <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>one-time + infrastructure costs</p>
+                <div className="mt-3 px-3 py-2 rounded-lg text-xs font-bold" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.3)' }}>
+                  Only 3 spots left — closes June 15
+                </div>
               </div>
               <ul className="space-y-3 mb-8">
                 {['ICP Revenue Map', 'Market message testing (pain, offer, angle)', 'Email infrastructure setup', 'Cold email outreach', 'LinkedIn/DM outreach', 'Cold calling', 'Reply handling + meeting booking', 'Lead handoff brief before every call', 'Weekly pipeline intelligence report', 'Scale plan for month 2+'].map((item, i) => (
@@ -746,15 +757,23 @@ function HeroSection() {
             </div>
 
             {/* Managed Pipeline */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 hover:shadow-2xl transition" style={{ borderColor: '#dc692f' }}>
+            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 hover:shadow-2xl transition" style={{ borderColor: '#dc692f', position: 'relative', overflow: 'hidden' }}>
+              {/* 47% OFF badge top right */}
+              <div style={{ position: 'absolute', top: '16px', right: '-28px', backgroundColor: '#7d472a', color: 'white', fontWeight: '800', fontSize: '12px', padding: '4px 36px', transform: 'rotate(45deg)', letterSpacing: '0.05em' }}>
+                47% OFF
+              </div>
               <div className="text-center mb-6">
                 <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
                   MOST POPULAR
                 </div>
                 <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Monthly Outbound Engine</h3>
                 <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>We run the full multi-channel system every month.</p>
+                <div className="text-base line-through mb-1" style={{ color: '#9ca3af' }}>$7,500/mo</div>
                 <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>$4,000<span className="text-xl">/mo</span></div>
                 <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>+ infrastructure</p>
+                <div className="mt-3 px-3 py-2 rounded-lg text-xs font-bold" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.3)' }}>
+                  Only 2 spots left at this rate
+                </div>
               </div>
               <ul className="space-y-3 mb-8">
                 {['Lead sourcing', 'Cold email infrastructure', 'Copywriting', 'Campaign management', 'Reply handling', 'CRM updates', 'Weekly reporting', 'Meeting booking process', 'Ongoing optimization'].map((item, i) => (
