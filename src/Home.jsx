@@ -456,7 +456,7 @@ function HeroSection() {
             <br /><br />
             We handle targeting, lead lists, messaging, inboxes, outreach, calls, follow-up, testing, reporting, and weekly pipeline intelligence.
             <br /><br />
-            You only take qualified sales calls.
+            You only take qualified sales calls — and the data to forever make the right decisions.
           </p>
           <div className="flex gap-4 pt-6">
             <Link to="/book-a-call">
