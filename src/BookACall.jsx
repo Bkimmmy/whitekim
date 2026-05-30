@@ -1,4 +1,6 @@
 import React from 'react';
+import Nav from './Nav';
+import brendonPhoto from './assets/1760379034665.jpeg';
 
 export default function BookingPage() {
   // Load Calendly script
@@ -53,35 +55,16 @@ export default function BookingPage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
-      {/* Navigation - Same as Home Page */}
-      <nav className="flex items-center justify-between px-8 py-5 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
-            <span className="text-white font-bold text-xl">WK</span>
-          </div>
-          <span className="font-semibold text-xl" style={{ color: '#7d472a' }}>White Kim</span>
-        </div>
-        
-        <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
-          <a href="/" style={{ color: '#7d472a', textDecoration: 'none' }}>Home</a>
-          <a href="/services" style={{ color: '#7d472a', textDecoration: 'none' }}>Services and Solutions</a>
-          <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none' }}>Free Resources</a>
-          <a href="/case-studies" style={{ color: '#dc692f', fontWeight: '600', borderBottom: '2px solid #dc692f', textDecoration: 'none' }}>Case Studies</a>
-        </div>
-        
-        <button className="text-white px-7 py-3 rounded-full font-semibold hover:opacity-90 transition shadow-md" style={{ backgroundColor: '#dc692f' }}>
-          BOOK A CALL
-        </button>
-      </nav>
+      <Nav activePage="/book-a-call" />
 
       {/* Hero Section */}
       <div className="py-20" style={{ background: 'linear-gradient(to bottom, #fff5f0 0%, #ffffff 100%)' }}>
-        <div className="container mx-auto px-8">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
               FREE STRATEGY CALL
             </div>
-            <h1 className="text-6xl font-bold mb-6" style={{ color: '#7d472a' }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ color: '#7d472a' }}>
               Find Out If Your Outbound Message Is the Problem
             </h1>
             <p className="text-2xl leading-relaxed mb-8" style={{ color: '#7d472a', opacity: 0.8 }}>
@@ -91,7 +74,7 @@ export default function BookingPage() {
 
           {/* Benefits Grid */}
           <div className="max-w-5xl mx-auto mb-16">
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
@@ -116,23 +99,39 @@ export default function BookingPage() {
 
       {/* Main Content: Two Column Layout */}
       <div className="py-16">
-        <div className="container mx-auto px-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-5 gap-12">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Left Column - What to Expect */}
-            <div className="col-span-2">
+            <div className="col-span-1 lg:col-span-2">
               <div className="sticky top-8">
+                {/* Brendon's photo and intro */}
+                <div className="flex items-center gap-4 mb-8 p-5 rounded-2xl" style={{ backgroundColor: '#fff5f0' }}>
+                  <img
+                    src={brendonPhoto}
+                    alt="Brendon Kim"
+                    style={{ width: '72px', height: '72px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top', border: '3px solid #dc692f', flexShrink: 0 }}
+                  />
+                  <div>
+                    <div className="font-bold text-lg" style={{ color: '#7d472a' }}>Brendon Kim</div>
+                    <div className="text-sm" style={{ color: '#dc692f', fontWeight: '600' }}>Founder, WhiteKim</div>
+                    <div className="text-sm mt-1" style={{ color: '#7d472a', opacity: 0.7 }}>Founder-led. Direct access to decision-making from day one.</div>
+                  </div>
+                </div>
+
                 <h2 className="text-3xl font-bold mb-6" style={{ color: '#7d472a' }}>
                   What to Expect on the Call
                 </h2>
                 <p className="text-lg mb-8" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  This isn't a sales call. It's a diagnostic session to find what's actually blocking your outbound pipeline.
+                  This isn't a sales call. It's a diagnostic session to find what's actually blocking your outbound lead generation.
                 </p>
 
                 <div className="space-y-4 mb-10">
                   {whatToExpect.map((item, index) => (
                     <div key={index} className="flex gap-4 items-start">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1" style={{ backgroundColor: '#dc692f' }}>
-                        <span className="text-white text-xs font-bold">✓</span>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </div>
                       <p className="text-base" style={{ color: '#7d472a', opacity: 0.85 }}>
                         {item}
@@ -190,7 +189,7 @@ export default function BookingPage() {
             </div>
 
             {/* Right Column - Calendly Embed */}
-            <div className="col-span-3">
+            <div className="col-span-1 lg:col-span-3">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 sticky top-8" style={{ borderColor: '#dc692f' }}>
                 <div className="p-8 pb-6 text-center border-b" style={{ borderColor: '#dc692f20' }}>
                   <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>
@@ -216,7 +215,7 @@ export default function BookingPage() {
 
       {/* FAQ Section */}
       <div className="py-16" style={{ backgroundColor: '#fff5f0' }}>
-        <div className="container mx-auto px-8">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#7d472a' }}>
               Common Questions
@@ -226,7 +225,7 @@ export default function BookingPage() {
               <div className="bg-white rounded-2xl p-6 shadow">
                 <h3 className="font-bold text-lg mb-2" style={{ color: '#7d472a' }}>Who is this call for?</h3>
                 <p className="text-base" style={{ color: '#7d472a', opacity: 0.8 }}>
-                  B2B service companies with deal sizes over $3k/month or $10k+ per project who want a predictable outbound pipeline. If you're selling a high-ticket B2B service and outbound isn't working, this call is for you.
+                  High-ticket B2B agencies with deal sizes over $3k/month or $10k+ per project who want consistent lead generation from outbound. If you run a high-ticket B2B agency and outbound isn't producing consistent leads, this call is for you.
                 </p>
               </div>
 

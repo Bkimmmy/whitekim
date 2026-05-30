@@ -1,48 +1,52 @@
 import React from 'react';
+import { IconCheck } from './icons';
+import Nav from './Nav';
 
 export default function ServicesPage() {
   const mainServices = [
     {
-      title: "Outbound Message-Market Fit Sprint",
+      title: "90-Day Pipeline Sprint",
       price: "$5,000",
-      subPrice: "one-time",
+      subPrice: "one-time + infrastructure",
       badge: "BEST PLACE TO START",
       badgeColor: "#7d472a",
-      description: "Designed to test your outbound messaging with real prospects before you commit to a full system.",
+      description: "Full outbound engine launched in 90 days — email, LinkedIn/DM, and phone — with market intelligence attached.",
       features: [
-        "ICP diagnosis — who you should actually be targeting",
-        "5 message variants built and tested",
-        "500–1,000 prospect outreach to validate messaging",
-        "Split-test reporting to see what's working",
-        "Weekly check-in throughout the Sprint",
-        "Deliverability setup so messages land in inbox",
-        "Reply handling guidance for your team",
-        "Performance dashboard",
-        "Message scorecard with takeaways",
-        "Sprint summary report with next-step recommendation"
+        "ICP Revenue Map — who is most likely to buy",
+        "Market message testing — pain points, offers, and angles",
+        "Email infrastructure — domains, inboxes, warming, deliverability",
+        "Cold email outreach to verified prospect lists",
+        "LinkedIn/DM outreach to the same target accounts",
+        "Cold calling to high-priority accounts",
+        "Reply handling and meeting booking",
+        "Lead handoff brief before every qualified call",
+        "Weekly pipeline intelligence report",
+        "Scale plan showing what to double down on after 90 days"
       ],
       cta: "Start With the Sprint",
+      link: "/services/sprint",
       requirements: null
     },
     {
-      title: "Managed Outbound Pipeline System",
-      price: "From $4,000/mo",
-      subPrice: "ongoing",
+      title: "Monthly Outbound Engine",
+      price: "$4,000/mo",
+      subPrice: "ongoing + infrastructure",
       badge: "MOST POPULAR",
       badgeColor: "#dc692f",
-      description: "Full-service outbound pipeline management — we run the system so you focus on closing.",
+      description: "We run the full multi-channel system every month — email, LinkedIn/DM, and phone — so you only show up to close.",
       features: [
-        "Everything in the Sprint",
-        "Ongoing campaign management month to month",
-        "Monthly message testing to improve results",
-        "ICP expansion as you learn what converts",
-        "Weekly reporting with clear pipeline metrics",
-        "Custom CRM integration",
-        "AI workflow setup for lead research and sequencing",
-        "Slack alerts for hot replies",
+        "Everything in the 90-Day Sprint",
+        "Cold email, LinkedIn/DM, and phone outreach every month",
+        "Ongoing message and angle testing by channel",
+        "Reply handling, follow-up, and meeting booking",
+        "Lead handoff brief before every qualified call",
+        "Weekly pipeline intelligence report",
+        "ICP expansion as winning segments emerge",
+        "Slack alerts for positive replies",
         "Dedicated pipeline manager as your point of contact"
       ],
-      cta: "Book a Strategy Call",
+      cta: "See Full Details",
+      link: "/services/managed-pipeline",
       requirements: null
     },
     {
@@ -66,44 +70,21 @@ export default function ServicesPage() {
           "Real capacity to close new business"
         ]
       },
-      cta: "Apply for Partnership"
+      cta: "See Full Details",
+      link: "/services/performance-partnership"
     }
   ];
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      {/* Navigation */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div
-            onClick={() => (window.location.href = '/')}
-            style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-          >
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
-          </div>
-          <span style={{ fontWeight: '600', fontSize: '20px', color: '#7d472a' }}>White Kim</span>
-        </div>
-
-        <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
-          <a href="/" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Home</a>
-          <a href="/services" style={{ color: '#dc692f', fontWeight: '600', borderBottom: '2px solid #dc692f', textDecoration: 'none' }}>Services and Solutions</a>
-          <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Free Resources</a>
-          <a href="/case-studies" style={{ color: '#7d472a', textDecoration: 'none', transition: 'opacity 0.3s' }}>Case Studies</a>
-        </div>
-
-        <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-          <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '12px 28px', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            BOOK A CALL
-          </button>
-        </a>
-      </nav>
+      <Nav activePage="/services" />
 
       {/* Page Header */}
       <div style={{ padding: '64px 32px', background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Services & Solutions</h1>
           <p style={{ fontSize: '20px', maxWidth: '672px', margin: '0 auto', color: '#7d472a', opacity: 0.7 }}>
-            Three ways to work with WhiteKim — from testing your first message to running a full outbound pipeline.
+            A fully managed outbound system across cold email, LinkedIn/DM, and phone — built to book qualified sales meetings for $2M+ high-ticket B2B companies.
           </p>
         </div>
       </div>
@@ -134,7 +115,7 @@ export default function ServicesPage() {
                 <div style={{ marginBottom: '24px' }}>
                   {service.features.map((feature, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '12px' }}>
-                      <span style={{ fontSize: '16px', color: '#dc692f', flexShrink: 0, marginTop: '1px' }}>✓</span>
+                      <span style={{ flexShrink: 0, marginTop: '1px' }}><IconCheck size={16} color="#dc692f" /></span>
                       <span style={{ fontSize: '14px', color: '#7d472a' }}>{feature}</span>
                     </div>
                   ))}
@@ -165,12 +146,19 @@ export default function ServicesPage() {
                 </div>
               )}
 
-              {/* CTA Button */}
-              <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-                <button style={{ width: '100%', padding: '12px', borderRadius: '9999px', fontWeight: '600', backgroundColor: '#dc692f', color: 'white', border: 'none', cursor: 'pointer', transition: 'opacity 0.3s', fontSize: '14px' }}>
-                  {service.cta}
-                </button>
-              </a>
+              {/* CTA Buttons */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <a href={service.link} style={{ textDecoration: 'none' }}>
+                  <button style={{ width: '100%', padding: '12px', borderRadius: '9999px', fontWeight: '600', backgroundColor: '#dc692f', color: 'white', border: 'none', cursor: 'pointer', fontSize: '14px' }}>
+                    {service.cta}
+                  </button>
+                </a>
+                <a href="/book-a-call" style={{ textDecoration: 'none' }}>
+                  <button style={{ width: '100%', padding: '11px', borderRadius: '9999px', fontWeight: '600', backgroundColor: 'transparent', color: '#dc692f', border: '2px solid #dc692f', cursor: 'pointer', fontSize: '14px' }}>
+                    Book a Call
+                  </button>
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -178,9 +166,9 @@ export default function ServicesPage() {
 
       {/* CTA Section */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 32px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Not Sure Which Is Right for You?</h2>
+        <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Ready to Build Your Outbound Pipeline?</h2>
         <p style={{ fontSize: '18px', marginBottom: '32px', maxWidth: '600px', margin: '0 auto 32px auto', color: '#7d472a', opacity: 0.7 }}>
-          Book a quick strategy call. We'll look at your offer, your market, and your goals — then tell you honestly which path fits best.
+          Book a strategy call. We will look at your offer, your market, and your pipeline goals — then show you exactly what the 90-Day Sprint would target.
         </p>
         <a href="/book-a-call" style={{ textDecoration: 'none' }}>
           <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '16px 48px', borderRadius: '9999px', fontWeight: '600', fontSize: '18px', boxShadow: '0 10px 15px rgba(0,0,0,0.1)', border: 'none', cursor: 'pointer', transition: 'opacity 0.3s' }}>

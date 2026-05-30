@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Full-width page wrapper ── */
+.wk-page { width: 100%; overflow-x: hidden; }
+
+/* ── Responsive grid helpers (used by inline-style pages) ── */
+.wk-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.wk-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.wk-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.wk-hero  { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.wk-5col  { display: grid; grid-template-columns: 2fr 3fr; gap: 48px; }
+
+/* ── Nav ── */
+.wk-nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; border-bottom: 1px solid #e5e7eb; background: #fff; position: relative; }
+.wk-nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+.wk-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.wk-hamburger span { display: block; width: 22px; height: 2px; background: #7d472a; border-radius: 2px; }
+.wk-mobile-nav { display: none; flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.wk-mobile-nav a { display: block; padding: 14px 24px; color: #7d472a; text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1px solid #f3f4f6; }
+.wk-mobile-nav.open { display: flex; }
+
+/* ── Section padding ── */
+.wk-section { padding: 80px 32px; }
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .wk-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .wk-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .wk-grid-2 { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .wk-grid-3 { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .wk-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .wk-hero  { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .wk-5col  { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  .wk-nav { padding: 14px 20px; }
+  .wk-nav-links { display: none !important; }
+  .wk-nav-cta { display: none !important; }
+  .wk-hamburger { display: flex !important; }
+
+  .wk-section { padding: 48px 20px !important; }
+
+  .wk-h1 { font-size: 28px !important; line-height: 1.25 !important; }
+  .wk-h2 { font-size: 24px !important; }
+  .wk-hero-price { font-size: 32px !important; }
+}
+
+/* ── Responsive hero text via Tailwind (Home) ── */
+@media (max-width: 768px) {
+  .hero-headline { font-size: 32px !important; }
+  .hero-sub { font-size: 16px !important; }
+}
+
+/* ── Calculator rate grid ── */
+.wk-rate-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+@media (max-width: 1024px) { .wk-rate-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .wk-rate-grid { grid-template-columns: repeat(2, 1fr); } }
