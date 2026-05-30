@@ -583,11 +583,6 @@ function HeroSection() {
 
       {/* Problem Section */}
       <div className="py-20 bg-gray-50">
-        <div className="w-full px-5 sm:px-8 lg:px-16 text-center mb-10">
-          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold tracking-widest uppercase" style={{ backgroundColor: '#dc692f', color: '#ffffff', letterSpacing: '0.12em', fontFamily: 'Georgia, serif' }}>
-            The Problem We Solve
-          </div>
-        </div>
         <div className="w-full px-5 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold" style={{ color: '#7d472a' }}>
