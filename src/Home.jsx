@@ -581,6 +581,69 @@ function HeroSection() {
         .animate-scroll { animation: scroll 10s linear infinite; }
       `}</style>
 
+      {/* Problem Section */}
+      <div className="py-20 bg-gray-50">
+        <div className="w-full px-5 sm:px-8 lg:px-16 text-center mb-10">
+          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold tracking-widest uppercase" style={{ backgroundColor: '#dc692f', color: '#ffffff', letterSpacing: '0.12em', fontFamily: 'Georgia, serif' }}>
+            The Problem We Solve
+          </div>
+        </div>
+        <div className="w-full px-5 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold" style={{ color: '#7d472a' }}>
+              Most B2B companies don't have a lead problem. They have a message-market fit problem.
+            </h2>
+            <p className="text-lg" style={{ color: '#7d472a', opacity: 0.8 }}>
+              Most teams do not know which market segment, buyer title, pain point, offer angle, or outreach channel actually converts.
+            </p>
+            <p className="text-lg" style={{ color: '#7d472a', opacity: 0.8 }}>
+              WhiteKim tests this first across email, LinkedIn/DM, SMS, and phone before scaling volume and gives you the full data profile to make the best decisions.
+            </p>
+            <div className="space-y-4">
+              {[
+                { title: 'Wrong Accounts', body: "You are targeting companies that were never likely to buy, no matter how sharp the message is." },
+                { title: 'Untested Pain + Offer Angle', body: "You do not know which pain point, promise, or framing gets the right buyers to respond." },
+                { title: 'Scaling Before Proof', body: "You are increasing volume before finding what works, which burns budget, domains, and reputation." },
+                { title: 'No Pipeline Conversion System', body: "Positive replies, warm DMs, and call interest fall through the cracks because there is no clear system to turn interest into booked sales calls." },
+                { title: 'No Pipeline Intelligence', body: "You do not know which segment, title, pain point, message, or channel is working — so every decision is still a guess." },
+                { title: 'Not Enough Volume to Make the Right Decision', body: "Without enough outreach across channels, you cannot gather the data needed to know what is actually working." },
+                { title: 'No Scalable Sales System', body: "You are relying on referrals or one-off outreach with no repeatable system to consistently generate new business." },
+                { title: 'Not Enough Time', body: "Running outbound yourself means less time on the business. Founders cannot do both well at the same time." },
+                { title: 'Focusing on Sales While the Business Loses Money', body: "Every month without a working outbound system is pipeline and revenue you are not getting back." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
+                    <span className="text-white font-bold text-xs">X</span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1" style={{ color: '#7d472a' }}>{item.title}</h3>
+                    <p style={{ color: '#7d472a', opacity: 0.7 }}>{item.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border-4" style={{ borderColor: '#dc692f' }}>
+              <div className="aspect-video bg-gray-800">
+                <iframe
+                  src="https://player.vimeo.com/video/1131957554"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 'none' }}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Client Video"
+                ></iframe>
+              </div>
+            </div>
+            <p className="text-center mt-6 text-xl font-semibold" style={{ color: '#7d472a' }}>
+              "Hear it from them first"
+            </p>
+          </div>
+        </div>
+      </div>
 
     </div>
   );
