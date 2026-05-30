@@ -1369,18 +1369,21 @@ function GuaranteeSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
           <div className="rounded-2xl p-8" style={{ backgroundColor: '#fff5f0', border: '2px solid rgba(220,105,47,0.2)' }}>
-            <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>10 / 30</div>
-            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Launch + Market Response Guarantee</h3>
+            <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>Launch Guarantee</div>
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Service Refund Guarantee</h3>
             <p style={{ color: '#7d472a', opacity: 0.75, lineHeight: '1.7' }}>
-              If we do not launch your full email + LinkedIn/DM + call system in 10 business days and generate qualified market response data in 30 days, your next monthly management fee is free.
+              If we do not launch your full email + LinkedIn/DM + call system within the agreed launch window, we will refund your service fee in full.
+            </p>
+            <p className="mt-4" style={{ color: '#7d472a', opacity: 0.75, lineHeight: '1.7' }}>
+              If at any point you feel we are not providing adequate service, you can request a refund of your service fee. Client-paid infrastructure, software, and data costs are non-refundable.
             </p>
           </div>
 
           <div className="rounded-2xl p-8" style={{ backgroundColor: '#fff5f0', border: '2px solid rgba(220,105,47,0.2)' }}>
             <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>No Quota = No Fee</div>
-            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Meeting Quota Guarantee</h3>
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Sprint Quota Guarantee</h3>
             <p style={{ color: '#7d472a', opacity: 0.75, lineHeight: '1.7' }}>
-              If we do not hit the agreed qualified-meeting quota in the sprint window, we continue managing outreach at no additional management fee until we hit it. Client-paid infrastructure and software costs still apply.
+              If we do not hit the agreed qualified-meeting quota during the 90-day sprint, we continue managing outreach at no additional management fee until we hit it. Client-paid infrastructure, software, and data costs still apply.
             </p>
           </div>
         </div>
