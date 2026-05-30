@@ -825,34 +825,35 @@ function ProblemSolutionSection() {
   }, []);
 
   return (
-    <div className="py-20" style={{ backgroundColor: '#1c0a02' }}>
+    <div className="py-24" style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(220,105,47,0.1)', borderBottom: '1px solid rgba(220,105,47,0.1)' }}>
       <div className="container mx-auto px-8">
         <div className="text-center mb-16">
-          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: 'rgba(220,105,47,0.2)', color: '#dc692f' }}>
-            WHAT WHITEKIM SOLVES
+          <div className="inline-block px-5 py-2 rounded-full text-xs font-bold mb-5 uppercase tracking-widest" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.25)' }}>
+            What WhiteKim Solves
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">Every problem flows through one engine.</h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            Click any problem to see how WhiteKim handles it.
+          <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Every problem flows through one engine.</h2>
+          <p className="text-lg max-w-xl mx-auto" style={{ color: '#7d472a', opacity: 0.6 }}>
+            Click any problem to see exactly how WhiteKim handles it.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
           {/* Left: Problems */}
-          <div className="space-y-3">
+          <div className="space-y-2">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#dc692f' }}>The Problems</p>
             {pairs.map((pair, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className="w-full text-left px-5 py-4 rounded-xl transition-all duration-300 flex items-center gap-3"
+                className="w-full text-left px-4 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group"
                 style={{
-                  backgroundColor: activeIndex === i ? 'rgba(220,105,47,0.15)' : 'rgba(255,255,255,0.03)',
-                  border: activeIndex === i ? '1px solid rgba(220,105,47,0.5)' : '1px solid rgba(255,255,255,0.06)',
+                  backgroundColor: activeIndex === i ? '#fff5f0' : 'transparent',
+                  border: activeIndex === i ? '1.5px solid rgba(220,105,47,0.35)' : '1.5px solid rgba(220,105,47,0.08)',
                 }}
               >
-                <div className="flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300" style={{ backgroundColor: activeIndex === i ? '#dc692f' : 'rgba(255,255,255,0.2)' }} />
-                <span className="text-sm font-semibold transition-all duration-300" style={{ color: activeIndex === i ? '#ffffff' : 'rgba(255,255,255,0.45)' }}>
+                <div className="flex-shrink-0 w-2 h-2 rounded-full transition-all duration-200" style={{ backgroundColor: activeIndex === i ? '#dc692f' : '#e5e7eb' }} />
+                <span className="text-sm font-semibold transition-all duration-200" style={{ color: activeIndex === i ? '#7d472a' : '#9ca3af' }}>
                   {pair.problem}
                 </span>
               </button>
@@ -860,49 +861,58 @@ function ProblemSolutionSection() {
           </div>
 
           {/* Center: WhiteKim Engine */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="w-32 h-32 rounded-2xl flex items-center justify-center shadow-2xl mb-4" style={{ backgroundColor: '#dc692f' }}>
+          <div className="flex flex-col items-center justify-start pt-8">
+            <div className="w-28 h-28 rounded-2xl flex items-center justify-center shadow-xl mb-5" style={{ backgroundColor: '#dc692f' }}>
               <span className="text-white font-bold text-4xl">WK</span>
             </div>
-            <div className="text-center">
-              <div className="font-bold text-white text-lg">WhiteKim</div>
-              <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>3-Channel Pipeline Engine</div>
+            <div className="text-center mb-6">
+              <div className="font-bold text-lg" style={{ color: '#7d472a' }}>WhiteKim</div>
+              <div className="text-sm mt-1" style={{ color: '#9ca3af' }}>3-Channel Pipeline Engine</div>
             </div>
-            <div className="mt-6 flex items-center gap-2">
-              <div className="flex gap-1">
-                {[0,1,2].map(d => (
-                  <div key={d} className="w-2 h-2 rounded-full" style={{ backgroundColor: '#dc692f', opacity: 0.4 + d * 0.3, animation: `pulse ${1 + d * 0.3}s infinite` }} />
-                ))}
-              </div>
+
+            {/* Animated dots */}
+            <div className="flex gap-2 mb-8">
+              {pairs.map((_, i) => (
+                <button key={i} onClick={() => setActiveIndex(i)}
+                  className="w-2 h-2 rounded-full transition-all duration-300"
+                  style={{ backgroundColor: i === activeIndex ? '#dc692f' : '#e5e7eb', transform: i === activeIndex ? 'scale(1.4)' : 'scale(1)' }}
+                />
+              ))}
+            </div>
+
+            {/* Channel tags */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {['Email', 'LinkedIn/DM', 'SMS', 'Phone'].map(ch => (
+                <span key={ch} className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.2)' }}>
+                  {ch}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Right: Solution */}
-          <div className="flex flex-col items-start justify-center">
+          <div className="pt-8">
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#dc692f' }}>The Solution</p>
             <div
               key={activeIndex}
-              className="w-full px-6 py-8 rounded-2xl"
-              style={{ backgroundColor: 'rgba(220,105,47,0.12)', border: '1px solid rgba(220,105,47,0.4)', animation: 'fadeIn 0.4s ease' }}
+              className="w-full px-7 py-8 rounded-2xl shadow-lg"
+              style={{ backgroundColor: '#fff5f0', border: '2px solid rgba(220,105,47,0.2)', animation: 'fadeIn 0.35s ease' }}
             >
-              <div className="text-xs font-bold mb-3 uppercase tracking-widest" style={{ color: '#dc692f' }}>Solution</div>
-              <p className="text-xl font-bold text-white leading-snug">{pairs[activeIndex].solution}</p>
-              <div className="mt-4 h-1 rounded-full" style={{ backgroundColor: 'rgba(220,105,47,0.3)' }}>
-                <div className="h-full rounded-full" style={{ backgroundColor: '#dc692f', width: `${((activeIndex + 1) / pairs.length) * 100}%`, transition: 'width 2.5s linear' }} />
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#dc692f' }}>
+                <span className="text-white font-bold text-sm">WK</span>
               </div>
-            </div>
-
-            <div className="mt-6 space-y-2 w-full">
-              {pairs.map((_, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: i === activeIndex ? '#dc692f' : 'rgba(255,255,255,0.15)' }} />
-                  <div className="h-1 rounded-full flex-1" style={{ backgroundColor: i === activeIndex ? 'rgba(220,105,47,0.4)' : 'rgba(255,255,255,0.06)' }} />
-                </div>
-              ))}
+              <p className="text-xl font-bold leading-snug" style={{ color: '#7d472a' }}>{pairs[activeIndex].solution}</p>
+              <div className="mt-6 h-1.5 rounded-full" style={{ backgroundColor: 'rgba(220,105,47,0.15)' }}>
+                <div className="h-full rounded-full transition-all" style={{ backgroundColor: '#dc692f', width: `${((activeIndex + 1) / pairs.length) * 100}%` }} />
+              </div>
+              <p className="text-xs mt-2 text-right font-semibold" style={{ color: '#dc692f', opacity: 0.7 }}>
+                {activeIndex + 1} of {pairs.length}
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }`}</style>
     </div>
   );
 }
