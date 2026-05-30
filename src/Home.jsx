@@ -628,79 +628,6 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Metrics */}
-      <div className="py-20 bg-white">
-        <div className="w-full px-5 sm:px-8 lg:px-16">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Outbound That Actually Performs</h2>
-            <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>Average client results in 90 days</p>
-          </div>
-          <div className="bg-gradient-to-br from-white to-orange-50 p-12 rounded-3xl shadow-2xl border-2 max-w-5xl mx-auto" style={{ borderColor: '#dc692f' }}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              <div className="text-center">
-                <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>42</div>
-                <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Meetings Booked</div>
-                <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>per month</div>
-              </div>
-              <div className="text-center border-x-2 border-gray-200">
-                <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>$285K</div>
-                <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Pipeline Created</div>
-                <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>in 90 days</div>
-              </div>
-              <div className="text-center">
-                <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>19%</div>
-                <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Reply Rate</div>
-                <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>vs 6% average</div>
-              </div>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-xl font-bold mb-6" style={{ color: '#7d472a' }}>Monthly Meeting Growth</h3>
-              <div className="relative h-64">
-                <svg className="w-full h-full" viewBox="0 0 600 200">
-                  <line x1="0" y1="160" x2="600" y2="160" stroke="#e5e7eb" strokeWidth="1"/>
-                  <line x1="0" y1="120" x2="600" y2="120" stroke="#e5e7eb" strokeWidth="1"/>
-                  <line x1="0" y1="80" x2="600" y2="80" stroke="#e5e7eb" strokeWidth="1"/>
-                  <line x1="0" y1="40" x2="600" y2="40" stroke="#e5e7eb" strokeWidth="1"/>
-                  <polyline points="50,150 150,130 250,100 350,70 450,40 550,20" fill="none" stroke="#dc692f" strokeWidth="4" strokeLinecap="round"/>
-                  <circle cx="50" cy="150" r="6" fill="#dc692f"/>
-                  <circle cx="150" cy="130" r="6" fill="#dc692f"/>
-                  <circle cx="250" cy="100" r="6" fill="#dc692f"/>
-                  <circle cx="350" cy="70" r="6" fill="#dc692f"/>
-                  <circle cx="450" cy="40" r="6" fill="#dc692f"/>
-                  <circle cx="550" cy="20" r="6" fill="#dc692f"/>
-                  <text x="50" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 1</text>
-                  <text x="150" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 4</text>
-                  <text x="250" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 8</text>
-                  <text x="350" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 10</text>
-                  <text x="450" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 11</text>
-                  <text x="550" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 12</text>
-                  <text x="50" y="145" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">8</text>
-                  <text x="150" y="125" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">18</text>
-                  <text x="250" y="95" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">28</text>
-                  <text x="350" y="65" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">38</text>
-                  <text x="450" y="35" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">42</text>
-                  <text x="550" y="15" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">45</text>
-                </svg>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-              <div className="text-center p-4 bg-white rounded-xl">
-                <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>30 Days</div>
-                <div className="text-sm" style={{ color: '#7d472a' }}>To First Meeting</div>
-              </div>
-              <div className="text-center p-4 bg-white rounded-xl">
-                <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>97%</div>
-                <div className="text-sm" style={{ color: '#7d472a' }}>Inbox Delivery</div>
-              </div>
-              <div className="text-center p-4 bg-white rounded-xl">
-                <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>5.2x</div>
-                <div className="text-sm" style={{ color: '#7d472a' }}>ROI Average</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Offer Section */}
       <div id="sprint" className="py-20 bg-gray-50">
         <div className="w-full px-5 sm:px-8 lg:px-16">
@@ -849,6 +776,186 @@ function HeroSection() {
 
       {/* ROI Calculator */}
       <ROICalculator />
+    </div>
+  );
+}
+
+function ProblemSolutionSection() {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const pairs = [
+    { problem: 'No consistent meeting flow', solution: '8–15 qualified meetings per month, predictably' },
+    { problem: 'Targeting the wrong accounts', solution: 'ICP Revenue Map pinpoints best buyers' },
+    { problem: 'Message not generating replies', solution: 'Multi-angle market message testing' },
+    { problem: 'Cold email only, one channel', solution: 'Email + LinkedIn/DM + Phone coordinated' },
+    { problem: 'Positive replies falling through', solution: 'Full reply handling and meeting booking' },
+    { problem: 'No pipeline visibility', solution: 'Weekly pipeline intelligence report' },
+    { problem: 'Managing or hiring SDRs', solution: 'Fully managed — no SDRs needed' },
+    { problem: 'Guessing what converts', solution: 'Data shows which segment, pain, and channel wins' },
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex(i => (i + 1) % pairs.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="py-20" style={{ backgroundColor: '#1c0a02' }}>
+      <div className="container mx-auto px-8">
+        <div className="text-center mb-16">
+          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: 'rgba(220,105,47,0.2)', color: '#dc692f' }}>
+            WHAT WHITEKIM SOLVES
+          </div>
+          <h2 className="text-4xl font-bold text-white mb-4">Every problem flows through one engine.</h2>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            Click any problem to see how WhiteKim handles it.
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+
+          {/* Left: Problems */}
+          <div className="space-y-3">
+            {pairs.map((pair, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className="w-full text-left px-5 py-4 rounded-xl transition-all duration-300 flex items-center gap-3"
+                style={{
+                  backgroundColor: activeIndex === i ? 'rgba(220,105,47,0.15)' : 'rgba(255,255,255,0.03)',
+                  border: activeIndex === i ? '1px solid rgba(220,105,47,0.5)' : '1px solid rgba(255,255,255,0.06)',
+                }}
+              >
+                <div className="flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300" style={{ backgroundColor: activeIndex === i ? '#dc692f' : 'rgba(255,255,255,0.2)' }} />
+                <span className="text-sm font-semibold transition-all duration-300" style={{ color: activeIndex === i ? '#ffffff' : 'rgba(255,255,255,0.45)' }}>
+                  {pair.problem}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Center: WhiteKim Engine */}
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-32 h-32 rounded-2xl flex items-center justify-center shadow-2xl mb-4" style={{ backgroundColor: '#dc692f' }}>
+              <span className="text-white font-bold text-4xl">WK</span>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-white text-lg">WhiteKim</div>
+              <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>3-Channel Pipeline Engine</div>
+            </div>
+            <div className="mt-6 flex items-center gap-2">
+              <div className="flex gap-1">
+                {[0,1,2].map(d => (
+                  <div key={d} className="w-2 h-2 rounded-full" style={{ backgroundColor: '#dc692f', opacity: 0.4 + d * 0.3, animation: `pulse ${1 + d * 0.3}s infinite` }} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Solution */}
+          <div className="flex flex-col items-start justify-center">
+            <div
+              key={activeIndex}
+              className="w-full px-6 py-8 rounded-2xl"
+              style={{ backgroundColor: 'rgba(220,105,47,0.12)', border: '1px solid rgba(220,105,47,0.4)', animation: 'fadeIn 0.4s ease' }}
+            >
+              <div className="text-xs font-bold mb-3 uppercase tracking-widest" style={{ color: '#dc692f' }}>Solution</div>
+              <p className="text-xl font-bold text-white leading-snug">{pairs[activeIndex].solution}</p>
+              <div className="mt-4 h-1 rounded-full" style={{ backgroundColor: 'rgba(220,105,47,0.3)' }}>
+                <div className="h-full rounded-full" style={{ backgroundColor: '#dc692f', width: `${((activeIndex + 1) / pairs.length) * 100}%`, transition: 'width 2.5s linear' }} />
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-2 w-full">
+              {pairs.map((_, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: i === activeIndex ? '#dc692f' : 'rgba(255,255,255,0.15)' }} />
+                  <div className="h-1 rounded-full flex-1" style={{ backgroundColor: i === activeIndex ? 'rgba(220,105,47,0.4)' : 'rgba(255,255,255,0.06)' }} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+    </div>
+  );
+}
+
+function MetricsSection() {
+  return (
+    <div className="py-20 bg-white">
+      <div className="w-full px-5 sm:px-8 lg:px-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Outbound That Actually Performs</h2>
+          <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>Average client results in 90 days</p>
+        </div>
+        <div className="bg-gradient-to-br from-white to-orange-50 p-12 rounded-3xl shadow-2xl border-2 max-w-5xl mx-auto" style={{ borderColor: '#dc692f' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>42</div>
+              <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Meetings Booked</div>
+              <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>per month</div>
+            </div>
+            <div className="text-center border-x-2 border-gray-200">
+              <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>$285K</div>
+              <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Pipeline Created</div>
+              <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>in 90 days</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>19%</div>
+              <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Reply Rate</div>
+              <div className="text-sm" style={{ color: '#7d472a', opacity: 0.6 }}>vs 6% average</div>
+            </div>
+          </div>
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <h3 className="text-xl font-bold mb-6" style={{ color: '#7d472a' }}>Monthly Meeting Growth</h3>
+            <div className="relative h-64">
+              <svg className="w-full h-full" viewBox="0 0 600 200">
+                <line x1="0" y1="160" x2="600" y2="160" stroke="#e5e7eb" strokeWidth="1"/>
+                <line x1="0" y1="120" x2="600" y2="120" stroke="#e5e7eb" strokeWidth="1"/>
+                <line x1="0" y1="80" x2="600" y2="80" stroke="#e5e7eb" strokeWidth="1"/>
+                <line x1="0" y1="40" x2="600" y2="40" stroke="#e5e7eb" strokeWidth="1"/>
+                <polyline points="50,150 150,130 250,100 350,70 450,40 550,20" fill="none" stroke="#dc692f" strokeWidth="4" strokeLinecap="round"/>
+                <circle cx="50" cy="150" r="6" fill="#dc692f"/>
+                <circle cx="150" cy="130" r="6" fill="#dc692f"/>
+                <circle cx="250" cy="100" r="6" fill="#dc692f"/>
+                <circle cx="350" cy="70" r="6" fill="#dc692f"/>
+                <circle cx="450" cy="40" r="6" fill="#dc692f"/>
+                <circle cx="550" cy="20" r="6" fill="#dc692f"/>
+                <text x="50" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 1</text>
+                <text x="150" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 4</text>
+                <text x="250" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 8</text>
+                <text x="350" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 10</text>
+                <text x="450" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 11</text>
+                <text x="550" y="185" textAnchor="middle" fill="#7d472a" fontSize="12">Week 12</text>
+                <text x="50" y="145" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">8</text>
+                <text x="150" y="125" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">18</text>
+                <text x="250" y="95" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">28</text>
+                <text x="350" y="65" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">38</text>
+                <text x="450" y="35" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">42</text>
+                <text x="550" y="15" textAnchor="middle" fill="#7d472a" fontSize="14" fontWeight="bold">45</text>
+              </svg>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+            <div className="text-center p-4 bg-white rounded-xl">
+              <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>30 Days</div>
+              <div className="text-sm" style={{ color: '#7d472a' }}>To First Meeting</div>
+            </div>
+            <div className="text-center p-4 bg-white rounded-xl">
+              <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>97%</div>
+              <div className="text-sm" style={{ color: '#7d472a' }}>Inbox Delivery</div>
+            </div>
+            <div className="text-center p-4 bg-white rounded-xl">
+              <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>5.2x</div>
+              <div className="text-sm" style={{ color: '#7d472a' }}>ROI Average</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -1074,8 +1181,11 @@ function ProcessSection() {
             THE WHITEKIM PROCESS
           </div>
           <h2 className="text-5xl font-bold mb-6" style={{ color: '#7d472a' }}>8 Steps From First Call to a Full Pipeline Engine</h2>
-          <p className="text-lg max-w-3xl mx-auto" style={{ color: '#7d472a', opacity: 0.7 }}>
-            We identify, test, build, launch, handle, brief, report, and scale. You close.
+          <p className="text-lg max-w-3xl mx-auto mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>
+            We identify the right accounts, test the right market message, create buyer context, and book qualified meetings across email, LinkedIn/DM, and phone.
+          </p>
+          <p className="text-base max-w-2xl mx-auto font-semibold" style={{ color: '#dc692f' }}>
+            Have the data to forever book 8-15 qualified B2B sales meetings in 90 days — without hiring SDRs or managing outbound yourself.
           </p>
         </div>
 
@@ -1428,9 +1538,11 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <ProblemSolutionSection />
+      <ProcessSection />
+      <MetricsSection />
       <WhoWeWorkWith />
       <WhoWeDoNotWorkWith />
-      <ProcessSection />
       <ReportingSection />
       <GuaranteeSection />
       <TestimonialsSection />
