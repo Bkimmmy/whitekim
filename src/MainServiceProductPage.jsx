@@ -1,15 +1,22 @@
 import React from 'react';
+import Nav from './Nav';
+import {
+  IconTarget, IconSettings, IconEdit, IconBarChart, IconTrendingUp, IconRefresh,
+  IconUsers, IconMail, IconMessageSquare, IconCheckCircle, IconCalendar, IconUserCheck,
+  IconDollarSign, IconFlask, IconArrowRightCircle, IconSearch, IconZap, IconActivity,
+  IconStar, IconCheck
+} from './icons';
 
 export default function MainServiceProductPage() {
   const [openFaq, setOpenFaq] = React.useState(null);
 
   const features = [
-    { icon: "🎯", title: "ICP Targeting", description: "We identify exactly who to contact and why they'd care about your offer." },
-    { icon: "⚙️", title: "Infrastructure Setup", description: "DNS, domains, email accounts, CRM integrations - fully handled." },
-    { icon: "✍️", title: "Message Testing", description: "Custom sequences with continuous A/B testing every month." },
-    { icon: "📊", title: "Pipeline Management", description: "Ongoing campaign execution, reply handling, and meeting booking." },
-    { icon: "📈", title: "Weekly Reporting", description: "Real data on what's working, clear explanations, next steps." },
-    { icon: "🔄", title: "System Optimization", description: "We evolve the strategy as data comes in." }
+    { icon: <IconTarget size={48} color="#dc692f" />, title: "ICP Revenue Map", description: "We identify which accounts and buyer titles are most likely to buy based on your deal size and market." },
+    { icon: <IconSettings size={48} color="#dc692f" />, title: "Full Infrastructure Setup", description: "Domains, inboxes, LinkedIn workflows, call tracking, CRM integration, and deliverability — all configured." },
+    { icon: <IconEdit size={48} color="#dc692f" />, title: "Multi-Channel Outreach", description: "Cold email, LinkedIn/DM, and phone — coordinated across all three so buyers see you everywhere." },
+    { icon: <IconBarChart size={48} color="#dc692f" />, title: "Reply + Call Handling", description: "We handle every reply, qualify prospects, and book them on your calendar. You get a brief before every call." },
+    { icon: <IconTrendingUp size={48} color="#dc692f" />, title: "Weekly Pipeline Intelligence", description: "Every week you see exactly which segment, title, pain point, angle, and channel is converting." },
+    { icon: <IconRefresh size={48} color="#dc692f" />, title: "Scale the Winner", description: "Once we know what works, we double down on the best-performing segment and message each month." }
   ];
 
   const testimonials = [
@@ -47,46 +54,25 @@ export default function MainServiceProductPage() {
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      {/* Navigation */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', borderBottom: '1px solid #e5e7eb', backgroundColor: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
-          </div>
-          <span style={{ fontWeight: '600', fontSize: '20px', color: '#7d472a' }}>White Kim</span>
-        </div>
-
-        <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
-          <a href="/" style={{ color: '#7d472a', textDecoration: 'none' }}>Home</a>
-          <a href="/services" style={{ color: '#7d472a', textDecoration: 'none' }}>Services and Solutions</a>
-          <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none' }}>Free Resources</a>
-          <a href="/case-studies" style={{ color: '#7d472a', textDecoration: 'none' }}>Case Studies</a>
-        </div>
-
-        <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-          <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '12px 28px', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            BOOK A CALL
-          </button>
-        </a>
-      </nav>
+      <Nav activePage="/services" />
 
       {/* Hero Section */}
       <div style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+          <div className="wk-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
             <div>
               <div style={{ display: 'inline-block', backgroundColor: '#dc692f', color: 'white', padding: '6px 16px', borderRadius: '9999px', fontSize: '14px', fontWeight: '600', marginBottom: '24px' }}>
                 MOST POPULAR
               </div>
               <h1 style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '24px', color: '#7d472a', lineHeight: '1.2' }}>
-                Managed Outbound Pipeline System
+                Monthly Outbound Engine
               </h1>
               <p style={{ fontSize: '20px', marginBottom: '32px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>
-                We set up, test, manage, and scale your outbound efforts so you get consistent lead generation. You focus on closing. We handle everything from ICP targeting to qualified meetings landing on your calendar.
+                We run your full outbound system every month across cold email, LinkedIn/DM, and phone. We handle targeting, lead lists, messaging, inbox setup, outreach, calling, follow-up, reply handling, and weekly pipeline intelligence. You only show up to close.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '32px' }}>
-                <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#dc692f' }}>From $4,000</div>
+                <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#dc692f' }}>$4,000</div>
                 <div style={{ fontSize: '20px', color: '#7d472a', opacity: 0.6 }}>/mo</div>
               </div>
 
@@ -131,7 +117,7 @@ export default function MainServiceProductPage() {
                     'Full training and documentation'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0, fontWeight: 'bold' }}>✓</span>
+                      <span style={{ color: '#dc692f', flexShrink: 0 }}><IconCheck size={18} color="#dc692f" /></span>
                       <span style={{ fontSize: '15px', color: '#7d472a' }}>{item}</span>
                     </div>
                   ))}
@@ -142,7 +128,7 @@ export default function MainServiceProductPage() {
               <div style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', boxShadow: '0 8px 24px rgba(220,105,47,0.15)', border: '2px solid #dc692f' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
                   <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#dc692f' }}>What Makes This Different</h3>
-                  <span style={{ fontSize: '22px' }}>⭐</span>
+                  <IconStar size={22} color="#dc692f" />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
@@ -153,7 +139,7 @@ export default function MainServiceProductPage() {
                     'White-glove updates on demand'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0, fontWeight: 'bold' }}>✓</span>
+                      <span style={{ color: '#dc692f', flexShrink: 0 }}><IconCheck size={18} color="#dc692f" /></span>
                       <span style={{ fontSize: '15px', color: '#7d472a', fontWeight: '500' }}>{item}</span>
                     </div>
                   ))}
@@ -176,10 +162,10 @@ export default function MainServiceProductPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {features.map((feature, idx) => (
               <div key={idx} style={{ padding: '32px', backgroundColor: '#fff5f0', borderRadius: '16px', border: '1px solid rgba(220,105,47,0.12)' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>{feature.icon}</div>
+                <div style={{ marginBottom: '16px' }}>{feature.icon}</div>
                 <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{feature.title}</h3>
                 <p style={{ fontSize: '15px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>{feature.description}</p>
               </div>
@@ -202,20 +188,20 @@ export default function MainServiceProductPage() {
               Every client gets full visibility into their pipeline. No black boxes. No vanity metrics. Clear data every week so you can make real decisions.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             {[
-              { icon: '👥', metric: 'Leads Added', detail: 'New verified contacts added to your pipeline each week, broken down by segment.' },
-              { icon: '📧', metric: 'Emails Sent', detail: 'Total outreach volume by campaign and angle so you know exactly what is active.' },
-              { icon: '↩', metric: 'Replies', detail: 'Total replies received, categorized by positive, neutral, negative, and out-of-office.' },
-              { icon: '✅', metric: 'Positive Replies', detail: 'Prospects that showed genuine interest — the number that actually matters.' },
-              { icon: '📅', metric: 'Calls Booked', detail: 'Meetings that made it onto your calendar and which campaign drove them.' },
-              { icon: '🎯', metric: 'Calls Shown', detail: 'Prospects who actually showed up so you track no-show rates and show quality.' },
-              { icon: '💰', metric: 'Pipeline Created', detail: 'Dollar value of new pipeline created from outbound activity each month.' },
-              { icon: '🧪', metric: 'Campaign Tests Running', detail: 'Active A/B tests so you always know what is being optimized and why.' },
-              { icon: '→', metric: 'Next Actions', detail: 'Clear priorities for the coming week based on what the data is showing.' },
+              { icon: <IconUsers size={28} color="rgba(255,255,255,0.85)" />, metric: 'Leads Added', detail: 'New verified contacts added to your pipeline each week, broken down by segment.' },
+              { icon: <IconMail size={28} color="rgba(255,255,255,0.85)" />, metric: 'Emails Sent', detail: 'Total outreach volume by campaign and angle so you know exactly what is active.' },
+              { icon: <IconMessageSquare size={28} color="rgba(255,255,255,0.85)" />, metric: 'Replies', detail: 'Total replies received, categorized by positive, neutral, negative, and out-of-office.' },
+              { icon: <IconCheckCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Positive Replies', detail: 'Prospects that showed genuine interest -- the number that actually matters.' },
+              { icon: <IconCalendar size={28} color="rgba(255,255,255,0.85)" />, metric: 'Calls Booked', detail: 'Meetings that made it onto your calendar and which campaign drove them.' },
+              { icon: <IconUserCheck size={28} color="rgba(255,255,255,0.85)" />, metric: 'Calls Shown', detail: 'Prospects who actually showed up so you track no-show rates and show quality.' },
+              { icon: <IconTrendingUp size={28} color="rgba(255,255,255,0.85)" />, metric: 'Pipeline Created', detail: 'Dollar value of new pipeline created from outbound activity each month.' },
+              { icon: <IconFlask size={28} color="rgba(255,255,255,0.85)" />, metric: 'Campaign Tests Running', detail: 'Active A/B tests so you always know what is being optimized and why.' },
+              { icon: <IconArrowRightCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Next Actions', detail: 'Clear priorities for the coming week based on what the data is showing.' },
             ].map((item, i) => (
               <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '24px', border: '1px solid rgba(220,105,47,0.2)', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                <div style={{ fontSize: '28px', flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flexShrink: 0 }}>{item.icon}</div>
                 <div>
                   <p style={{ fontSize: '15px', fontWeight: '700', color: 'white', marginBottom: '6px' }}>{item.metric}</p>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item.detail}</p>
@@ -241,7 +227,7 @@ export default function MainServiceProductPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {testimonials.map((testimonial, idx) => (
               <div key={idx} style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', border: '2px solid rgba(220,105,47,0.12)' }}>
                 <div style={{ marginBottom: '24px' }}>
@@ -310,15 +296,15 @@ export default function MainServiceProductPage() {
 
           <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', alignItems: 'center', marginBottom: '40px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>No setup fees</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>Cancel anytime</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>Month-to-month</span>
             </div>
           </div>
@@ -339,7 +325,7 @@ function ManagedProcessTimeline() {
 
   const steps = [
     {
-      icon: '🔍',
+      icon: <IconSearch size={36} color="currentColor" />,
       title: 'Diagnose',
       subtitle: 'ICP Review\nOffer Audit\nTargeting',
       timeline: 'Week 1',
@@ -353,7 +339,7 @@ function ManagedProcessTimeline() {
       ]
     },
     {
-      icon: '🚀',
+      icon: <IconZap size={36} color="currentColor" />,
       title: 'Test',
       subtitle: 'Infrastructure\nLead Lists\nCampaigns Live',
       timeline: 'Weeks 2-3',
@@ -367,7 +353,7 @@ function ManagedProcessTimeline() {
       ]
     },
     {
-      icon: '📊',
+      icon: <IconActivity size={36} color="currentColor" />,
       title: 'Validate',
       subtitle: 'Reply Tracking\nWinning Angle\nOptimization',
       timeline: 'Week 4+',
@@ -381,7 +367,7 @@ function ManagedProcessTimeline() {
       ]
     },
     {
-      icon: '📈',
+      icon: <IconTrendingUp size={36} color="currentColor" />,
       title: 'Scale',
       subtitle: 'Monthly System\nWeekly Reports\nExpansion',
       timeline: 'Ongoing',
@@ -411,7 +397,7 @@ function ManagedProcessTimeline() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
+        <div className="wk-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
           {steps.map((step, index) => (
             <button
               key={index}
@@ -428,7 +414,7 @@ function ManagedProcessTimeline() {
                 transition: 'all 0.2s'
               }}
             >
-              <div style={{ fontSize: '36px', marginBottom: '12px' }}>{step.icon}</div>
+              <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>{step.icon}</div>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>{step.title}</h3>
               <p style={{ fontSize: '12px', opacity: 0.75, whiteSpace: 'pre-line', marginBottom: '12px', lineHeight: '1.5' }}>{step.subtitle}</p>
               <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', backgroundColor: expandedStep === index ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
@@ -592,7 +578,7 @@ function ROICalculator() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
+          <div className="wk-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
             {/* Left - Input Controls */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <h3 style={{ fontSize: '22px', fontWeight: 'bold', color: '#7d472a', marginBottom: '8px' }}>Your Configuration</h3>
@@ -790,7 +776,7 @@ function ROICalculator() {
               {/* Email Volume Stats */}
               <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', border: '1px solid rgba(220,105,47,0.12)' }}>
                 <h4 style={{ fontWeight: 'bold', marginBottom: '20px', color: '#7d472a' }}>Outbound Volume ({daysTracked} days)</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', textAlign: 'center' }}>
+                <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', textAlign: 'center' }}>
                   <div>
                     <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#dc692f' }}>{totalEmailsForPeriod.toLocaleString()}</div>
                     <div style={{ fontSize: '12px', color: '#7d472a', opacity: 0.7 }}>Total Sent</div>

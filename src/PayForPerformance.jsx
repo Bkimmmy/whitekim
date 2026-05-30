@@ -1,124 +1,193 @@
 import React from 'react';
+import Nav from './Nav';
+import {
+  IconTarget, IconEdit, IconMessageSquare, IconBarChart, IconDollarSign, IconRefresh,
+  IconLayers, IconMail, IconCheckCircle, IconCalendar, IconUserCheck, IconTrendingUp,
+  IconFlask, IconArrowRightCircle, IconPhone, IconZap, IconFileText, IconStar, IconCheck
+} from './icons';
 
 function PerformanceCalculator() {
-  const [retainer, setRetainer] = React.useState(2000);
   const [pricingModel, setPricingModel] = React.useState('per-meeting');
-  const [ratePerUnit, setRatePerUnit] = React.useState(750);
-  const [revenueSharePct, setRevenueSharePct] = React.useState(10);
+  const [retainer, setRetainer] = React.useState(2000);
+  const [rates, setRates] = React.useState({
+    'per-lead': 150,
+    'per-meeting': 750,
+    'per-show': 1500,
+    'per-closed-deal': 2000,
+    'revenue-share': 10,
+  });
+  const [closedDealType, setClosedDealType] = React.useState('fixed');
   const [volumePerMonth, setVolumePerMonth] = React.useState(10);
   const [avgDealSize, setAvgDealSize] = React.useState(15000);
   const [closeRate, setCloseRate] = React.useState(25);
 
   const models = [
-    { id: 'per-lead', label: 'Per Qualified Lead', unit: 'leads/mo', defaultRate: 150, rateLabel: 'Per lead', rateMin: 50, rateMax: 500, rateStep: 25 },
-    { id: 'per-meeting', label: 'Per Booked Meeting', unit: 'meetings/mo', defaultRate: 750, rateLabel: 'Per meeting', rateMin: 250, rateMax: 2500, rateStep: 50 },
-    { id: 'per-show', label: 'Per Meeting Showed', unit: 'shows/mo', defaultRate: 1000, rateLabel: 'Per show', rateMin: 250, rateMax: 3000, rateStep: 50 },
-    { id: 'per-closed-deal', label: 'Per Closed Deal', unit: 'deals/mo', defaultRate: 2000, rateLabel: 'Per deal', rateMin: 500, rateMax: 10000, rateStep: 250 },
-    { id: 'revenue-share', label: 'Revenue Share', unit: 'deals/mo', defaultRate: 10, rateLabel: '% of revenue', rateMin: 5, rateMax: 30, rateStep: 1 },
+    { id: 'per-lead', label: 'Per Qualified Lead', unit: 'leads/mo' },
+    { id: 'per-meeting', label: 'Per Booked Meeting', unit: 'meetings/mo' },
+    { id: 'per-show', label: 'Per Meeting Showed', unit: 'shows/mo' },
+    { id: 'per-closed-deal', label: 'Per Closed Deal', unit: 'deals/mo' },
+    { id: 'revenue-share', label: 'Revenue Share', unit: 'deals/mo' },
   ];
 
   const currentModel = models.find(m => m.id === pricingModel);
-
-  const handleModelChange = (modelId) => {
-    const m = models.find(m => m.id === modelId);
-    setPricingModel(modelId);
-    setRatePerUnit(m.defaultRate);
-  };
+  const setRate = (id, val) => setRates(prev => ({ ...prev, [id]: val }));
+  const parseRate = (val) => { const n = parseFloat(val); return isNaN(n) ? 0 : n; };
 
   const monthlyRevenue = Math.round(volumePerMonth * (closeRate / 100) * avgDealSize);
 
-  let performanceFee;
+  let performanceFee = 0;
   if (pricingModel === 'revenue-share') {
-    performanceFee = Math.round(monthlyRevenue * (revenueSharePct / 100));
+    performanceFee = Math.round(monthlyRevenue * (rates['revenue-share'] / 100));
+  } else if (pricingModel === 'per-closed-deal' && closedDealType === 'percent') {
+    performanceFee = Math.round(monthlyRevenue * (rates['per-closed-deal'] / 100));
   } else {
-    performanceFee = ratePerUnit * volumePerMonth;
+    performanceFee = Math.round(rates[pricingModel] * volumePerMonth);
   }
 
   const totalMonthly = retainer + performanceFee;
   const netProfit = monthlyRevenue - totalMonthly;
   const roi = totalMonthly > 0 ? ((netProfit / totalMonthly) * 100).toFixed(0) : 0;
 
-  const activeRate = pricingModel === 'revenue-share' ? revenueSharePct : ratePerUnit;
-  const setActiveRate = pricingModel === 'revenue-share' ? setRevenueSharePct : setRatePerUnit;
+  const inputStyle = {
+    border: '1.5px solid rgba(220,105,47,0.3)', borderRadius: '8px', padding: '8px 10px',
+    fontSize: '14px', fontWeight: '600', color: '#7d472a', outline: 'none',
+    width: '100px', textAlign: 'right', backgroundColor: 'white'
+  };
+  const prefixStyle = {
+    position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)',
+    fontSize: '13px', color: '#dc692f', fontWeight: '700', pointerEvents: 'none'
+  };
+  const toggleBtn = (active) => ({
+    padding: '4px 12px', fontSize: '12px', fontWeight: '700', border: '1.5px solid',
+    borderColor: active ? '#dc692f' : 'rgba(220,105,47,0.2)',
+    backgroundColor: active ? '#dc692f' : 'white',
+    color: active ? 'white' : '#7d472a',
+    borderRadius: '6px', cursor: 'pointer'
+  });
 
   return (
     <div style={{ padding: '80px 32px', backgroundColor: '#ffffff' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '100%', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>
             Model Your Performance Partnership Cost
           </h2>
           <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7 }}>
-            Adjust the retainer, pricing model, and your expected volume to see what the Partnership would cost and what it could return.
+            Set your rates, pick a pricing model, adjust expected volume -- see your projected cost and return.
           </p>
         </div>
 
-        {/* Pricing Model Selector */}
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
-          {models.map(m => (
-            <button
-              key={m.id}
-              onClick={() => handleModelChange(m.id)}
-              style={{
-                padding: '12px 20px',
-                borderRadius: '9999px',
-                fontWeight: '600',
-                fontSize: '14px',
-                border: '2px solid',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                backgroundColor: pricingModel === m.id ? '#dc692f' : '#fff5f0',
-                color: pricingModel === m.id ? 'white' : '#7d472a',
-                borderColor: pricingModel === m.id ? '#dc692f' : 'rgba(220,105,47,0.2)',
-                transform: pricingModel === m.id ? 'scale(1.05)' : 'scale(1)'
-              }}
-            >
-              {m.label}
-            </button>
-          ))}
-        </div>
-
         <div style={{ background: 'linear-gradient(135deg, #fff5f0, #ffffff)', padding: '40px', borderRadius: '24px', boxShadow: '0 20px 60px rgba(0,0,0,0.08)', border: '2px solid #dc692f' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
 
-            {/* Left: Inputs */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#7d472a', margin: 0 }}>Your Configuration</h3>
+          {/* Row 1: Rate Configuration */}
+          <div style={{ marginBottom: '36px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#7d472a', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Set Your Rates</h3>
+            <div className="wk-rate-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px', alignItems: 'end' }}>
 
-              {/* Base Retainer */}
+              {/* Retainer */}
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <label style={{ fontWeight: '600', fontSize: '14px', color: '#7d472a' }}>Monthly Base Retainer</label>
-                  <span style={{ fontWeight: 'bold', color: '#dc692f' }}>${retainer.toLocaleString()}/mo</span>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Monthly Retainer</label>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>$</span>
+                  <input type="number" min="0" value={retainer}
+                    onChange={e => setRetainer(parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
                 </div>
-                <input type="range" min="500" max="5000" step="250" value={retainer}
-                  onChange={e => setRetainer(Number(e.target.value))}
-                  style={{ width: '100%', height: '8px', borderRadius: '4px', appearance: 'none', background: `linear-gradient(to right, #dc692f ${((retainer - 500) / 4500) * 100}%, #e5e7eb ${((retainer - 500) / 4500) * 100}%)`, cursor: 'pointer' }}
-                />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginTop: '4px', color: '#7d472a', opacity: 0.6 }}>
-                  <span>$500</span><span>Covers infra + management</span><span>$5,000</span>
-                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>/mo</span>
               </div>
 
-              {/* Performance Rate */}
+              {/* Per Lead */}
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <label style={{ fontWeight: '600', fontSize: '14px', color: '#7d472a' }}>{currentModel.rateLabel}</label>
-                  <span style={{ fontWeight: 'bold', color: '#dc692f' }}>
-                    {pricingModel === 'revenue-share' ? `${activeRate}%` : `$${activeRate.toLocaleString()}`}
-                  </span>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Per Qualified Lead</label>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>$</span>
+                  <input type="number" min="0" value={rates['per-lead']}
+                    onChange={e => setRate('per-lead', parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
                 </div>
-                <input type="range" min={currentModel.rateMin} max={currentModel.rateMax} step={currentModel.rateStep} value={activeRate}
-                  onChange={e => setActiveRate(Number(e.target.value))}
-                  style={{ width: '100%', height: '8px', borderRadius: '4px', appearance: 'none', background: `linear-gradient(to right, #dc692f ${((activeRate - currentModel.rateMin) / (currentModel.rateMax - currentModel.rateMin)) * 100}%, #e5e7eb ${((activeRate - currentModel.rateMin) / (currentModel.rateMax - currentModel.rateMin)) * 100}%)`, cursor: 'pointer' }}
-                />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginTop: '4px', color: '#7d472a', opacity: 0.6 }}>
-                  <span>{pricingModel === 'revenue-share' ? `${currentModel.rateMin}%` : `$${currentModel.rateMin}`}</span>
-                  <span>{pricingModel === 'revenue-share' ? `${currentModel.rateMax}%` : `$${currentModel.rateMax.toLocaleString()}`}</span>
-                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>/lead</span>
               </div>
 
-              {/* Volume */}
+              {/* Per Meeting */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Per Booked Meeting</label>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>$</span>
+                  <input type="number" min="0" value={rates['per-meeting']}
+                    onChange={e => setRate('per-meeting', parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
+                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>/meeting</span>
+              </div>
+
+              {/* Per Show */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Per Meeting Showed</label>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>$</span>
+                  <input type="number" min="0" value={rates['per-show']}
+                    onChange={e => setRate('per-show', parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
+                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>/show</span>
+              </div>
+
+              {/* Per Closed Deal - fixed or % toggle */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Per Closed Deal</label>
+                <div style={{ display: 'flex', gap: '4px', marginBottom: '6px' }}>
+                  <button onClick={() => setClosedDealType('fixed')} style={toggleBtn(closedDealType === 'fixed')}>$</button>
+                  <button onClick={() => setClosedDealType('percent')} style={toggleBtn(closedDealType === 'percent')}>%</button>
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>{closedDealType === 'fixed' ? '$' : '%'}</span>
+                  <input type="number" min="0" value={rates['per-closed-deal']}
+                    onChange={e => setRate('per-closed-deal', parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
+                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>{closedDealType === 'fixed' ? '/deal (flat)' : '% of deal value'}</span>
+              </div>
+
+              {/* Revenue Share */}
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#7d472a', marginBottom: '6px' }}>Revenue Share</label>
+                <div style={{ position: 'relative' }}>
+                  <span style={prefixStyle}>%</span>
+                  <input type="number" min="0" max="100" value={rates['revenue-share']}
+                    onChange={e => setRate('revenue-share', parseRate(e.target.value))}
+                    style={{ ...inputStyle, width: '100%', paddingLeft: '22px' }} />
+                </div>
+                <span style={{ fontSize: '11px', color: '#7d472a', opacity: 0.5 }}>% of closed revenue</span>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Row 2: Model Selector */}
+          <div style={{ marginBottom: '36px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#7d472a', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Active Pricing Model</h3>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {models.map(m => (
+                <button key={m.id} onClick={() => setPricingModel(m.id)} style={{
+                  padding: '10px 20px', borderRadius: '9999px', fontWeight: '600', fontSize: '14px',
+                  border: '2px solid', cursor: 'pointer', transition: 'all 0.2s',
+                  backgroundColor: pricingModel === m.id ? '#dc692f' : '#fff5f0',
+                  color: pricingModel === m.id ? 'white' : '#7d472a',
+                  borderColor: pricingModel === m.id ? '#dc692f' : 'rgba(220,105,47,0.2)',
+                }}>
+                  {m.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 3: Volume sliders + Output */}
+          <div className="wk-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
+
+            {/* Left: Volume Inputs */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#7d472a', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Volume Assumptions</h3>
+
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                   <label style={{ fontWeight: '600', fontSize: '14px', color: '#7d472a' }}>Expected {currentModel.unit}</label>
@@ -133,7 +202,6 @@ function PerformanceCalculator() {
                 </div>
               </div>
 
-              {/* Average Deal Size */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                   <label style={{ fontWeight: '600', fontSize: '14px', color: '#7d472a' }}>Average Deal Size</label>
@@ -148,7 +216,6 @@ function PerformanceCalculator() {
                 </div>
               </div>
 
-              {/* Close Rate */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                   <label style={{ fontWeight: '600', fontSize: '14px', color: '#7d472a' }}>Your Close Rate</label>
@@ -165,13 +232,13 @@ function PerformanceCalculator() {
             </div>
 
             {/* Right: Results */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#7d472a', margin: 0 }}>Monthly Projection</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#7d472a', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Monthly Projection</h3>
 
               {/* Cost Breakdown */}
-              <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '28px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid rgba(220,105,47,0.12)' }}>
-                <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#7d472a', marginBottom: '20px' }}>Cost Breakdown</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: '#7d472a' }}>
+              <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid rgba(220,105,47,0.12)' }}>
+                <h4 style={{ fontSize: '14px', fontWeight: '700', color: '#7d472a', marginBottom: '16px' }}>Cost Breakdown</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: '#7d472a' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Base Retainer</span>
                     <span style={{ fontWeight: '600' }}>${retainer.toLocaleString()}/mo</span>
@@ -179,12 +246,14 @@ function PerformanceCalculator() {
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>
                       {pricingModel === 'revenue-share'
-                        ? `Revenue Share (${revenueSharePct}% of $${monthlyRevenue.toLocaleString()})`
-                        : `${currentModel.label} (${volumePerMonth} x ${pricingModel === 'revenue-share' ? `${activeRate}%` : `$${activeRate.toLocaleString()}`})`}
+                        ? `Revenue Share (${rates['revenue-share']}% of $${monthlyRevenue.toLocaleString()})`
+                        : pricingModel === 'per-closed-deal' && closedDealType === 'percent'
+                          ? `Per Closed Deal (${rates['per-closed-deal']}% x $${monthlyRevenue.toLocaleString()} rev)`
+                          : `${currentModel.label} (${volumePerMonth} x $${rates[pricingModel].toLocaleString()})`}
                     </span>
                     <span style={{ fontWeight: '600' }}>${performanceFee.toLocaleString()}</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid rgba(220,105,47,0.15)', fontWeight: '700', fontSize: '15px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '10px', borderTop: '1px solid rgba(220,105,47,0.15)', fontWeight: '700', fontSize: '15px' }}>
                     <span style={{ color: '#7d472a' }}>Total Monthly</span>
                     <span style={{ color: '#dc692f' }}>${totalMonthly.toLocaleString()}</span>
                   </div>
@@ -192,31 +261,31 @@ function PerformanceCalculator() {
               </div>
 
               {/* Revenue & ROI */}
-              <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '28px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid rgba(220,105,47,0.12)' }}>
-                <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#7d472a', marginBottom: '20px' }}>Revenue Projection</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid rgba(220,105,47,0.12)' }}>
+                <h4 style={{ fontSize: '14px', fontWeight: '700', color: '#7d472a', marginBottom: '16px' }}>Revenue Projection</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                      <span style={{ fontSize: '14px', color: '#7d472a' }}>Expected Monthly Revenue</span>
-                      <span style={{ fontWeight: 'bold', fontSize: '18px', color: '#dc692f' }}>${monthlyRevenue.toLocaleString()}</span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '13px', color: '#7d472a' }}>Expected Monthly Revenue</span>
+                      <span style={{ fontWeight: 'bold', fontSize: '16px', color: '#dc692f' }}>${monthlyRevenue.toLocaleString()}</span>
                     </div>
-                    <div style={{ width: '100%', height: '12px', backgroundColor: '#e5e7eb', borderRadius: '9999px', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', backgroundColor: '#dc692f', borderRadius: '9999px', width: monthlyRevenue > 0 ? '100%' : '0%', transition: 'width 0.3s' }} />
+                    <div style={{ width: '100%', height: '10px', backgroundColor: '#e5e7eb', borderRadius: '9999px', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', backgroundColor: '#dc692f', borderRadius: '9999px', width: '100%' }} />
                     </div>
                   </div>
                   <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                      <span style={{ fontSize: '14px', color: '#7d472a' }}>Total Investment</span>
-                      <span style={{ fontWeight: 'bold', fontSize: '18px', color: '#7d472a' }}>${totalMonthly.toLocaleString()}</span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '13px', color: '#7d472a' }}>Total Investment</span>
+                      <span style={{ fontWeight: 'bold', fontSize: '16px', color: '#7d472a' }}>${totalMonthly.toLocaleString()}</span>
                     </div>
-                    <div style={{ width: '100%', height: '12px', backgroundColor: '#e5e7eb', borderRadius: '9999px', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', backgroundColor: '#9ca3af', borderRadius: '9999px', width: monthlyRevenue > 0 ? `${Math.min((totalMonthly / monthlyRevenue) * 100, 100)}%` : '0%', transition: 'width 0.3s' }} />
+                    <div style={{ width: '100%', height: '10px', backgroundColor: '#e5e7eb', borderRadius: '9999px', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', backgroundColor: '#9ca3af', borderRadius: '9999px', width: monthlyRevenue > 0 ? `${Math.min((totalMonthly / monthlyRevenue) * 100, 100)}%` : '0%' }} />
                     </div>
                   </div>
-                  <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(220,105,47,0.15)' }}>
+                  <div style={{ paddingTop: '10px', borderTop: '1px solid rgba(220,105,47,0.15)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '16px', fontWeight: '600', color: '#7d472a' }}>Net Profit</span>
-                      <span style={{ fontSize: '28px', fontWeight: 'bold', color: '#dc692f' }}>${netProfit.toLocaleString()}</span>
+                      <span style={{ fontSize: '15px', fontWeight: '600', color: '#7d472a' }}>Net Profit</span>
+                      <span style={{ fontSize: '26px', fontWeight: 'bold', color: netProfit >= 0 ? '#dc692f' : '#ef4444' }}>${netProfit.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
@@ -251,7 +320,7 @@ function ProcessTimeline() {
 
   const steps = [
     {
-      icon: '📞',
+      icon: <IconPhone size={36} color="currentColor" />,
       title: 'Application Call',
       subtitle: 'Fit Assessment\nOffer Review\nEligibility',
       timeline: '30 min',
@@ -265,7 +334,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '📄',
+      icon: <IconFileText size={36} color="currentColor" />,
       title: 'Proposal',
       subtitle: 'Pricing Model\nSuccess Definition\nAgreement',
       timeline: '1-2 days',
@@ -279,7 +348,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '🚀',
+      icon: <IconZap size={36} color="currentColor" />,
       title: 'Setup & Launch',
       subtitle: 'Infrastructure\nCampaigns Live\nFirst Data',
       timeline: 'Weeks 1-3',
@@ -293,7 +362,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '📈',
+      icon: <IconTrendingUp size={36} color="currentColor" />,
       title: 'Ongoing',
       subtitle: 'Performance Billing\nWeekly Reports\nOptimization',
       timeline: 'Monthly',
@@ -323,7 +392,7 @@ function ProcessTimeline() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
+        <div className="wk-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
           {steps.map((step, index) => (
             <button
               key={index}
@@ -340,7 +409,7 @@ function ProcessTimeline() {
                 transition: 'all 0.2s'
               }}
             >
-              <div style={{ fontSize: '36px', marginBottom: '12px' }}>{step.icon}</div>
+              <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>{step.icon}</div>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>{step.title}</h3>
               <p style={{ fontSize: '12px', opacity: 0.75, whiteSpace: 'pre-line', marginBottom: '12px', lineHeight: '1.5' }}>{step.subtitle}</p>
               <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', backgroundColor: expandedStep === index ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
@@ -376,12 +445,12 @@ export default function PayForPerformance() {
   const [openFaq, setOpenFaq] = React.useState(null);
 
   const features = [
-    { icon: '🎯', title: 'Full Outbound System', description: 'We set up targeting, sequences, and the complete technical infrastructure. You get a system built to run month over month, not a one-time setup.' },
-    { icon: '✍️', title: 'Message Testing', description: 'We run controlled tests on positioning and copy until we find the angle that generates real replies from your specific ICP.' },
-    { icon: '↩', title: 'Reply Handling', description: 'We manage positive replies on your behalf, qualify prospects, and get confirmed meetings on your calendar — so you only show up to close.' },
-    { icon: '📊', title: 'Transparent Reporting', description: 'Weekly reports showing emails sent, replies received, meetings booked, and which campaigns are performing. No vanity metrics.' },
-    { icon: '💰', title: 'Performance Billing', description: 'You pay a base retainer that covers infrastructure and management, plus a per-meeting fee for every qualified meeting that shows up on your calendar.' },
-    { icon: '🔄', title: 'Ongoing Optimization', description: 'We continuously test new angles, expand your ICP, and optimize targeting based on what the data shows is working each month.' }
+    { icon: <IconLayers size={48} color="#dc692f" />, title: 'Full Outbound System', description: 'We set up targeting, sequences, and the complete technical infrastructure. You get a system built to run month over month, not a one-time setup.' },
+    { icon: <IconEdit size={48} color="#dc692f" />, title: 'Message Testing', description: 'We run controlled tests on positioning and copy until we find the angle that generates real replies from your specific ICP.' },
+    { icon: <IconMessageSquare size={48} color="#dc692f" />, title: 'Reply Handling', description: 'We manage positive replies on your behalf, qualify prospects, and get confirmed meetings on your calendar -- so you only show up to close.' },
+    { icon: <IconBarChart size={48} color="#dc692f" />, title: 'Transparent Reporting', description: 'Weekly reports showing emails sent, replies received, meetings booked, and which campaigns are performing. No vanity metrics.' },
+    { icon: <IconDollarSign size={48} color="#dc692f" />, title: 'Performance Billing', description: 'You pay a base retainer that covers infrastructure and management, plus a per-meeting fee for every qualified meeting that shows up on your calendar.' },
+    { icon: <IconRefresh size={48} color="#dc692f" />, title: 'Ongoing Optimization', description: 'We continuously test new angles, expand your ICP, and optimize targeting based on what the data shows is working each month.' }
   ];
 
   const pricingOptions = [
@@ -435,31 +504,12 @@ export default function PayForPerformance() {
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
 
-      {/* Navigation */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', borderBottom: '1px solid #e5e7eb', backgroundColor: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div onClick={() => window.location.href = '/'} style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
-          </div>
-          <span style={{ fontWeight: '600', fontSize: '20px', color: '#7d472a' }}>White Kim</span>
-        </div>
-        <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
-          <a href="/" style={{ color: '#7d472a', textDecoration: 'none' }}>Home</a>
-          <a href="/services" style={{ color: '#7d472a', textDecoration: 'none' }}>Services and Solutions</a>
-          <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none' }}>Free Resources</a>
-          <a href="/case-studies" style={{ color: '#7d472a', textDecoration: 'none' }}>Case Studies</a>
-        </div>
-        <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-          <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '12px 28px', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            BOOK A CALL
-          </button>
-        </a>
-      </nav>
+      <Nav activePage="/services" />
 
       {/* Hero Section */}
       <div style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+          <div className="wk-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
             <div>
               <div style={{ display: 'inline-block', backgroundColor: '#9ca3af', color: 'white', padding: '6px 16px', borderRadius: '9999px', fontSize: '13px', fontWeight: '700', marginBottom: '24px', letterSpacing: '0.05em' }}>
                 FOR QUALIFIED CLIENTS
@@ -519,7 +569,7 @@ export default function PayForPerformance() {
               <div style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', boxShadow: '0 8px 24px rgba(220,105,47,0.15)', border: '2px solid #dc692f' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
                   <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#dc692f' }}>What Makes This Different</h3>
-                  <span style={{ fontSize: '22px' }}>⭐</span>
+                  <IconStar size={22} color="#dc692f" />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
@@ -530,7 +580,7 @@ export default function PayForPerformance() {
                     'Complete transparency on every metric'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0, fontWeight: 'bold' }}>✓</span>
+                      <span style={{ flexShrink: 0 }}><IconCheck size={18} color="#dc692f" /></span>
                       <span style={{ fontSize: '15px', color: '#7d472a', fontWeight: '500' }}>{item}</span>
                     </div>
                   ))}
@@ -552,10 +602,10 @@ export default function PayForPerformance() {
               Full outbound lead generation system with pricing tied to the results we deliver together.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {features.map((f, idx) => (
               <div key={idx} style={{ padding: '32px', backgroundColor: '#fff5f0', borderRadius: '16px', border: '1px solid rgba(220,105,47,0.12)' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>{f.icon}</div>
+                <div style={{ marginBottom: '16px' }}>{f.icon}</div>
                 <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{f.title}</h3>
                 <p style={{ fontSize: '15px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>{f.description}</p>
               </div>
@@ -578,20 +628,20 @@ export default function PayForPerformance() {
               Because you pay based on results, you get full visibility into every number that drives those results. No hiding behind vanity metrics.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             {[
-              { icon: '📧', metric: 'Emails Sent by Campaign', detail: 'Volume and delivery rate by angle, so you know exactly what outreach is active.' },
-              { icon: '↩', metric: 'Reply Rate by Angle', detail: 'Which messages are getting responses and at what rate — the core leading indicator.' },
-              { icon: '✅', metric: 'Positive Reply Count', detail: 'Prospects showing genuine interest, separated cleanly from neutrals and negatives.' },
-              { icon: '📅', metric: 'Meetings Booked', detail: 'Every booking tied to the campaign that drove it so attribution is always clear.' },
-              { icon: '🎯', metric: 'Meetings Showed', detail: 'Actual show rate so you know how many real sales conversations happened.' },
-              { icon: '💰', metric: 'Pipeline Value Created', detail: 'Dollar value of opportunities sourced from outbound so ROI is always visible.' },
-              { icon: '📊', metric: 'Performance Fee Breakdown', detail: 'Exact calculation of what you owe each billing cycle with full line-item transparency.' },
-              { icon: '🧪', metric: 'Active Tests & Changes', detail: 'What we are testing this month, why, and what we expect it to improve.' },
-              { icon: '→', metric: 'Next Month Strategy', detail: 'What we are expanding, cutting, or changing based on last month\'s data.' },
+              { icon: <IconMail size={28} color="rgba(255,255,255,0.85)" />, metric: 'Emails Sent by Campaign', detail: 'Volume and delivery rate by angle, so you know exactly what outreach is active.' },
+              { icon: <IconMessageSquare size={28} color="rgba(255,255,255,0.85)" />, metric: 'Reply Rate by Angle', detail: 'Which messages are getting responses and at what rate -- the core leading indicator.' },
+              { icon: <IconCheckCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Positive Reply Count', detail: 'Prospects showing genuine interest, separated cleanly from neutrals and negatives.' },
+              { icon: <IconCalendar size={28} color="rgba(255,255,255,0.85)" />, metric: 'Meetings Booked', detail: 'Every booking tied to the campaign that drove it so attribution is always clear.' },
+              { icon: <IconUserCheck size={28} color="rgba(255,255,255,0.85)" />, metric: 'Meetings Showed', detail: 'Actual show rate so you know how many real sales conversations happened.' },
+              { icon: <IconTrendingUp size={28} color="rgba(255,255,255,0.85)" />, metric: 'Pipeline Value Created', detail: 'Dollar value of opportunities sourced from outbound so ROI is always visible.' },
+              { icon: <IconDollarSign size={28} color="rgba(255,255,255,0.85)" />, metric: 'Performance Fee Breakdown', detail: 'Exact calculation of what you owe each billing cycle with full line-item transparency.' },
+              { icon: <IconFlask size={28} color="rgba(255,255,255,0.85)" />, metric: 'Active Tests & Changes', detail: 'What we are testing this month, why, and what we expect it to improve.' },
+              { icon: <IconArrowRightCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Next Month Strategy', detail: 'What we are expanding, cutting, or changing based on last month\'s data.' },
             ].map((item, i) => (
               <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '24px', border: '1px solid rgba(220,105,47,0.2)', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                <div style={{ fontSize: '28px', flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flexShrink: 0 }}>{item.icon}</div>
                 <div>
                   <p style={{ fontSize: '15px', fontWeight: '700', color: 'white', marginBottom: '6px' }}>{item.metric}</p>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item.detail}</p>
@@ -615,7 +665,7 @@ export default function PayForPerformance() {
             <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Results From the Partnership</h2>
             <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7 }}>What clients on performance pricing have achieved.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {testimonials.map((t, idx) => (
               <div key={idx} style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', border: '2px solid rgba(220,105,47,0.12)' }}>
                 <div style={{ marginBottom: '24px' }}>
@@ -676,15 +726,15 @@ export default function PayForPerformance() {
           </p>
           <div style={{ display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'center', marginBottom: '40px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>No setup fees</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>Cancel anytime</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>Pricing tied to results</span>
             </div>
           </div>

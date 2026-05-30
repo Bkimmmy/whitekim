@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import brendonPhoto from './assets/1760379034665.jpeg';
+import {
+  IconUsers, IconMail, IconMessageSquare, IconCheckCircle, IconCalendar,
+  IconUserCheck, IconTrendingUp, IconFlask, IconArrowRightCircle, IconCheck
+} from './icons';
 
 function ROICalculator() {
   const [selectedPlan, setSelectedPlan] = React.useState('managed');
@@ -403,40 +408,51 @@ function ROICalculator() {
 }
 
 function HeroSection() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <div style={{ backgroundColor: '#ffffff' }}>
       {/* Nav */}
-      <nav className="flex items-center justify-between px-8 py-5 border-b border-gray-200">
+      <nav className="wk-nav">
         <div className="flex items-center gap-2">
           <Link to="/" className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
             <span className="text-white font-bold text-xl">WK</span>
           </Link>
           <span className="font-semibold text-xl" style={{ color: '#7d472a' }}>White Kim</span>
         </div>
-        <div className="flex gap-8 text-sm font-medium">
+        <div className="wk-nav-links">
           <Link to="/" className="transition hover:opacity-70" style={{ color: '#7d472a' }}>Home</Link>
           <Link to="/services" className="transition hover:opacity-70" style={{ color: '#7d472a' }}>Services</Link>
           <Link to="/resources" className="transition hover:opacity-70" style={{ color: '#7d472a' }}>Free Resources</Link>
           <Link to="/case-studies" className="transition hover:opacity-70" style={{ color: '#7d472a' }}>Case Studies</Link>
         </div>
-        <Link to="/book-a-call">
+        <Link to="/book-a-call" className="wk-nav-cta">
           <button className="text-white px-7 py-3 rounded-full font-semibold hover:opacity-90 transition shadow-md" style={{ backgroundColor: '#dc692f' }}>
             BOOK A CALL
           </button>
         </Link>
+        <button className="wk-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+          <span /><span /><span />
+        </button>
       </nav>
+      <div className={`wk-mobile-nav ${menuOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+        <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+        <Link to="/resources" onClick={() => setMenuOpen(false)}>Free Resources</Link>
+        <Link to="/case-studies" onClick={() => setMenuOpen(false)}>Case Studies</Link>
+        <Link to="/book-a-call" onClick={() => setMenuOpen(false)} style={{ color: '#dc692f', fontWeight: '700' }}>Book a Call</Link>
+      </div>
 
       {/* Hero */}
-      <div className="container mx-auto px-8 py-24 grid grid-cols-2 gap-20 items-center">
+      <div className="w-full px-5 sm:px-8 lg:px-16 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
         <div className="space-y-6">
           <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: '#fff5f0', color: '#dc692f' }}>
-            Outbound Lead Generation Agency for High-Ticket B2B Agencies
+            Fully Managed Outbound for $2M+ High-Ticket B2B Companies
           </div>
           <h1 className="text-5xl font-bold leading-tight" style={{ color: '#7d472a' }}>
-            Find the outbound message that gets qualified prospects to reply.
+            We book your qualified sales meetings. You just take the calls.
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: '#7d472a' }}>
-            WhiteKim is an outbound lead generation agency that helps high-ticket B2B agencies set up, test, manage, and scale their outbound efforts for consistent lead generation.
+            WhiteKim helps $2M+ high-ticket B2B companies book qualified sales meetings through a fully managed outbound system across cold email, LinkedIn/DM, and phone. We handle targeting, lead lists, messaging, inbox setup, cold email, LinkedIn/DM outreach, calling, follow-up, testing, reporting, and weekly pipeline intelligence. You only take qualified sales calls.
           </p>
           <div className="flex gap-4 pt-6">
             <Link to="/book-a-call">
@@ -452,7 +468,8 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right side — Quick Qualifier card */}
+        {/* Right side — Quick Qualifier card + Brendon intro */}
+        <div className="flex flex-col gap-4">
         <div className="rounded-2xl p-8 border-2 shadow-xl" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(220,105,47,0.15)' }}>
           <div className="mb-6">
             <div className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3" style={{ backgroundColor: '#dc692f', color: 'white' }}>
@@ -473,7 +490,7 @@ function HeroSection() {
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style={{ backgroundColor: '#dc692f' }}>
-                  <span className="text-white font-bold" style={{ fontSize: '10px' }}>✓</span>
+                  <IconCheck size={10} color="white" />
                 </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#dc692f' }}>{item.label} </span>
@@ -493,11 +510,27 @@ function HeroSection() {
           </div>
         </div>
 
+        {/* Brendon intro card */}
+        <div className="flex items-center gap-4 p-5 rounded-2xl" style={{ backgroundColor: '#fff5f0', border: '1px solid rgba(220,105,47,0.15)' }}>
+          <img
+            src={brendonPhoto}
+            alt="Brendon Kim"
+            style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top', border: '3px solid #dc692f', flexShrink: 0 }}
+          />
+          <div>
+            <div className="font-bold text-base" style={{ color: '#7d472a' }}>Brendon Kim</div>
+            <div className="text-sm font-semibold" style={{ color: '#dc692f' }}>Founder, WhiteKim</div>
+            <div className="text-sm mt-1" style={{ color: '#7d472a', opacity: 0.7 }}>Founder-led. Direct access to decision-making from day one.</div>
+          </div>
+        </div>
+
+        </div>
+
       </div>
 
       {/* Logo Slider */}
       <div className="py-12 border-t border-gray-200">
-        <div className="container mx-auto px-8">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
           <h2 className="text-center text-3xl font-bold mb-4" style={{ color: '#7d472a' }}>
             Inspired by Leading B2B Companies
           </h2>
@@ -546,7 +579,7 @@ function HeroSection() {
 
       {/* Problem Section */}
       <div className="py-20 bg-gray-50">
-        <div className="container mx-auto px-8 grid grid-cols-2 gap-16 items-center">
+        <div className="w-full px-5 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold" style={{ color: '#7d472a' }}>
               Most B2B companies don't have a lead problem. They have a message-market fit problem.
@@ -597,13 +630,13 @@ function HeroSection() {
 
       {/* Metrics */}
       <div className="py-20 bg-white">
-        <div className="container mx-auto px-8">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Outbound That Actually Performs</h2>
             <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>Average client results in 90 days</p>
           </div>
           <div className="bg-gradient-to-br from-white to-orange-50 p-12 rounded-3xl shadow-2xl border-2 max-w-5xl mx-auto" style={{ borderColor: '#dc692f' }}>
-            <div className="grid grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               <div className="text-center">
                 <div className="text-6xl font-bold mb-2" style={{ color: '#dc692f' }}>42</div>
                 <div className="text-lg font-semibold" style={{ color: '#7d472a' }}>Meetings Booked</div>
@@ -650,7 +683,7 @@ function HeroSection() {
                 </svg>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
               <div className="text-center p-4 bg-white rounded-xl">
                 <div className="text-2xl font-bold" style={{ color: '#dc692f' }}>30 Days</div>
                 <div className="text-sm" style={{ color: '#7d472a' }}>To First Meeting</div>
@@ -670,14 +703,14 @@ function HeroSection() {
 
       {/* Offer Section */}
       <div id="sprint" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-8">
+        <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Three Ways to Work With WhiteKim</h2>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>Your 90-Day Pipeline Sprint</h2>
             <p className="text-xl" style={{ color: '#7d472a', opacity: 0.7 }}>
-              Start with the Sprint. Scale into managed outbound. Partner on performance when the time is right.
+              Get the full outbound engine running in 90 days. Then scale.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mx-auto">
 
             {/* Sprint */}
             <div className="bg-white rounded-2xl shadow-xl p-8 border-2 hover:shadow-2xl transition" style={{ borderColor: '#dc692f' }}>
@@ -685,24 +718,31 @@ function HeroSection() {
                 <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4" style={{ backgroundColor: '#dc692f20', color: '#dc692f' }}>
                   BEST PLACE TO START
                 </div>
-                <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Outbound Message-Market Fit Sprint</h3>
-                <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>Test your market before committing to full outbound.</p>
-                <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>Starting at $5,000</div>
-                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>one-time + infrastructure</p>
+                <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>90-Day Pipeline Sprint</h3>
+                <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>Full outbound engine with market intelligence attached.</p>
+                <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>$5,000</div>
+                <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>one-time + infrastructure costs</p>
               </div>
               <ul className="space-y-3 mb-8">
-                {['ICP audit', 'Offer audit', 'Lead list test (500-1,000 contacts)', '2-4 outbound campaign angles', 'Cold email copy', 'Deliverability and infrastructure check', 'Positive reply tracking', 'Booked-call process', 'Final performance report', 'Scaling recommendation for managed outbound'].map((item, i) => (
+                {['ICP Revenue Map', 'Market message testing (pain, offer, angle)', 'Email infrastructure setup', 'Cold email outreach', 'LinkedIn/DM outreach', 'Cold calling', 'Reply handling + meeting booking', 'Lead handoff brief before every call', 'Weekly pipeline intelligence report', 'Scale plan for month 2+'].map((item, i) => (
                   <li key={i} className="flex gap-2">
-                    <span style={{ color: '#dc692f' }}>✓</span>
+                    <IconCheck size={16} color="#dc692f" />
                     <span className="text-sm" style={{ color: '#7d472a' }}>{item}</span>
                   </li>
                 ))}
               </ul>
-              <Link to="/book-a-call">
-                <button className="w-full py-3 rounded-full font-semibold hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
-                  Start With the Sprint
-                </button>
-              </Link>
+              <div className="flex flex-col gap-3">
+                <Link to="/services/sprint">
+                  <button className="w-full py-3 rounded-full font-semibold hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
+                    See Full Details
+                  </button>
+                </Link>
+                <Link to="/book-a-call">
+                  <button className="w-full py-3 rounded-full font-semibold transition border-2" style={{ borderColor: '#dc692f', color: '#dc692f', backgroundColor: 'transparent' }}>
+                    Book a Call
+                  </button>
+                </Link>
+              </div>
             </div>
 
             {/* Managed Pipeline */}
@@ -711,24 +751,31 @@ function HeroSection() {
                 <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
                   MOST POPULAR
                 </div>
-                <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Managed Outbound Pipeline System</h3>
-                <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>We run the system monthly once the message works.</p>
-                <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>Starting at $4,000<span className="text-xl">/mo</span></div>
+                <h3 className="text-2xl font-bold mb-2" style={{ color: '#7d472a' }}>Monthly Outbound Engine</h3>
+                <p className="text-sm mb-4" style={{ color: '#7d472a', opacity: 0.7 }}>We run the full multi-channel system every month.</p>
+                <div className="text-3xl font-bold" style={{ color: '#dc692f' }}>$4,000<span className="text-xl">/mo</span></div>
                 <p className="text-xs mt-1" style={{ color: '#7d472a', opacity: 0.6 }}>+ infrastructure</p>
               </div>
               <ul className="space-y-3 mb-8">
                 {['Lead sourcing', 'Cold email infrastructure', 'Copywriting', 'Campaign management', 'Reply handling', 'CRM updates', 'Weekly reporting', 'Meeting booking process', 'Ongoing optimization'].map((item, i) => (
                   <li key={i} className="flex gap-2">
-                    <span style={{ color: '#dc692f' }}>✓</span>
+                    <IconCheck size={16} color="#dc692f" />
                     <span className="text-sm" style={{ color: '#7d472a' }}>{item}</span>
                   </li>
                 ))}
               </ul>
-              <Link to="/book-a-call">
-                <button className="w-full py-3 rounded-full font-semibold hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
-                  Get Started
-                </button>
-              </Link>
+              <div className="flex flex-col gap-3">
+                <Link to="/services/managed-pipeline">
+                  <button className="w-full py-3 rounded-full font-semibold hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
+                    See Full Details
+                  </button>
+                </Link>
+                <Link to="/book-a-call">
+                  <button className="w-full py-3 rounded-full font-semibold transition border-2" style={{ borderColor: '#dc692f', color: '#dc692f', backgroundColor: 'transparent' }}>
+                    Book a Call
+                  </button>
+                </Link>
+              </div>
             </div>
 
             {/* Performance Partnership */}
@@ -745,7 +792,7 @@ function HeroSection() {
               <ul className="space-y-3 mb-6">
                 {['Option A: Lower retainer + pay per qualified booked meeting', 'Option B: Lower retainer + pay per qualified show', 'Option C: Custom retainer + revenue share on closed deals'].map((item, i) => (
                   <li key={i} className="flex gap-2">
-                    <span style={{ color: '#dc692f' }}>✓</span>
+                    <IconCheck size={16} color="#dc692f" />
                     <span className="text-sm" style={{ color: '#7d472a' }}>{item}</span>
                   </li>
                 ))}
@@ -763,11 +810,18 @@ function HeroSection() {
                   Not available for new businesses, low-ticket offers, or companies without CRM tracking.
                 </p>
               </div>
-              <Link to="/book-a-call">
-                <button className="w-full py-3 rounded-full font-semibold transition border-2 hover:bg-gray-50" style={{ borderColor: '#dc692f', color: '#dc692f' }}>
-                  Discuss Eligibility
-                </button>
-              </Link>
+              <div className="flex flex-col gap-3">
+                <Link to="/services/performance-partnership">
+                  <button className="w-full py-3 rounded-full font-semibold hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
+                    See Full Details
+                  </button>
+                </Link>
+                <Link to="/book-a-call">
+                  <button className="w-full py-3 rounded-full font-semibold transition border-2" style={{ borderColor: '#dc692f', color: '#dc692f', backgroundColor: 'transparent' }}>
+                    Book a Call
+                  </button>
+                </Link>
+              </div>
             </div>
 
           </div>
@@ -881,58 +935,114 @@ function ProcessSection() {
   const steps = [
     {
       number: '01',
-      title: 'Diagnose',
-      subtitle: 'ICP Review\nOffer Audit\nSales Process',
+      title: 'Revenue + ICP Map',
+      subtitle: 'Who Is Most Likely to Buy',
       timeline: 'Week 1',
-      description: 'We review your ICP, offer, sales process, current pipeline, and past outbound performance.',
+      description: 'We identify the accounts and buyer titles most likely to convert for your specific offer, deal size, and market.',
       deliverables: [
-        'Review your ideal customer profile and buyer persona',
-        'Audit your offer, positioning, and proof points',
-        'Assess your current sales process and CRM setup',
-        'Review any past outbound data or campaign history',
-        'Identify the biggest gaps before we test'
+        'Map your revenue profile and ICP against total addressable market',
+        'Identify the buyer titles, company sizes, and industries most likely to buy',
+        'Build a prioritized target segment list ranked by conversion potential',
+        'Define the outbound entry point and angle for each segment',
+        'Confirm capacity and onboarding constraints before launch'
       ]
     },
     {
       number: '02',
-      title: 'Test',
-      subtitle: 'Lead Lists\nCampaign Angles\nEmail Copy',
-      timeline: 'Weeks 2-3',
-      description: 'We build verified lead lists and test multiple outbound angles to find what gets qualified prospects to reply.',
+      title: 'Market Message Test',
+      subtitle: 'Pain Points, Offers, Angles',
+      timeline: 'Week 2',
+      description: 'We write and test multiple pain points, offer angles, and message frames to find what gets qualified buyers to respond.',
       deliverables: [
-        'Build and verify lead lists matching your ICP (500-1,000 contacts)',
-        'Write 2-4 different campaign angles and cold email copy',
-        'Set up deliverability and infrastructure',
-        'Launch test campaigns with reply tracking active',
-        'Monitor replies and positive replies in real time'
+        'Write 3-5 distinct outbound angles targeting different pains and outcomes',
+        'Build verified lead lists of 500-1,000 contacts per angle',
+        'Set up deliverability infrastructure and inbox warming',
+        'Launch controlled split tests across all angles simultaneously',
+        'Track reply rate, positive reply rate, and qualified interest by angle'
       ]
     },
     {
       number: '03',
-      title: 'Validate',
-      subtitle: 'Reply Tracking\nCall Quality\nMessage Fit',
-      timeline: 'Week 4',
-      description: 'We track replies, positive replies, booked calls, and lead quality to find the message-market fit.',
+      title: 'Infrastructure Build',
+      subtitle: 'Inboxes, Domains, Tools, Tracking',
+      timeline: 'Week 2-3',
+      description: 'We build and configure your complete outbound infrastructure so every message lands in the inbox and every reply is tracked.',
       deliverables: [
-        'Track and categorize every reply (positive, neutral, negative)',
-        'Measure booked-call rate from positive replies',
-        'Assess quality and ICP fit of leads booking calls',
-        'Identify which angle, segment, and message performs best',
-        'Deliver a final performance report with clear recommendations'
+        'Set up sending domains and configure DNS records',
+        'Create and warm email inboxes for safe volume',
+        'Configure LinkedIn outreach workflows and DM sequences',
+        'Set up cold calling system with call tracking and notes',
+        'Connect CRM, reporting dashboards, and Slack reply alerts'
       ]
     },
     {
       number: '04',
-      title: 'Scale',
-      subtitle: 'Monthly System\nWeekly Reports\nOptimization',
-      timeline: 'Ongoing',
-      description: 'Once the message works, we turn it into a managed outbound system with weekly reporting and continuous optimization.',
+      title: 'Multi-Channel Outreach',
+      subtitle: 'Email, LinkedIn/DM, Phone',
+      timeline: 'Weeks 3-4+',
+      description: 'We run coordinated outreach across cold email, LinkedIn DMs, and phone to reach buyers through every channel they actually respond to.',
       deliverables: [
-        'Transition to Managed Outbound Pipeline System',
-        'Expand lead lists and volume based on validated messaging',
-        'Weekly reporting: leads, emails, replies, calls, and pipeline',
-        'Ongoing copy and targeting optimization',
-        'Monthly strategy reviews and ICP expansion'
+        'Launch cold email sequences to verified, segmented prospect lists',
+        'Run LinkedIn connection and DM outreach to the same target accounts',
+        'Execute cold calling to high-priority accounts that opened or engaged',
+        'Coordinate multi-touch sequences so each channel reinforces the others',
+        'Monitor volume, deliverability, and response rates in real time'
+      ]
+    },
+    {
+      number: '05',
+      title: 'Reply + Call Handling',
+      subtitle: 'Follow Up, Qualify, Book',
+      timeline: 'Ongoing',
+      description: 'We handle every reply, follow up with interested prospects, qualify them against your ICP, and book them on your calendar.',
+      deliverables: [
+        'Respond to every positive reply within business hours',
+        'Qualify prospects against your ICP definition before booking',
+        'Handle objections and re-engage prospects who went cold',
+        'Book confirmed meetings directly on your sales calendar',
+        'Log every conversation outcome in your CRM'
+      ]
+    },
+    {
+      number: '06',
+      title: 'Lead Handoff Brief',
+      subtitle: 'Context Before Every Call',
+      timeline: 'Before Each Call',
+      description: 'Before every qualified meeting, you get a written brief with the buyer context, pain point they responded to, and conversation history.',
+      deliverables: [
+        'Buyer name, title, company, and LinkedIn profile',
+        'Which pain point and offer angle they responded to',
+        'Full conversation thread from outreach to booking',
+        'Company size, revenue estimate, and relevant context',
+        'Suggested opening and known objections to prepare for'
+      ]
+    },
+    {
+      number: '07',
+      title: 'Weekly Pipeline Intelligence',
+      subtitle: 'What Market, Title, Pain, Channel Is Working',
+      timeline: 'Every Week',
+      description: 'Every week you get a full report showing exactly which segment, buyer title, pain point, offer angle, and channel is converting.',
+      deliverables: [
+        'Emails sent, LinkedIn touches, calls made, and reply rates by channel',
+        'Positive reply rate and meeting booking rate by angle and segment',
+        'Which buyer titles and company sizes are responding best',
+        'Which pain point and offer framing is outperforming others',
+        'Recommended adjustments for the following week based on data'
+      ]
+    },
+    {
+      number: '08',
+      title: 'Scale the Winner',
+      subtitle: 'Double Down on What Converts',
+      timeline: 'Month 2+',
+      description: 'Once we know what segment, message, and channel is working, we expand volume and scale the winning combination.',
+      deliverables: [
+        'Increase outreach volume on the highest-converting segment and angle',
+        'Expand lead lists in the proven ICP category',
+        'Add additional channels or sequences to the winning segment',
+        'Retire underperforming angles and replace with new tests',
+        'Build a repeatable monthly outbound engine around the proven formula'
       ]
     }
   ];
@@ -944,15 +1054,15 @@ function ProcessSection() {
           <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
             THE WHITEKIM PROCESS
           </div>
-          <h2 className="text-5xl font-bold mb-6" style={{ color: '#7d472a' }}>Diagnose. Test. Validate. Scale.</h2>
+          <h2 className="text-5xl font-bold mb-6" style={{ color: '#7d472a' }}>8 Steps From First Call to a Full Pipeline Engine</h2>
           <p className="text-lg max-w-3xl mx-auto" style={{ color: '#7d472a', opacity: 0.7 }}>
-            Four steps from first call to a repeatable outbound pipeline.
+            We identify, test, build, launch, handle, brief, report, and scale. You close.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-4 gap-6 mb-8">
-            {steps.map((step, index) => (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            {steps.slice(0, 4).map((step, index) => (
               <button
                 key={index}
                 onClick={() => setExpandedStep(expandedStep === index ? null : index)}
@@ -966,9 +1076,33 @@ function ProcessSection() {
                 <div className="text-4xl font-bold mb-3" style={{ color: expandedStep === index ? 'rgba(255,255,255,0.3)' : '#dc692f15' }}>
                   {step.number}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-xs leading-relaxed whitespace-pre-line mb-3" style={{ opacity: 0.7 }}>{step.subtitle}</p>
+                <h3 className="text-lg font-bold mb-1">{step.title}</h3>
+                <p className="text-xs leading-relaxed mb-3" style={{ opacity: 0.7 }}>{step.subtitle}</p>
                 <div className="inline-block px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: expandedStep === index ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
+                  {step.timeline}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {steps.slice(4).map((step, index) => (
+              <button
+                key={index + 4}
+                onClick={() => setExpandedStep(expandedStep === index + 4 ? null : index + 4)}
+                className="text-center p-6 rounded-2xl border-2 transition-all hover:shadow-lg"
+                style={{
+                  backgroundColor: expandedStep === index + 4 ? '#dc692f' : '#ffffff',
+                  borderColor: expandedStep === index + 4 ? '#dc692f' : '#dc692f30',
+                  color: expandedStep === index + 4 ? '#ffffff' : '#7d472a'
+                }}
+              >
+                <div className="text-4xl font-bold mb-3" style={{ color: expandedStep === index + 4 ? 'rgba(255,255,255,0.3)' : '#dc692f15' }}>
+                  {step.number}
+                </div>
+                <h3 className="text-lg font-bold mb-1">{step.title}</h3>
+                <p className="text-xs leading-relaxed mb-3" style={{ opacity: 0.7 }}>{step.subtitle}</p>
+                <div className="inline-block px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: expandedStep === index + 4 ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
                   {step.timeline}
                 </div>
               </button>
@@ -1013,15 +1147,15 @@ function ProcessSection() {
 
 function ReportingSection() {
   const metrics = [
-    { label: 'Leads Added', icon: '👥' },
-    { label: 'Emails Sent', icon: '📧' },
-    { label: 'Replies', icon: '↩' },
-    { label: 'Positive Replies', icon: '✅' },
-    { label: 'Calls Booked', icon: '📅' },
-    { label: 'Calls Shown', icon: '🎯' },
-    { label: 'Pipeline Created', icon: '💰' },
-    { label: 'Campaign Tests Running', icon: '🧪' },
-    { label: 'Next Actions', icon: '→' }
+    { label: 'Leads Added', icon: <IconUsers size={32} color="#dc692f" /> },
+    { label: 'Emails Sent', icon: <IconMail size={32} color="#dc692f" /> },
+    { label: 'Replies', icon: <IconMessageSquare size={32} color="#dc692f" /> },
+    { label: 'Positive Replies', icon: <IconCheckCircle size={32} color="#dc692f" /> },
+    { label: 'Calls Booked', icon: <IconCalendar size={32} color="#dc692f" /> },
+    { label: 'Calls Shown', icon: <IconUserCheck size={32} color="#dc692f" /> },
+    { label: 'Pipeline Created', icon: <IconTrendingUp size={32} color="#dc692f" /> },
+    { label: 'Campaign Tests Running', icon: <IconFlask size={32} color="#dc692f" /> },
+    { label: 'Next Actions', icon: <IconArrowRightCircle size={32} color="#dc692f" /> }
   ];
 
   return (
@@ -1035,14 +1169,60 @@ function ReportingSection() {
             Every client gets full visibility into their outbound pipeline. No black boxes. No vanity metrics. Weekly reporting covers:
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mx-auto mb-12">
           {metrics.map((metric, i) => (
             <div key={i} className="text-center p-6 rounded-2xl border-2 hover:shadow-lg transition" style={{ borderColor: '#dc692f20', backgroundColor: '#fff5f0' }}>
-              <div className="text-3xl mb-3">{metric.icon}</div>
+              <div className="mb-3 flex justify-center">{metric.icon}</div>
               <div className="font-semibold text-base" style={{ color: '#7d472a' }}>{metric.label}</div>
             </div>
           ))}
         </div>
+        <div className="text-center">
+          <Link to="/book-a-call">
+            <button className="px-10 py-4 rounded-full font-semibold text-lg shadow-lg hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
+              Book a Pipeline Sprint Call
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuaranteeSection() {
+  return (
+    <div className="py-20" style={{ backgroundColor: '#1c0a02' }}>
+      <div className="container mx-auto px-8">
+        <div className="text-center mb-12">
+          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: 'rgba(220,105,47,0.2)', color: '#dc692f' }}>
+            OUR GUARANTEE
+          </div>
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            We put our fee on the line.
+          </h2>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            Two guarantees. Both in writing. No fine print.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(220,105,47,0.3)' }}>
+            <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>10 / 30</div>
+            <h3 className="text-xl font-bold text-white mb-3">Launch + Market Response Guarantee</h3>
+            <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.7' }}>
+              If we do not launch your full email + LinkedIn/DM + call system in 10 business days and generate qualified market response data in 30 days, your next monthly management fee is free.
+            </p>
+          </div>
+
+          <div className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(220,105,47,0.3)' }}>
+            <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>No Quota = No Fee</div>
+            <h3 className="text-xl font-bold text-white mb-3">Meeting Quota Guarantee</h3>
+            <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.7' }}>
+              If we do not hit the agreed qualified-meeting quota in the sprint window, we continue managing outreach at no additional management fee until we hit it. Client-paid infrastructure and software costs still apply.
+            </p>
+          </div>
+        </div>
+
         <div className="text-center">
           <Link to="/book-a-call">
             <button className="px-10 py-4 rounded-full font-semibold text-lg shadow-lg hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
@@ -1233,6 +1413,7 @@ export default function HomePage() {
       <WhoWeDoNotWorkWith />
       <ProcessSection />
       <ReportingSection />
+      <GuaranteeSection />
       <TestimonialsSection />
     </>
   );

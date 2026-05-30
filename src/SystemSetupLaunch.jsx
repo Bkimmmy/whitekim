@@ -1,11 +1,17 @@
 import React from 'react';
+import Nav from './Nav';
+import {
+  IconTarget, IconEdit, IconBarChart, IconMail, IconMessageSquare, IconCheckCircle,
+  IconCalendar, IconUserCheck, IconUsers, IconTrendingUp, IconFlask, IconArrowRightCircle,
+  IconSearch, IconZap, IconFileText, IconWrench, IconShield, IconStar, IconCheck
+} from './icons';
 
 function ProcessTimeline() {
   const [expandedStep, setExpandedStep] = React.useState(null);
 
   const steps = [
     {
-      icon: '🔍',
+      icon: <IconSearch size={36} color="currentColor" />,
       title: 'Diagnose',
       subtitle: 'ICP Audit\nOffer Review\nTargeting',
       timeline: 'Week 1',
@@ -19,7 +25,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '🚀',
+      icon: <IconZap size={36} color="currentColor" />,
       title: 'Build & Launch',
       subtitle: 'Infrastructure\nLead Lists\nCampaigns Live',
       timeline: 'Weeks 2-3',
@@ -33,7 +39,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '📊',
+      icon: <IconBarChart size={36} color="currentColor" />,
       title: 'Validate',
       subtitle: 'Reply Tracking\nWinning Angle\nOptimization',
       timeline: 'Month 2',
@@ -47,7 +53,7 @@ function ProcessTimeline() {
       ]
     },
     {
-      icon: '📋',
+      icon: <IconFileText size={36} color="currentColor" />,
       title: 'Sprint Report',
       subtitle: 'Performance Data\nScaling Plan\nNext Steps',
       timeline: 'Month 3',
@@ -77,7 +83,7 @@ function ProcessTimeline() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
+        <div className="wk-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
           {steps.map((step, index) => (
             <button
               key={index}
@@ -94,7 +100,7 @@ function ProcessTimeline() {
                 transition: 'all 0.2s'
               }}
             >
-              <div style={{ fontSize: '36px', marginBottom: '12px' }}>{step.icon}</div>
+              <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>{step.icon}</div>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>{step.title}</h3>
               <p style={{ fontSize: '12px', opacity: 0.75, whiteSpace: 'pre-line', marginBottom: '12px', lineHeight: '1.5' }}>{step.subtitle}</p>
               <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: '700', backgroundColor: expandedStep === index ? 'rgba(255,255,255,0.2)' : '#dc692f', color: '#ffffff' }}>
@@ -130,12 +136,12 @@ export default function OutboundSprintPage() {
   const [openFaq, setOpenFaq] = React.useState(null);
 
   const features = [
-    { icon: '🎯', title: 'ICP Diagnosis', description: 'We define who to actually target — your ideal customer profile mapped to the right buying signals and decision-makers in your market.' },
-    { icon: '✍️', title: 'Message Variant Testing', description: '2-4 different angles written and tested simultaneously so you learn what actually resonates, not just what sounds good internally.' },
+    { icon: <IconTarget size={48} color="#dc692f" />, title: 'ICP Diagnosis', description: 'We define who to actually target — your ideal customer profile mapped to the right buying signals and decision-makers in your market.' },
+    { icon: <IconEdit size={48} color="#dc692f" />, title: 'Message Variant Testing', description: '2-4 different angles written and tested simultaneously so you learn what actually resonates, not just what sounds good internally.' },
     { icon: '📤', title: 'Real Prospect Outreach', description: '500-1,000 verified contacts reached over 3 months, giving you actual market signal instead of assumptions.' },
-    { icon: '🔧', title: 'Deliverability Setup', description: 'Full DNS, domain purchasing, and warm-up configuration so your emails land in inboxes and do not go to spam.' },
-    { icon: '↩', title: 'Reply Tracking', description: 'Every reply categorized and tracked. You always know how many positive replies, booked calls, and which angle drove them.' },
-    { icon: '📋', title: 'Sprint Report', description: 'A full performance report at the end with what worked, what did not, and a clear recommendation for what to do next.' }
+    { icon: <IconWrench size={48} color="#dc692f" />, title: 'Deliverability Setup', description: 'Full DNS, domain purchasing, and warm-up configuration so your emails land in inboxes and do not go to spam.' },
+    { icon: <IconMessageSquare size={48} color="#dc692f" />, title: 'Reply Tracking', description: 'Every reply categorized and tracked. You always know how many positive replies, booked calls, and which angle drove them.' },
+    { icon: <IconFileText size={48} color="#dc692f" />, title: 'Sprint Report', description: 'A full performance report at the end with what worked, what did not, and a clear recommendation for what to do next.' }
   ];
 
   const testimonials = [
@@ -156,31 +162,12 @@ export default function OutboundSprintPage() {
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
 
-      {/* Navigation */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', borderBottom: '1px solid #e5e7eb', backgroundColor: '#ffffff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div onClick={() => window.location.href = '/'} style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#dc692f', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>WK</span>
-          </div>
-          <span style={{ fontWeight: '600', fontSize: '20px', color: '#7d472a' }}>White Kim</span>
-        </div>
-        <div style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500' }}>
-          <a href="/" style={{ color: '#7d472a', textDecoration: 'none' }}>Home</a>
-          <a href="/services" style={{ color: '#7d472a', textDecoration: 'none' }}>Services and Solutions</a>
-          <a href="/resources" style={{ color: '#7d472a', textDecoration: 'none' }}>Free Resources</a>
-          <a href="/case-studies" style={{ color: '#7d472a', textDecoration: 'none' }}>Case Studies</a>
-        </div>
-        <a href="/book-a-call" style={{ textDecoration: 'none' }}>
-          <button style={{ color: 'white', backgroundColor: '#dc692f', padding: '12px 28px', borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            BOOK A CALL
-          </button>
-        </a>
-      </nav>
+      <Nav activePage="/services" />
 
       {/* Hero Section */}
       <div style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #ffffff 100%)', padding: '80px 32px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+          <div className="wk-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
             <div>
               <div style={{ display: 'inline-block', backgroundColor: '#7d472a', color: 'white', padding: '6px 16px', borderRadius: '9999px', fontSize: '13px', fontWeight: '700', marginBottom: '24px', letterSpacing: '0.05em' }}>
                 BEST PLACE TO START
@@ -240,7 +227,7 @@ export default function OutboundSprintPage() {
                     'Scaling recommendation for Managed Outbound'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0, fontWeight: 'bold' }}>✓</span>
+                      <span style={{ flexShrink: 0 }}><IconCheck size={18} color="#dc692f" /></span>
                       <span style={{ fontSize: '15px', color: '#7d472a' }}>{item}</span>
                     </div>
                   ))}
@@ -250,7 +237,7 @@ export default function OutboundSprintPage() {
               <div style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', boxShadow: '0 8px 24px rgba(220,105,47,0.15)', border: '2px solid #dc692f' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
                   <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#dc692f' }}>Why Start With the Sprint</h3>
-                  <span style={{ fontSize: '22px' }}>⭐</span>
+                  <IconStar size={22} color="#dc692f" />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
@@ -261,7 +248,7 @@ export default function OutboundSprintPage() {
                     '3 months of full coverage included'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                      <span style={{ fontSize: '18px', color: '#dc692f', flexShrink: 0, fontWeight: 'bold' }}>✓</span>
+                      <span style={{ flexShrink: 0 }}><IconCheck size={18} color="#dc692f" /></span>
                       <span style={{ fontSize: '15px', color: '#7d472a', fontWeight: '500' }}>{item}</span>
                     </div>
                   ))}
@@ -283,10 +270,10 @@ export default function OutboundSprintPage() {
               A complete 3-month outbound test designed to give you real market signal before you scale.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {features.map((f, idx) => (
               <div key={idx} style={{ padding: '32px', backgroundColor: '#fff5f0', borderRadius: '16px', border: '1px solid rgba(220,105,47,0.12)' }}>
-                <div style={{ fontSize: '48px', marginBottom: '16px' }}>{f.icon}</div>
+                <div style={{ marginBottom: '16px' }}>{f.icon}</div>
                 <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', color: '#7d472a' }}>{f.title}</h3>
                 <p style={{ fontSize: '15px', color: '#7d472a', opacity: 0.8, lineHeight: '1.6' }}>{f.description}</p>
               </div>
@@ -309,20 +296,20 @@ export default function OutboundSprintPage() {
               Every Sprint ends with a full data report so you can make an informed, confident decision about what to do next.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
             {[
-              { icon: '📧', metric: 'Emails Sent by Angle', detail: 'Total volume broken down by each campaign variant so you see exactly what was tested.' },
-              { icon: '↩', metric: 'Reply Rate by Angle', detail: 'Which message got the most replies and by how much — the core signal for message-market fit.' },
-              { icon: '✅', metric: 'Positive Reply Rate', detail: 'Replies that showed genuine interest, separated from neutrals and negatives.' },
-              { icon: '📅', metric: 'Meetings Booked', detail: 'Calls that made it to your calendar and which campaign angle drove each one.' },
-              { icon: '🎯', metric: 'ICP Validation', detail: 'Which segments responded most — helps you refine targeting before you scale.' },
-              { icon: '📊', metric: 'Message Scorecard', detail: 'Side-by-side ranking of every angle by reply rate, positive rate, and meeting conversion.' },
-              { icon: '👥', metric: 'Lead Quality Assessment', detail: 'How well the leads that responded matched your ideal customer profile.' },
-              { icon: '🔧', metric: 'Deliverability Health', detail: 'Inbox placement rate and domain health throughout the Sprint.' },
-              { icon: '📋', metric: 'Scaling Recommendation', detail: 'A clear go/no-go with the supporting data to back the decision either way.' },
+              { icon: <IconMail size={28} color="rgba(255,255,255,0.85)" />, metric: 'Emails Sent by Angle', detail: 'Total volume broken down by each campaign variant so you see exactly what was tested.' },
+              { icon: <IconMessageSquare size={28} color="rgba(255,255,255,0.85)" />, metric: 'Reply Rate by Angle', detail: 'Which message got the most replies and by how much -- the core signal for message-market fit.' },
+              { icon: <IconCheckCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Positive Reply Rate', detail: 'Replies that showed genuine interest, separated from neutrals and negatives.' },
+              { icon: <IconCalendar size={28} color="rgba(255,255,255,0.85)" />, metric: 'Meetings Booked', detail: 'Calls that made it to your calendar and which campaign angle drove each one.' },
+              { icon: <IconTarget size={28} color="rgba(255,255,255,0.85)" />, metric: 'ICP Validation', detail: 'Which segments responded most -- helps you refine targeting before you scale.' },
+              { icon: <IconBarChart size={28} color="rgba(255,255,255,0.85)" />, metric: 'Message Scorecard', detail: 'Side-by-side ranking of every angle by reply rate, positive rate, and meeting conversion.' },
+              { icon: <IconUsers size={28} color="rgba(255,255,255,0.85)" />, metric: 'Lead Quality Assessment', detail: 'How well the leads that responded matched your ideal customer profile.' },
+              { icon: <IconShield size={28} color="rgba(255,255,255,0.85)" />, metric: 'Deliverability Health', detail: 'Inbox placement rate and domain health throughout the Sprint.' },
+              { icon: <IconArrowRightCircle size={28} color="rgba(255,255,255,0.85)" />, metric: 'Scaling Recommendation', detail: 'A clear go/no-go with the supporting data to back the decision either way.' },
             ].map((item, i) => (
               <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '24px', border: '1px solid rgba(220,105,47,0.2)', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                <div style={{ fontSize: '28px', flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flexShrink: 0 }}>{item.icon}</div>
                 <div>
                   <p style={{ fontSize: '15px', fontWeight: '700', color: 'white', marginBottom: '6px' }}>{item.metric}</p>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item.detail}</p>
@@ -343,7 +330,7 @@ export default function OutboundSprintPage() {
             <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginBottom: '16px', color: '#7d472a' }}>Results From the Sprint</h2>
             <p style={{ fontSize: '18px', color: '#7d472a', opacity: 0.7 }}>Real outcomes from businesses that started with the Sprint.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="wk-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
             {testimonials.map((t, idx) => (
               <div key={idx} style={{ backgroundColor: '#fff5f0', padding: '32px', borderRadius: '16px', border: '2px solid rgba(220,105,47,0.12)' }}>
                 <div style={{ marginBottom: '24px' }}>
@@ -404,15 +391,15 @@ export default function OutboundSprintPage() {
           </p>
           <div style={{ display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'center', marginBottom: '40px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>Flat one-time fee</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>3 months covered</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '20px', color: '#dc692f' }}>✓</span>
+              <IconCheck size={20} color="#dc692f" />
               <span style={{ fontSize: '16px', color: '#7d472a' }}>No long-term commitment</span>
             </div>
           </div>
