@@ -583,6 +583,11 @@ function HeroSection() {
 
       {/* Problem Section */}
       <div className="py-20 bg-gray-50">
+        <div className="w-full px-5 sm:px-8 lg:px-16 text-center mb-10">
+          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold" style={{ backgroundColor: '#dc692f', color: '#ffffff' }}>
+            THE PROBLEM WE SOLVE
+          </div>
+        </div>
         <div className="w-full px-5 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold" style={{ color: '#7d472a' }}>
@@ -600,7 +605,11 @@ function HeroSection() {
                 { title: 'Untested Pain + Offer Angle', body: "You do not know which pain point, promise, or framing gets the right buyers to respond." },
                 { title: 'Scaling Before Proof', body: "You are increasing volume before finding what works, which burns budget, domains, and reputation." },
                 { title: 'No Pipeline Conversion System', body: "Positive replies, warm DMs, and call interest fall through the cracks because there is no clear system to turn interest into booked sales calls." },
-                { title: 'No Pipeline Intelligence', body: "You do not know which segment, title, pain point, message, or channel is working — so every decision is still a guess." }
+                { title: 'No Pipeline Intelligence', body: "You do not know which segment, title, pain point, message, or channel is working — so every decision is still a guess." },
+                { title: 'Not Enough Volume to Make the Right Decision', body: "Without enough outreach across channels, you cannot gather the data needed to know what is actually working." },
+                { title: 'No Scalable Sales System', body: "You are relying on referrals or one-off outreach with no repeatable system to consistently generate new business." },
+                { title: 'Not Enough Time', body: "Running outbound yourself means less time on the business. Founders cannot do both well at the same time." },
+                { title: 'Focusing on Sales While the Business Loses Money', body: "Every month without a working outbound system is pipeline and revenue you are not getting back." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
