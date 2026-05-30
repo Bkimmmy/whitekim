@@ -1300,38 +1300,137 @@ function ProcessSection() {
 }
 
 function ReportingSection() {
-  const metrics = [
-    { label: 'Leads Added', icon: <IconUsers size={32} color="#dc692f" /> },
-    { label: 'Emails Sent', icon: <IconMail size={32} color="#dc692f" /> },
-    { label: 'Replies', icon: <IconMessageSquare size={32} color="#dc692f" /> },
-    { label: 'Positive Replies', icon: <IconCheckCircle size={32} color="#dc692f" /> },
-    { label: 'Calls Booked', icon: <IconCalendar size={32} color="#dc692f" /> },
-    { label: 'Calls Shown', icon: <IconUserCheck size={32} color="#dc692f" /> },
-    { label: 'Pipeline Created', icon: <IconTrendingUp size={32} color="#dc692f" /> },
-    { label: 'Campaign Tests Running', icon: <IconFlask size={32} color="#dc692f" /> },
-    { label: 'Next Actions', icon: <IconArrowRightCircle size={32} color="#dc692f" /> }
+  const [showAfter, setShowAfter] = React.useState(false);
+  const [activeCard, setActiveCard] = React.useState(null);
+
+  const decisions = [
+    {
+      question: 'Which market should I target?',
+      before: { label: 'Guessing', detail: 'Targeting broadly based on gut feeling. No data on who actually converts.' },
+      after: { label: 'SaaS, 50–200 employees, VP of Sales', detail: 'This segment converts at 4.2% — 3x your next best. Double down here.' },
+      emoji: '🎯'
+    },
+    {
+      question: 'Is my message actually working?',
+      before: { label: 'No idea', detail: 'Sending volume and hoping something lands. No split test data.' },
+      after: { label: '"Pipeline gap" angle wins', detail: 'Pain angle #2 gets 3x more positive replies than your cost-savings message.' },
+      emoji: '✉️'
+    },
+    {
+      question: 'Which channel is converting?',
+      before: { label: 'Cold email only', detail: 'Assuming email is enough. No visibility into DMs or calls.' },
+      after: { label: 'LinkedIn DMs converting 2.1x', detail: 'For VP-level titles, DMs outperform email by 2.1x. Shifting budget there.' },
+      emoji: '📡'
+    },
+    {
+      question: 'When should I scale volume?',
+      before: { label: 'Whenever budget allows', detail: 'No clear signal on when scaling is safe. Risk burning domains.' },
+      after: { label: 'Week 6 — scale now', detail: 'Winning angle confirmed at week 6. Infrastructure ready. Green light to scale.' },
+      emoji: '📈'
+    },
+    {
+      question: 'Which buyer title should I focus on?',
+      before: { label: 'Everyone', detail: 'Targeting CEOs, CTOs, VPs all at once. Spreading too thin.' },
+      after: { label: 'VP of Sales responds 67% more', detail: 'CTO reply rate is 1.1%. VP of Sales is 4.3%. Stop wasting budget on CTOs.' },
+      emoji: '👤'
+    },
+    {
+      question: 'What is my pipeline actually worth?',
+      before: { label: 'Hard to say', detail: 'Revenue hard to attribute. No clear line from outbound to closed deal.' },
+      after: { label: '$285K in 90 days — 5.2x ROI', detail: 'Every meeting, every deal, every dollar traced back to the campaign that drove it.' },
+      emoji: '💰'
+    },
+    {
+      question: 'Should I hire more SDRs?',
+      before: { label: 'Probably?', detail: 'Thinking about hiring but no data to justify the cost or define the role.' },
+      after: { label: 'Not yet — engine not proven', detail: 'Data shows message-market fit still testing. Hire after month 3 when quota is consistent.' },
+      emoji: '🧑‍💼'
+    },
+    {
+      question: 'Which pain point opens the door?',
+      before: { label: 'Best guess', detail: 'Using the same pitch for every prospect. No testing across pain angles.' },
+      after: { label: '"Losing deals to inaction" — 38% reply rate', detail: 'This pain frame outperforms "not enough meetings" by 4x in your ICP.' },
+      emoji: '🔑'
+    },
   ];
 
   return (
-    <div className="py-20 bg-white">
+    <div className="py-24" style={{ backgroundColor: '#ffffff' }}>
       <div className="container mx-auto px-8">
+
+        {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>
-            You will always know what is happening.
+          <h2 className="text-5xl font-bold mb-4" style={{ color: '#7d472a' }}>
+            From guessing to knowing.
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: '#7d472a', opacity: 0.7 }}>
-            Every client gets full visibility into their outbound pipeline. No black boxes. No vanity metrics. Weekly reporting covers:
+          <p className="text-xl max-w-2xl mx-auto mb-10" style={{ color: '#7d472a', opacity: 0.65 }}>
+            This is what the data WhiteKim gives you actually unlocks. Toggle between before and after to see the difference.
           </p>
+
+          {/* Toggle */}
+          <div className="inline-flex items-center rounded-full p-1 gap-1" style={{ backgroundColor: '#f3f4f6', border: '1px solid rgba(220,105,47,0.15)' }}>
+            <button
+              onClick={() => setShowAfter(false)}
+              className="px-6 py-3 rounded-full font-bold text-sm transition-all duration-300"
+              style={{
+                backgroundColor: !showAfter ? '#7d472a' : 'transparent',
+                color: !showAfter ? '#ffffff' : '#9ca3af',
+              }}
+            >
+              ❌ Without Data
+            </button>
+            <button
+              onClick={() => setShowAfter(true)}
+              className="px-6 py-3 rounded-full font-bold text-sm transition-all duration-300"
+              style={{
+                backgroundColor: showAfter ? '#dc692f' : 'transparent',
+                color: showAfter ? '#ffffff' : '#9ca3af',
+              }}
+            >
+              ✅ With WhiteKim
+            </button>
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mx-auto mb-12">
-          {metrics.map((metric, i) => (
-            <div key={i} className="text-center p-6 rounded-2xl border-2 hover:shadow-lg transition" style={{ borderColor: '#dc692f20', backgroundColor: '#fff5f0' }}>
-              <div className="mb-3 flex justify-center">{metric.icon}</div>
-              <div className="font-semibold text-base" style={{ color: '#7d472a' }}>{metric.label}</div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto mb-12">
+          {decisions.map((d, i) => (
+            <div
+              key={i}
+              onClick={() => setActiveCard(activeCard === i ? null : i)}
+              className="cursor-pointer rounded-2xl p-5 transition-all duration-300 hover:shadow-lg"
+              style={{
+                backgroundColor: showAfter ? '#fff5f0' : '#f9fafb',
+                border: activeCard === i
+                  ? `2px solid #dc692f`
+                  : showAfter
+                    ? '2px solid rgba(220,105,47,0.2)'
+                    : '2px solid rgba(0,0,0,0.06)',
+                transform: activeCard === i ? 'translateY(-4px)' : 'none',
+              }}
+            >
+              <div className="text-2xl mb-3">{d.emoji}</div>
+              <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#9ca3af' }}>{d.question}</p>
+              <p className="font-bold text-base mb-2" style={{ color: showAfter ? '#dc692f' : '#6b7280' }}>
+                {showAfter ? d.after.label : d.before.label}
+              </p>
+              {activeCard === i && (
+                <p className="text-sm mt-3 pt-3 leading-relaxed" style={{ color: '#7d472a', borderTop: '1px solid rgba(220,105,47,0.15)', opacity: 0.85 }}>
+                  {showAfter ? d.after.detail : d.before.detail}
+                </p>
+              )}
+              <p className="text-xs mt-2" style={{ color: '#dc692f', opacity: 0.6 }}>
+                {activeCard === i ? 'Click to collapse' : 'Click to expand'}
+              </p>
             </div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
         <div className="text-center">
+          <p className="text-lg font-semibold mb-6" style={{ color: '#7d472a', opacity: 0.7 }}>
+            Every one of these answers comes from your weekly pipeline intelligence report.
+          </p>
           <Link to="/book-a-call">
             <button className="px-10 py-4 rounded-full font-semibold text-lg shadow-lg hover:opacity-90 transition text-white" style={{ backgroundColor: '#dc692f' }}>
               Book a Pipeline Sprint Call
