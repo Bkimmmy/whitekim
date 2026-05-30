@@ -586,7 +586,7 @@ function HeroSection() {
         <div className="w-full px-5 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold" style={{ color: '#7d472a' }}>
-              Most B2B companies don't have a lead problem. They have a message-market fit problem.
+              Most B2B companies don't have the time or resources to scale outbound to its highest potential to actually get the best performance out of it, and what they are left with is:
             </h2>
             <p className="text-lg" style={{ color: '#7d472a', opacity: 0.8 }}>
               Most teams do not know which market segment, buyer title, pain point, offer angle, or outreach channel actually converts.
