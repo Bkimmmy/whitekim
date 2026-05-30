@@ -636,7 +636,13 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Offer Section */}
+    </div>
+  );
+}
+
+function OfferSection() {
+  return (
+    <div>
       <div id="sprint" className="py-20 bg-gray-50">
         <div className="w-full px-5 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
@@ -1547,6 +1553,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ProblemSolutionSection />
+      <OfferSection />
       <ProcessSection />
       <MetricsSection />
       <WhoWeWorkWith />
