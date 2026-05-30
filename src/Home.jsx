@@ -797,6 +797,9 @@ function OfferSection() {
         </div>
       </div>
 
+      {/* Guarantee */}
+      <GuaranteeSection />
+
       {/* ROI Calculator */}
       <ROICalculator />
     </div>
@@ -1575,7 +1578,6 @@ export default function HomePage() {
       <WhoWeWorkWith />
       <WhoWeDoNotWorkWith />
       <ReportingSection />
-      <GuaranteeSection />
       <TestimonialsSection />
     </>
   );
