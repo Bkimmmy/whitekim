@@ -1353,33 +1353,33 @@ function ReportingSection() {
 
 function GuaranteeSection() {
   return (
-    <div className="py-20" style={{ backgroundColor: '#1c0a02' }}>
+    <div className="py-20" style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(220,105,47,0.1)' }}>
       <div className="container mx-auto px-8">
         <div className="text-center mb-12">
-          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: 'rgba(220,105,47,0.2)', color: '#dc692f' }}>
+          <div className="inline-block px-6 py-3 rounded-full text-sm font-bold mb-6" style={{ backgroundColor: '#fff5f0', color: '#dc692f', border: '1px solid rgba(220,105,47,0.25)' }}>
             OUR GUARANTEE
           </div>
-          <h2 className="text-4xl font-bold mb-4 text-white">
+          <h2 className="text-4xl font-bold mb-4" style={{ color: '#7d472a' }}>
             We put our fee on the line.
           </h2>
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#7d472a', opacity: 0.65 }}>
             Two guarantees. Both in writing. No fine print.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-          <div className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(220,105,47,0.3)' }}>
+          <div className="rounded-2xl p-8" style={{ backgroundColor: '#fff5f0', border: '2px solid rgba(220,105,47,0.2)' }}>
             <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>10 / 30</div>
-            <h3 className="text-xl font-bold text-white mb-3">Launch + Market Response Guarantee</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.7' }}>
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Launch + Market Response Guarantee</h3>
+            <p style={{ color: '#7d472a', opacity: 0.75, lineHeight: '1.7' }}>
               If we do not launch your full email + LinkedIn/DM + call system in 10 business days and generate qualified market response data in 30 days, your next monthly management fee is free.
             </p>
           </div>
 
-          <div className="rounded-2xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(220,105,47,0.3)' }}>
+          <div className="rounded-2xl p-8" style={{ backgroundColor: '#fff5f0', border: '2px solid rgba(220,105,47,0.2)' }}>
             <div className="text-3xl font-bold mb-4" style={{ color: '#dc692f' }}>No Quota = No Fee</div>
-            <h3 className="text-xl font-bold text-white mb-3">Meeting Quota Guarantee</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.7' }}>
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#7d472a' }}>Meeting Quota Guarantee</h3>
+            <p style={{ color: '#7d472a', opacity: 0.75, lineHeight: '1.7' }}>
               If we do not hit the agreed qualified-meeting quota in the sprint window, we continue managing outreach at no additional management fee until we hit it. Client-paid infrastructure and software costs still apply.
             </p>
           </div>
