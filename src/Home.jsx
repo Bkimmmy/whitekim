@@ -594,23 +594,26 @@ function HeroSection() {
             <p className="text-lg" style={{ color: '#7d472a', opacity: 0.8 }}>
               WhiteKim tests this first across email, LinkedIn/DM, SMS, and phone before scaling volume and gives you the full data profile to make the best decisions.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                'Wrong Accounts',
-                'Untested Pain + Offer Angle',
-                'Scaling Before Proof',
-                'No Pipeline Conversion System',
-                'No Pipeline Intelligence',
-                'Not Enough Outreach Volume',
-                'No Scalable Sales System',
-                'Not Enough Time',
-                'Losing Revenue Without Outbound',
-              ].map((title, i) => (
-                <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ backgroundColor: '#ffffff', border: '1.5px solid rgba(220,105,47,0.15)' }}>
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
-                    <span className="text-white font-bold" style={{ fontSize: '10px' }}>✕</span>
+                { title: 'Wrong Accounts', body: 'Targeting companies that were never likely to buy, no matter how sharp the message is.' },
+                { title: 'Untested Pain + Offer Angle', body: 'No idea which pain point, promise, or framing gets the right buyers to respond.' },
+                { title: 'Scaling Before Proof', body: 'Increasing volume before finding what works — burning budget, domains, and reputation.' },
+                { title: 'No Pipeline Conversion System', body: 'Positive replies, warm DMs, and call interest fall through with no system to turn interest into booked calls.' },
+                { title: 'No Pipeline Intelligence', body: 'No visibility into which segment, title, pain point, message, or channel is working.' },
+                { title: 'Not Enough Outreach Volume', body: 'Without enough multi-channel outreach, you cannot gather the data needed to know what works.' },
+                { title: 'No Scalable Sales System', body: 'Relying on referrals or one-off outreach with no repeatable engine to consistently generate new business.' },
+                { title: 'Not Enough Time', body: 'Running outbound yourself takes time away from the business. Founders cannot do both well.' },
+                { title: 'Losing Revenue Without Outbound', body: 'Every month without a working outbound system is pipeline and revenue you are not getting back.' },
+              ].map((item, i) => (
+                <div key={i} className="px-5 py-4 rounded-xl" style={{ backgroundColor: '#ffffff', border: '1.5px solid rgba(220,105,47,0.15)' }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: '#dc692f' }}>
+                      <span className="text-white font-bold" style={{ fontSize: '10px' }}>✕</span>
+                    </div>
+                    <span className="font-bold text-sm" style={{ color: '#7d472a' }}>{item.title}</span>
                   </div>
-                  <span className="font-semibold text-sm" style={{ color: '#7d472a' }}>{title}</span>
+                  <p className="text-sm leading-relaxed pl-9" style={{ color: '#7d472a', opacity: 0.65 }}>{item.body}</p>
                 </div>
               ))}
             </div>
